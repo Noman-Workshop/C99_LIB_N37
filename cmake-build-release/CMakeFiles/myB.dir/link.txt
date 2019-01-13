@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libmyB.so -o ../Release/lib/shared/Linux/libmyB.so CMakeFiles/myB.dir/src/b.c.o 

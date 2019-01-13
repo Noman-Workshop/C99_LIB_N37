@@ -1,3 +1,0 @@
-/media/anonyman637/CoreProgramming/CProjects/Official/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/media/anonyman637/CoreProgramming/CProjects/Official/cmake-build-debug/CMakeFiles/Main.dir
-/media/anonyman637/CoreProgramming/CProjects/Official/cmake-build-debug/CMakeFiles/edit_cache.dir
