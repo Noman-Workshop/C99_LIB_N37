@@ -1,0 +1,8 @@
+/home/anonyman637/IDE/clion-2018.3.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /media/anonyman637/CoreProgramming/CProjects/Official
+src dir: /media/anonyman637/CoreProgramming/CProjects/Official
+bin dir: /media/anonyman637/CoreProgramming/CProjects/Official/Debug/out/Linux 
+lib dir: /media/anonyman637/CoreProgramming/CProjects/Official/Debug/lib/shared/Linux 
+archive dir: /media/anonyman637/CoreProgramming/CProjects/Official/Debug/lib/archive/Linux 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/anonyman637/CoreProgramming/CProjects/Official/cmake-build-debug

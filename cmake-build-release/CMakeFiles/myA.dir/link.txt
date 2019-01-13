@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libmyA.so -o ../Release/lib/shared/Linux/libmyA.so CMakeFiles/myA.dir/src/a.c.o 
