@@ -6,7 +6,7 @@
 #ifndef OFFICIAL_CELCIUSNFAHRENHEIT_H
 #define OFFICIAL_CELSIUSNFAHRENHEIT_H
 
-#endif //OFFICIAL_CELSIUSNFAHRENHEIT_H
+#endif
 
 
 float celsius2Fahrenheit(float degCel);
