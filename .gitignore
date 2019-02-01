@@ -8,3 +8,4 @@ Release/
 
 .idea/
 
+include/Console/ExtractCtrlFunc/pythonVenv/
