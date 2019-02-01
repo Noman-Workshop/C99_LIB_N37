@@ -9,7 +9,7 @@
 int main() {
     float degCelsius = 10.25f;
     float degFahrenheit = 2.35f;
-    printf("%f Celsius\t => %f Fahrenheit\n", degCelsius, celsius2Fahrenheit(degCelsius));
-    printf("%f Fahrenheit\t => %f Celsius\n", degFahrenheit, fahrenheit2Celsius(degFahrenheit));
+    printf("%2.2f Celsius\t => %2.2f Fahrenheit\n", degCelsius, celsius2Fahrenheit(degCelsius));
+    printf("%2.2f Fahrenheit\t => %2.2f Celsius\n", degFahrenheit, fahrenheit2Celsius(degFahrenheit));
     return 0;
 }

@@ -22,31 +22,43 @@ message("src dir:       ${CMAKE_CURRENT_SOURCE_DIR}")
 message("bin dir:       ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
 message("lib dir:       ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} ")
 message("archive dir:   ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY} ")
-# ===================== Build the Libraries ===================== #
+
+# ============================== Build the Libraries  ============================== #
 message("# ============================== LIB ============================== #")
 # ----------------- Project Std ----------------- #
 message("Building Project Standard Libraries")
+# Console Library
+message("Building Console Libraries")
+add_library(lconsole
+        src/Console/ctrlFuncCodedCharSet.c)
+message("Library Built: lconsole|Console")
 
 # ----------------- Exercises ----------------- #
 # Temperature
 message("Building Exercise Libraries")
-set(LIB_TEMPR_SRC Exercise/src/Temperature/celsiusNFahrenheit.c)
-add_library(ltempr SHARED ${LIB_TEMPR_SRC})
+add_library(ltempr SHARED
+        Exercise/src/Temperature/celsiusNFahrenheit.c)
 message("Library Built: ltempr|Temperature")
 
-# ===================== Executables ===================== #
+# ============================== Building Executables ============================== #
 message("# ============================== EXE ============================== #")
 message("Building Executables")
 # ---------- Main ---------- #
 message("Building Main Executables")
 add_executable(Main main.c)
-message("Executable Built: Main")
+message("EXEcutable Built: Main")
 target_link_libraries(Main)
 
 # ----------------- Tests ----------------- #
 # Temperature Conversion
 message("Building Test Executables")
-set(TEST_TEMP_SRC Test/Temperature/TempConv.c)
-add_executable(T_Temp ${TEST_TEMP_SRC})
-message("Executable Built: T_Temp")
-target_link_libraries(T_Temp ltempr)
+add_executable(T_Tempr
+        Test/Temperature/TempConv.c)
+message("EXEcutable Built: T_Tempr")
+target_link_libraries(T_Tempr ltempr)
+
+# Console Testing
+add_executable(T_Console
+        Test/Console/CursorTest.c)
+message("EXEcutable Built: T_Console")
+target_link_libraries(T_Console lconsole)
