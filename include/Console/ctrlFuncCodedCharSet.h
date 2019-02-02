@@ -3607,6 +3607,139 @@
  */
 #define _SACS_ CSI " " "\\"
 
+
+/*
+ * SAPV - SELECT ALTERNATIVE PRESENTATION VARIANTS
+
+ * @ Parameters Required:
+ * Ps
+
+ * @ More Info:
+ * SAPV is used to specify one or more variants for the presentation
+ * of subsequent text.
+
+ * The parameter values are:
+
+ * 0 default presentation (implementation-defined); cancels the
+ * effect of any preceding occurrence of SAPV in the data stream
+ * 1 the decimal digits are presented by means of the graphic
+ * symbols used in the Latin script
+ * 2 the decimal digits are presented by means of the graphic
+ * symbols used in the Arabic script, i.e. the Hindi symbols
+ * 3 when the direction of the character path is right-to-left,
+ * each of the graphic characters in the graphic character set(s)
+ * in use which is one of a left/right-handed pair (parentheses,
+ * square brackets, curly brackets, greater-than/less-than signs,
+ * etc.) is presented as "mirrored", i.e. as the other member of the
+ * pair. For example, the coded graphic character given the name
+ * LEFT PARENTHESIS is presented as RIGHT PARENTHESIS, and vice versa
+ * 4 when the direction of the character path is right-to-left, all
+ * graphic characters which represent operators and delimiters in
+ * mathematical formulae and which are not symmetrical about a vertical
+ * axis are presented as mirrored about that vertical axis
+ * 5 the following graphic character is presented in its isolated form
+ * 6 the following graphic character is presented in its initial form
+ * 7 the following graphic character is presented in its medial form
+ * 8 the following graphic character is presented in its final form
+ * 9 where the bit combination 02/14 is intended to represent a decimal
+ * mark in a decimal number it shall be presented by means of the graphic
+ * symbol FULL STOP
+ * 10 where the bit combination 02/14 is intended to represent a
+ * decimal mark in a decimal number it shall be presented by means of the
+ * graphic symbol COMMA
+ * 11 vowels are presented above or below the preceding character
+ * 12 vowels are presented after the preceding character
+ * 13 contextual shape determination of Arabic scripts, including the
+ * LAM-ALEPH ligature but excluding all other Arabic ligatures
+ * 14 contextual shape determination of Arabic scripts, excluding all
+ * Arabic ligatures
+ * 15 cancels the effect of parameter values 3 and 4
+ * 16 vowels are not presented
+ * 17 when the string direction is right-to-left, the italicized characters
+ * are slanted to the left; when the string direction is left-to-right,
+ * the italicized characters are slanted to the right
+ * 18 contextual shape determination of Arabic scripts is not used, the
+ * graphic characters - including the digits - are presented in the form they
+ * are stored (Pass-through)
+ * 19 contextual shape determination of Arabic scripts is not used, the
+ * graphic characters- excluding the digits - are presented in the form they
+ * are stored (Pass-through)
+ * 20 the graphic symbols used to present the decimal digits are
+ * device dependent
+ * 21 establishes the effect of parameter values 5, 6, 7, and 8 for the
+ * following graphic characters until cancelled
+ * 22 cancels the effect of parameter value 21, i.e. re-establishes
+ * the effect of parameter values 5, 6, 7, and 8 for the next single
+ * graphic character only.
+ */
+#define SAPV(Ps) CSI #Ps " " "]"
+
+/*
+ * SAPV - SELECT ALTERNATIVE PRESENTATION VARIANTS
+
+ * @ Parameters Required:
+ * No Parameter Required
+
+ * @ More Info:
+ * SAPV is used to specify one or more variants for the presentation
+ * of subsequent text.
+
+ * The parameter values are:
+
+ * 0 default presentation (implementation-defined); cancels the
+ * effect of any preceding occurrence of SAPV in the data stream
+ * 1 the decimal digits are presented by means of the graphic
+ * symbols used in the Latin script
+ * 2 the decimal digits are presented by means of the graphic
+ * symbols used in the Arabic script, i.e. the Hindi symbols
+ * 3 when the direction of the character path is right-to-left,
+ * each of the graphic characters in the graphic character set(s)
+ * in use which is one of a left/right-handed pair (parentheses,
+ * square brackets, curly brackets, greater-than/less-than signs,
+ * etc.) is presented as "mirrored", i.e. as the other member of the
+ * pair. For example, the coded graphic character given the name
+ * LEFT PARENTHESIS is presented as RIGHT PARENTHESIS, and vice versa
+ * 4 when the direction of the character path is right-to-left, all
+ * graphic characters which represent operators and delimiters in
+ * mathematical formulae and which are not symmetrical about a vertical
+ * axis are presented as mirrored about that vertical axis
+ * 5 the following graphic character is presented in its isolated form
+ * 6 the following graphic character is presented in its initial form
+ * 7 the following graphic character is presented in its medial form
+ * 8 the following graphic character is presented in its final form
+ * 9 where the bit combination 02/14 is intended to represent a decimal
+ * mark in a decimal number it shall be presented by means of the graphic
+ * symbol FULL STOP
+ * 10 where the bit combination 02/14 is intended to represent a
+ * decimal mark in a decimal number it shall be presented by means of the
+ * graphic symbol COMMA
+ * 11 vowels are presented above or below the preceding character
+ * 12 vowels are presented after the preceding character
+ * 13 contextual shape determination of Arabic scripts, including the
+ * LAM-ALEPH ligature but excluding all other Arabic ligatures
+ * 14 contextual shape determination of Arabic scripts, excluding all
+ * Arabic ligatures
+ * 15 cancels the effect of parameter values 3 and 4
+ * 16 vowels are not presented
+ * 17 when the string direction is right-to-left, the italicized characters
+ * are slanted to the left; when the string direction is left-to-right,
+ * the italicized characters are slanted to the right
+ * 18 contextual shape determination of Arabic scripts is not used, the
+ * graphic characters - including the digits - are presented in the form they
+ * are stored (Pass-through)
+ * 19 contextual shape determination of Arabic scripts is not used, the
+ * graphic characters- excluding the digits - are presented in the form they
+ * are stored (Pass-through)
+ * 20 the graphic symbols used to present the decimal digits are
+ * device dependent
+ * 21 establishes the effect of parameter values 5, 6, 7, and 8 for the
+ * following graphic characters until cancelled
+ * 22 cancels the effect of parameter value 21, i.e. re-establishes
+ * the effect of parameter values 5, 6, 7, and 8 for the next single
+ * graphic character only.
+ */
+#define _SAPV_ CSI " " "]"
+
 /*
  * SCI - SINGLE CHARACTER INTRODUCER
 
