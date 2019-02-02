@@ -129,7 +129,7 @@
  * according to the character path, where n equals the value of Pn.
  *
  */
-#define CBT(Pn) CSI #Pn "Z"
+#define CBT(Pn) CSI Pn "Z"
 
 /*
  * CBT - CURSOR BACKWARD TABULATION
@@ -178,7 +178,7 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CHA(Pn) CSI #Pn "G"
+#define CHA(Pn) CSI Pn "G"
 
 /*
  * CHA - CURSOR CHARACTER ABSOLUTE
@@ -207,7 +207,7 @@
  * according to the character path, where n equals the value of Pn.
  *
  */
-#define CHT(Pn) CSI #Pn "I"
+#define CHT(Pn) CSI Pn "I"
 
 /*
  * CHT - CURSOR FORWARD TABULATION
@@ -253,7 +253,7 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CNL(Pn) CSI #Pn "E"
+#define CNL(Pn) CSI Pn "E"
 
 /*
  * CNL - CURSOR NEXT LINE
@@ -281,7 +281,7 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CPL(Pn) CSI #Pn "F"
+#define CPL(Pn) CSI Pn "F"
 
 /*
  * CPL - CURSOR PRECEDING LINE
@@ -322,7 +322,7 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define CPR(Pn1, Pn2) CSI #Pn1 ";" #Pn2 "R"
+#define CPR(Pn1, Pn2) CSI Pn1 ";" Pn2 "R"
 
 /*
  * CPR - ACTIVE POSITION REPORT
@@ -349,7 +349,7 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define _CPR(Pn1) CSI #Pn1 ";" "R"
+#define _CPR(Pn1) CSI Pn1 ";" "R"
 
 /*
  * CPR - ACTIVE POSITION REPORT
@@ -376,7 +376,7 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define __CPR(Pn2) CSI ";" #Pn2 "R"
+#define __CPR(Pn2) CSI ";" Pn2 "R"
 
 /*
  * CPR - ACTIVE POSITION REPORT
@@ -504,7 +504,7 @@
  * value of Pn.
  *
  */
-#define CUB(Pn) CSI #Pn "D"
+#define CUB(Pn) CSI Pn "D"
 
 /*
  * CUB - CURSOR LEFT
@@ -536,7 +536,7 @@
  * value of Pn.
  *
  */
-#define CUD(Pn) CSI #Pn "B"
+#define CUD(Pn) CSI Pn "B"
 
 /*
  * CUD - CURSOR DOWN
@@ -568,7 +568,7 @@
  * equals the value of Pn.
  *
  */
-#define CUF(Pn) CSI #Pn "C"
+#define CUF(Pn) CSI Pn "C"
 
 /*
  * CUF - CURSOR RIGHT
@@ -600,7 +600,7 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define CUP(Pn1, Pn2) CSI #Pn1 ";" #Pn2 "H"
+#define CUP(Pn1, Pn2) CSI Pn1 ";" Pn2 "H"
 
 /*
  * CUP - CURSOR POSITION
@@ -616,7 +616,7 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define _CUP(Pn1) CSI #Pn1 ";" "H"
+#define _CUP(Pn1) CSI Pn1 ";" "H"
 
 /*
  * CUP - CURSOR POSITION
@@ -632,7 +632,7 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define __CUP(Pn2) CSI ";" #Pn2 "H"
+#define __CUP(Pn2) CSI ";" Pn2 "H"
 
 /*
  * CUP - CURSOR POSITION
@@ -664,7 +664,7 @@
  * value of Pn.
  *
  */
-#define CUU(Pn) CSI #Pn "A"
+#define CUU(Pn) CSI Pn "A"
 
 /*
  * CUU - CURSOR UP
@@ -695,7 +695,7 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CVT(Pn) CSI #Pn "Y"
+#define CVT(Pn) CSI Pn "Y"
 
 /*
  * CVT - CURSOR LINE TABULATION
@@ -726,7 +726,7 @@
  * DA is used to request an identifying DA from a device.
  *
  */
-#define DA(Ps) CSI #Ps "c"
+#define DA(Ps) CSI Ps "c"
 
 /*
  * DA - DEVICE ATTRIBUTES
@@ -786,7 +786,7 @@
  * should not be used within an SRS string or an SDS string.
  *
  */
-#define DAQ(Ps) CSI #Ps "o"
+#define DAQ(Ps) CSI Ps "o"
 
 /*
  * DAQ - DEFINE AREA QUALIFICATION
@@ -867,7 +867,7 @@
  * end of the shifted part, n character positions are put into the erased state.
  *
  */
-#define DCH(Pn) CSI #Pn "P"
+#define DCH(Pn) CSI Pn "P"
 
 /*
  * DCH - DELETE CHARACTER
@@ -1041,7 +1041,7 @@
  * position is established by the parameter value of SET LINE HOME (SLH).
  *
  */
-#define DL(Pn) CSI #Pn "M"
+#define DL(Pn) CSI Pn "M"
 
 /*
  * DL - DELETE LINE
@@ -1140,7 +1140,7 @@
  * with a parameter value 5 or MESSAGE WAITING (MW).
  *
  */
-#define DSR(Ps) CSI #Ps "n"
+#define DSR(Ps) CSI Ps "n"
 
 /*
  * DSR - DEVICE STATUS REPORT
@@ -1187,7 +1187,7 @@
  * by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define DTA(Pn1, Pn2) CSI #Pn1 ";" #Pn2 " " "T"
+#define DTA(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "T"
 
 /*
  * EA - ERASE IN AREA
@@ -1226,7 +1226,7 @@
  * areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EA(Ps) CSI #Ps "O"
+#define EA(Ps) CSI Ps "O"
 
 /*
  * EA - ERASE IN AREA
@@ -1290,7 +1290,7 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define ECH(Pn) CSI #Pn "X"
+#define ECH(Pn) CSI Pn "X"
 
 /*
  * ECH - ERASE CHARACTER
@@ -1353,7 +1353,7 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define ED(Ps) CSI #Ps "J"
+#define ED(Ps) CSI Ps "J"
 
 /*
  * ED - ERASE IN PAGE
@@ -1428,7 +1428,7 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EF(Ps) CSI #Ps "N"
+#define EF(Ps) CSI Ps "N"
 
 /*
  * EF - ERASE IN FIELD
@@ -1503,7 +1503,7 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EL(Ps) CSI #Ps "K"
+#define EL(Ps) CSI Ps "K"
 
 /*
  * EL - ERASE IN LINE
@@ -1701,7 +1701,7 @@
  * the function key which has been operated.
  *
  */
-#define FNK(Pn) CSI #Pn " " "W"
+#define FNK(Pn) CSI Pn " " "W"
 
 /*
  * FNT - FONT SELECTION
@@ -1730,7 +1730,7 @@
  * is to be established.
  *
  */
-#define FNT(Ps1, Ps2) CSI #Ps1 ";" #Ps2 " " "D"
+#define FNT(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "D"
 
 /*
  * FNT - FONT SELECTION
@@ -1759,7 +1759,7 @@
  * is to be established.
  *
  */
-#define _FNT(Ps1) CSI #Ps1 ";" " " "D"
+#define _FNT(Ps1) CSI Ps1 ";" " " "D"
 
 /*
  * FNT - FONT SELECTION
@@ -1788,7 +1788,7 @@
  * is to be established.
  *
  */
-#define __FNT(Ps2) CSI ";" #Ps2 " " "D"
+#define __FNT(Ps2) CSI ";" Ps2 " " "D"
 
 /*
  * FNT - FONT SELECTION
@@ -1844,7 +1844,7 @@
  * normal-size Kanji character.
  *
  */
-#define GCC(Ps) CSI #Ps " " "_"
+#define GCC(Ps) CSI Ps " " "_"
 
 /*
  * GCC - GRAPHIC CHARACTER COMBINATION
@@ -1890,7 +1890,7 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define GSM(Pn1, Pn2) CSI #Pn1 ";" #Pn2 " " "B"
+#define GSM(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "B"
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
@@ -1909,7 +1909,7 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define _GSM(Pn1) CSI #Pn1 ";" " " "B"
+#define _GSM(Pn1) CSI Pn1 ";" " " "B"
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
@@ -1928,7 +1928,7 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define __GSM(Pn2) CSI ";" #Pn2 " " "B"
+#define __GSM(Pn2) CSI ";" Pn2 " " "B"
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
@@ -1970,7 +1970,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define GSS(Pn) CSI #Pn " " "C"
+#define GSS(Pn) CSI Pn " " "C"
 
 /*
  * HPA - CHARACTER POSITION ABSOLUTE
@@ -1985,7 +1985,7 @@
  * equals the value of Pn.
  *
  */
-#define HPA(Pn) CSI #Pn "`"
+#define HPA(Pn) CSI Pn "`"
 
 /*
  * HPA - CHARACTER POSITION ABSOLUTE
@@ -2015,7 +2015,7 @@
  * value of Pn.
  *
  */
-#define HPB(Pn) CSI #Pn "j"
+#define HPB(Pn) CSI Pn "j"
 
 /*
  * HPB - CHARACTER POSITION BACKWARD
@@ -2044,7 +2044,7 @@
  * character progression, where n equals the value of Pn.
  *
  */
-#define HPR(Pn) CSI #Pn "a"
+#define HPR(Pn) CSI Pn "a"
 
 /*
  * HPR - CHARACTER POSITION FORWARD
@@ -2132,7 +2132,7 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define HVP(Pn1, Pn2) CSI #Pn1 ";" #Pn2 "f"
+#define HVP(Pn1, Pn2) CSI Pn1 ";" Pn2 "f"
 
 /*
  * HVP - CHARACTER AND LINE POSITION
@@ -2148,7 +2148,7 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define _HVP(Pn1) CSI #Pn1 ";" "f"
+#define _HVP(Pn1) CSI Pn1 ";" "f"
 
 /*
  * HVP - CHARACTER AND LINE POSITION
@@ -2164,7 +2164,7 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define __HVP(Pn2) CSI ";" #Pn2 "f"
+#define __HVP(Pn2) CSI ";" Pn2 "f"
 
 /*
  * HVP - CHARACTER AND LINE POSITION
@@ -2226,7 +2226,7 @@
  * parameter value of SET LINE HOME (SLH).
  *
  */
-#define ICH(Pn) CSI #Pn "@"
+#define ICH(Pn) CSI Pn "@"
 
 /*
  * ICH - INSERT CHARACTER
@@ -2301,7 +2301,7 @@
  * string, a private parameter value shall be used.
  *
  */
-#define IDCS(Ps) CSI #Ps " " "O"
+#define IDCS(Ps) CSI Ps " " "O"
 
 /*
  * IGS - IDENTIFY GRAPHIC SUBREPERTOIRE
@@ -2318,7 +2318,7 @@
  * repertoire registered in accordance with ISO/IEC 7350.
  *
  */
-#define IGS(Ps) CSI #Ps " " "M"
+#define IGS(Ps) CSI Ps " " "M"
 
 /*
  * IL - INSERT LINE
@@ -2364,7 +2364,7 @@
  * by the parameter value of SET LINE HOME (SLH).
  *
  */
-#define IL(Pn) CSI #Pn "L"
+#define IL(Pn) CSI Pn "L"
 
 /*
  * IL - INSERT LINE
@@ -2517,7 +2517,7 @@
  * established by the parameter value of SET LINE LIMIT (SLL).
  *
  */
-#define JFY(Ps) CSI #Ps " " "F"
+#define JFY(Ps) CSI Ps " " "F"
 
 /*
  * JFY - JUSTIFY
@@ -2708,7 +2708,7 @@
  * auxiliary device.
  *
  */
-#define MC(Ps) CSI #Ps "i"
+#define MC(Ps) CSI Ps "i"
 
 /*
  * MC - MEDIA COPY
@@ -2833,7 +2833,7 @@
  * position is not defined by this Standard.
  *
  */
-#define NP(Pn) CSI #Pn "U"
+#define NP(Pn) CSI Pn "U"
 
 /*
  * NP - NEXT PAGE
@@ -2907,7 +2907,7 @@
  * 2 -> condensed (multiplied by a factor not less than 0,5)
  *
  */
-#define PEC(Ps) CSI #Ps " " "Z"
+#define PEC(Ps) CSI Ps " " "Z"
 
 /*
  * PEC - PRESENTATION EXPAND OR CONTRACT
@@ -2972,7 +2972,7 @@
  * established by the parameter value of SET PAGE LIMIT (SPL).
  *
  */
-#define PFS(Ps) CSI #Ps " " "J"
+#define PFS(Ps) CSI Ps " " "J"
 
 /*
  * PFS - PAGE FORMAT SELECTION
@@ -3092,7 +3092,7 @@
  * position is not defined by this Standard.
  *
  */
-#define PP(Pn) CSI #Pn "V"
+#define PP(Pn) CSI Pn "V"
 
 /*
  * PP - PRECEDING PAGE
@@ -3121,7 +3121,7 @@
  * n-th page, where n equals the value of Pn.
  *
  */
-#define PPA(Pn) CSI #Pn " " "P"
+#define PPA(Pn) CSI Pn " " "P"
 
 /*
  * PPA - PAGE POSITION ABSOLUTE
@@ -3149,7 +3149,7 @@
  * n-th preceding page, where n equals the value of Pn.
  *
  */
-#define PPB(Pn) CSI #Pn " " "R"
+#define PPB(Pn) CSI Pn " " "R"
 
 /*
  * PPB - PAGE POSITION BACKWARD
@@ -3177,7 +3177,7 @@
  * n-th following page, where n equals the value of Pn.
  *
  */
-#define PPR(Pn) CSI #Pn " " "Q"
+#define PPR(Pn) CSI Pn " " "Q"
 
 /*
  * PPR - PAGE POSITION FORWARD
@@ -3267,7 +3267,7 @@
  * characters will then be presented within enclosing pairs of parentheses.
  *
  */
-#define PTX(Ps) CSI #Ps "\\"
+#define PTX(Ps) CSI Ps "\\"
 
 /*
  * PTX - PARALLEL TEXTS
@@ -3408,7 +3408,7 @@
  * established by the parameter value of SET LINE LIMIT (SLL).
  *
  */
-#define QUAD(Ps) CSI #Ps " " "H"
+#define QUAD(Ps) CSI Ps " " "H"
 
 /*
  * QUAD - QUAD
@@ -3462,7 +3462,7 @@
  * control function, the effect of REP is not defined by this Standard.
  *
  */
-#define REP(Pn) CSI #Pn "b"
+#define REP(Pn) CSI Pn "b"
 
 /*
  * REP - REPEAT
@@ -3557,7 +3557,7 @@
  * using private parameters, see 5.4.1 and 7.4.
  *
  */
-#define RM(Ps) CSI #Ps "l"
+#define RM(Ps) CSI Ps "l"
 
 /*
  * SACS - SET ADDITIONAL CHARACTER SEPARATION
@@ -3581,7 +3581,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SACS(Pn) CSI #Pn " " "\\"
+#define SACS(Pn) CSI Pn " " "\\"
 
 /*
  * SACS - SET ADDITIONAL CHARACTER SEPARATION
@@ -3672,7 +3672,7 @@
  * the effect of parameter values 5, 6, 7, and 8 for the next single
  * graphic character only.
  */
-#define SAPV(Ps) CSI #Ps " " "]"
+#define SAPV(Ps) CSI Ps " " "]"
 
 /*
  * SAPV - SELECT ALTERNATIVE PRESENTATION VARIANTS
@@ -3783,7 +3783,7 @@
  * graphic characters is not defined by this Standard.
  *
  */
-#define SCO(Ps) CSI #Ps " " "e"
+#define SCO(Ps) CSI Ps " " "e"
 
 /*
  * SCO - SELECT CHARACTER ORIENTATION
@@ -3873,7 +3873,7 @@
  * component is updated accordingly.
  *
  */
-#define SCP(Ps1, Ps2) CSI #Ps1 ";" #Ps2 " " "k"
+#define SCP(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "k"
 
 /*
  * SCS - SET CHARACTER SPACING
@@ -3896,7 +3896,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SCS(Pn) CSI #Pn " " "g"
+#define SCS(Pn) CSI Pn " " "g"
 
 /*
  * SD - SCROLL DOWN
@@ -3915,7 +3915,7 @@
  * function.
  *
  */
-#define SD(Pn) CSI #Pn "T"
+#define SD(Pn) CSI Pn "T"
 
 /*
  * SD - SCROLL DOWN
@@ -3982,7 +3982,7 @@
  * definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SDS string.
  *
  */
-#define SDS(Ps) CSI #Ps "]"
+#define SDS(Ps) CSI Ps "]"
 
 /*
  * SDS - START DIRECTED STRING
@@ -4056,7 +4056,7 @@
  * presentation component.
  *
  */
-#define SEE(Ps) CSI #Ps "Q"
+#define SEE(Ps) CSI Ps "Q"
 
 /*
  * SEE - SELECT EDITING EXTENT
@@ -4114,7 +4114,7 @@
  * n -> eject sheet into stacker n
  *
  */
-#define SEF(Ps1, Ps2) CSI #Ps1 ";" #Ps2 " " "Y"
+#define SEF(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "Y"
 
 /*
  * SEF - SHEET EJECT AND FEED
@@ -4146,7 +4146,7 @@
  * n -> eject sheet into stacker n
  *
  */
-#define _SEF(Ps1) CSI #Ps1 ";" " " "Y"
+#define _SEF(Ps1) CSI Ps1 ";" " " "Y"
 
 /*
  * SEF - SHEET EJECT AND FEED
@@ -4175,7 +4175,7 @@
  * n -> eject sheet into stacker n
  *
  */
-#define __SEF(Ps2) CSI ";" #Ps2 " " "Y"
+#define __SEF(Ps2) CSI ";" Ps2 " " "Y"
 
 /*
  * SEF - SHEET EJECT AND FEED
@@ -4305,7 +4305,7 @@
  * by the implementation.
  *
  */
-#define SGR(Ps) CSI #Ps "m"
+#define SGR(Ps) CSI Ps "m"
 
 /*
  * SGR - SELECT GRAPHIC RENDITION
@@ -4427,7 +4427,7 @@
  * 6 -> 04 characters per 25,4 mm
  *
  */
-#define SHS(Ps) CSI #Ps " " "K"
+#define SHS(Ps) CSI Ps " " "K"
 
 /*
  * SHS - SELECT CHARACTER SPACING
@@ -4492,7 +4492,7 @@
  * character progression.
  *
  */
-#define SIMD(Ps) CSI #Ps "^"
+#define SIMD(Ps) CSI Ps "^"
 
 /*
  * SIMD - SELECT IMPLICIT MOVEMENT DIRECTION
@@ -4532,7 +4532,7 @@
  * function.
  *
  */
-#define SL(Pn) CSI #Pn " " "@"
+#define SL(Pn) CSI Pn " " "@"
 
 /*
  * SL - SCROLL LEFT
@@ -4591,7 +4591,7 @@
  * the data stream.
  *
  */
-#define SLH(Pn) CSI #Pn " " "U"
+#define SLH(Pn) CSI Pn " " "U"
 
 /*
  * SLL - SET LINE LIMIT
@@ -4632,7 +4632,7 @@
  * data stream.
  *
  */
-#define SLL(Pn) CSI #Pn " " "V"
+#define SLL(Pn) CSI Pn " " "V"
 
 /*
  * SLS - SET LINE SPACING
@@ -4654,7 +4654,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SLS(Pn) CSI #Pn " " "h"
+#define SLS(Pn) CSI Pn " " "h"
 
 /*
  * SM - SET MODE
@@ -4696,7 +4696,7 @@
  * private parameters, see 5.4.1 and 7.4.
  *
  */
-#define SM(Ps) CSI #Ps "h"
+#define SM(Ps) CSI Ps "h"
 
 /*
  * SO - SHIFT-OUT
@@ -4846,7 +4846,7 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define SPD(Ps1, Ps2) CSI #Ps1 ";" #Ps2  " " "S"
+#define SPD(Ps1, Ps2) CSI Ps1 ";" Ps2  " " "S"
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
@@ -4921,7 +4921,7 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define _SPD(Ps1) CSI #Ps1 ";" " " "S"
+#define _SPD(Ps1) CSI Ps1 ";" " " "S"
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
@@ -4996,7 +4996,7 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define __SPD(Ps2) CSI ";" #Ps2 " " "S"
+#define __SPD(Ps2) CSI ";" Ps2 " " "S"
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
@@ -5107,7 +5107,7 @@
  * the data stream.
  *
  */
-#define SPH(Pn) CSI #Pn " " "i"
+#define SPH(Pn) CSI Pn " " "i"
 
 /*
  * SPI - SPACING INCREMENT
@@ -5134,7 +5134,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SPI(Pn1, Pn2) CSI #Pn1 ";" #Pn2 " " "G"
+#define SPI(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "G"
 
 /*
  * SPL - SET PAGE LIMIT
@@ -5165,7 +5165,7 @@
  * data stream.
  *
  */
-#define SPL(Pn) CSI #Pn " " "j"
+#define SPL(Pn) CSI Pn " " "j"
 
 /*
  * SPQR - SELECT PRINT QUALITY AND RAPIDITY
@@ -5186,7 +5186,7 @@
  * 2 -> draft print quality, highest available print speed
  *
  */
-#define SPQR(Ps) CSI #Ps " " "X"
+#define SPQR(Ps) CSI Ps " " "X"
 
 /*
  * SPQR - SELECT PRINT QUALITY AND RAPIDITY
@@ -5226,7 +5226,7 @@
  * function.
  *
  */
-#define SR(Pn) CSI #Pn " " "A"
+#define SR(Pn) CSI Pn " " "A"
 
 /*
  * SR - SCROLL RIGHT
@@ -5269,7 +5269,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SRCS(Pn) CSI #Pn " " "f"
+#define SRCS(Pn) CSI Pn " " "f"
 
 /*
  * SRCS - SET REDUCED CHARACTER SEPARATION
@@ -5343,7 +5343,7 @@
  * should not be used within an SRS string.
  *
  */
-#define SRS(Ps) CSI #Ps "["
+#define SRS(Ps) CSI Ps "["
 
 /*
  * SRS - START REVERSED STRING
@@ -5448,7 +5448,7 @@
  * 8 -> DECIPOINT - 0,035 14 mm (35/996 mm)
  *
  */
-#define SSU(Ps) CSI #Ps " " "I"
+#define SSU(Ps) CSI Ps " " "I"
 
 /*
  * SSU - SELECT SIZE UNIT
@@ -5509,7 +5509,7 @@
  * proportional spacing.
  *
  */
-#define SSW(Pn) CSI #Pn " " "["
+#define SSW(Pn) CSI Pn " " "["
 
 /*
  * SS2 - SINGLE-SHIFT TWO
@@ -5578,7 +5578,7 @@
  * 8613-6.
  *
  */
-#define STAB(Ps) CSI #Ps " " "^"
+#define STAB(Ps) CSI Ps " " "^"
 
 /*
  * STS - SET TRANSMIT STATE
@@ -5634,7 +5634,7 @@
  * control function.
  *
  */
-#define SU(Pn) CSI #Pn "S"
+#define SU(Pn) CSI Pn "S"
 
 /*
  * SU - SCROLL UP
@@ -5695,7 +5695,7 @@
  * 9 -> 02 lines per 25,4 mm
  *
  */
-#define SVS(Ps) CSI #Ps " " "L"
+#define SVS(Ps) CSI Ps " " "L"
 
 /*
  * SVS - SELECT LINE SPACING
@@ -5766,7 +5766,7 @@
  * from the tabulation stop.
  *
  */
-#define TAC(Pn) CSI #Pn " " "b"
+#define TAC(Pn) CSI Pn " " "b"
 
 /*
  * TALE - TABULATION ALIGNED LEADING EDGE
@@ -5791,7 +5791,7 @@
  * graphic character of the string is placed at the tabulation stop.
  *
  */
-#define TALE(Pn) CSI #Pn " " "a"
+#define TALE(Pn) CSI Pn " " "a"
 
 /*
  * TATE - TABULATION ALIGNED TRAILING EDGE
@@ -5816,7 +5816,7 @@
  * graphic character of the string is placed at the tabulation stop.
  *
  */
-#define TATE(Pn) CSI #Pn " " "`"
+#define TATE(Pn) CSI Pn " " "`"
 
 /*
  * TBC - TABULATION CLEAR
@@ -5840,7 +5840,7 @@
  * affected depends on the setting of the TABULATION STOP MODE (TSM)
  *
  */
-#define TBC(Ps) CSI #Ps "g"
+#define TBC(Ps) CSI Ps "g"
 
 /*
  * TBC - TABULATION CLEAR
@@ -5898,7 +5898,7 @@
  * values is 32 to 127 and 160 to 255.
  *
  */
-#define TCC(Pn1, Pn2) CSI #Pn1 ";" #Pn2 " " "c"
+#define TCC(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "c"
 
 /*
  * TCC - TABULATION CENTRED ON CHARACTER
@@ -5932,7 +5932,7 @@
  * values is 32 to 127 and 160 to 255.
  *
  */
-#define _TCC(Pn1) CSI #Pn1 ";" " " "c"
+#define _TCC(Pn1) CSI Pn1 ";" " " "c"
 
 /*
  * TSR - TABULATION STOP REMOVE
@@ -5950,7 +5950,7 @@
  * other tabulation stops. n equals the value of Pn.
  *
  */
-#define TSR(Pn) CSI #Pn " " "d"
+#define TSR(Pn) CSI Pn " " "d"
 
 /*
  * TSS - THIN SPACE SPECIFICATION
@@ -5971,7 +5971,7 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define TSS(Pn) CSI #Pn " " "E"
+#define TSS(Pn) CSI Pn " " "E"
 
 /*
  * VPA - LINE POSITION ABSOLUTE
@@ -5985,7 +5985,7 @@
  * line progression, where n equals the value of Pn.
  *
  */
-#define VPA(Pn) CSI #Pn "d"
+#define VPA(Pn) CSI Pn "d"
 
 /*
  * VPA - LINE POSITION ABSOLUTE
@@ -6013,7 +6013,7 @@
  * that of the line progression, where n equals the value of Pn.
  *
  */
-#define VPB(Pn) CSI #Pn "k"
+#define VPB(Pn) CSI Pn "k"
 
 /*
  * VPB - LINE POSITION BACKWARD
@@ -6041,7 +6041,7 @@
  * the line progression, where n equals the value of Pn.
  *
  */
-#define VPR(Pn) CSI #Pn "e"
+#define VPR(Pn) CSI Pn "e"
 
 /*
  * VPR - LINE POSITION FORWARD
