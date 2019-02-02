@@ -5178,26 +5178,36 @@
 
  * The beginning of a reversed string is indicated by SRS with a
  * parameter value of 1. A reversed string may contain one or
- * more nested strings. These nested strings may be reversed strings
- * the beginnings of which are indicated by SRS with a parameter
- * value of 1, or directed strings the beginnings of which are indicated by
- * START DIRECTED STRING (SDS) with a parameter value not
- * equal to 0. Every beginning of such a string invokes the
- * next deeper level of nesting. This Standard does not
- * define the location of the active data position within any
- * such nested string. The end of a reversed string is
- * indicated by SRS with a parameter value of 0. Every end of
- * such a string re-establishes the next higher level of
- * nesting (the one in effect prior to the string just
+ * more nested strings. These nested strings may be reversed
+ * strings the beginnings of which are indicated by SRS with a
+ * parameter value of 1, or directed strings the beginnings of
+ * which are indicated by START DIRECTED STRING (SDS) with a
+ * parameter value not equal to 0. Every beginning of such a string
+ * invokes the next deeper level of nesting.
+
+ * This Standard does not define the location of the active data
+ * position within any such nested string.
+
+ * The end of a reversed string is indicated by SRS with a parameter
+ * value of 0. Every end of such a string re-establishes the next
+ * higher level of nesting (the one in effect prior to the string just
  * ended). The direction is re-established to that in effect
  * prior to the string just ended. The active data position
  * is moved to the character position following the
- * characters of the string just ended. The parameter values
- * are: 0 end of a reversed string; re-establish the previous
- * direction 1 beginning of a reversed string; reverse the
- * direction. NOTE 1 The effect of receiving a CVT, HT, SCP,
- * SPD or VT control function within an SRS string is not
- * defined by this Standard. NOTE 2 The control functions for area definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SRS string.
+ * characters of the string just ended.
+
+ * The parameter values are:
+
+ * 0 -> end of a reversed string; re-establish the previous direction
+ * 1 -> beginning of a reversed string; reverse the direction.
+
+ * NOTE 1
+ * The effect of receiving a CVT, HT, SCP, SPD or VT control
+ * function within an SRS string is not defined by this Standard.
+
+ * NOTE 2
+ * The control functions for area definition (DAQ, EPA, ESA, SPA, SSA)
+ * should not be used within an SRS string.
  *
  */
 #define SRS(Ps) CSI #Ps "["
@@ -5214,29 +5224,40 @@
  * direction of the string. This direction is opposite to
  * that currently established. The indicated string follows
  * the preceding text. The established character progression
- * is not affected. The beginning of a reversed string is
- * indicated by SRS with a parameter value of 1. A reversed
- * string may contain one or more nested strings. These
- * nested strings may be reversed strings the beginnings of
- * which are indicated by SRS with a parameter value of 1, or
- * directed strings the beginnings of which are indicated by
- * START DIRECTED STRING (SDS) with a parameter value not
- * equal to 0. Every beginning of such a string invokes the
- * next deeper level of nesting. This Standard does not
- * define the location of the active data position within any
- * such nested string. The end of a reversed string is
- * indicated by SRS with a parameter value of 0. Every end of
- * such a string re-establishes the next higher level of
- * nesting (the one in effect prior to the string just
+ * is not affected.
+
+ * The beginning of a reversed string is indicated by SRS with a
+ * parameter value of 1. A reversed string may contain one or
+ * more nested strings. These nested strings may be reversed
+ * strings the beginnings of which are indicated by SRS with a
+ * parameter value of 1, or directed strings the beginnings of
+ * which are indicated by START DIRECTED STRING (SDS) with a
+ * parameter value not equal to 0. Every beginning of such a string
+ * invokes the next deeper level of nesting.
+
+ * This Standard does not define the location of the active data
+ * position within any such nested string.
+
+ * The end of a reversed string is indicated by SRS with a parameter
+ * value of 0. Every end of such a string re-establishes the next
+ * higher level of nesting (the one in effect prior to the string just
  * ended). The direction is re-established to that in effect
  * prior to the string just ended. The active data position
  * is moved to the character position following the
- * characters of the string just ended. The parameter values
- * are: 0 end of a reversed string; re-establish the previous
- * direction 1 beginning of a reversed string; reverse the
- * direction. NOTE 1 The effect of receiving a CVT, HT, SCP,
- * SPD or VT control function within an SRS string is not
- * defined by this Standard. NOTE 2 The control functions for area definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SRS string.
+ * characters of the string just ended.
+
+ * The parameter values are:
+
+ * 0 -> end of a reversed string; re-establish the previous direction
+ * 1 -> beginning of a reversed string; reverse the direction.
+
+ * NOTE 1
+ * The effect of receiving a CVT, HT, SCP, SPD or VT control
+ * function within an SRS string is not defined by this Standard.
+
+ * NOTE 2
+ * The control functions for area definition (DAQ, EPA, ESA, SPA, SSA)
+ * should not be used within an SRS string.
  *
  */
 #define _SRS_ CSI "["
@@ -5261,7 +5282,8 @@
  * by DEFINE AREA QUALIFICATION (DAQ), or by START OF GUARDED
  * AREA (SPA) and END OF GUARDED AREA (EPA).
 
- * NOTE The control functions for area definition (DAQ, EPA, ESA,
+ * NOTE
+ * The control functions for area definition (DAQ, EPA, ESA,
  * SPA, SSA) should not be used within an SRS string or an
  * SDS string.
  *
@@ -5280,30 +5302,17 @@
  * established unit remains in effect until the next
  * occurrence of SSU in the data stream.
 
- * The parameter values are
+ * The parameter values are:
 
- * 0 CHARACTER
-
- * - The dimensions of this unit are device-dependent 1 MILLIMETR
- *E
-
- * 2 COMPUTER DECIPOINT - 0,035 28 mm (1/720 of 25,4 mm)
-
- * 3 DECIDIDOT - 0,037 59 mm (10/266 mm)
-
- * 4 MIL - 0,025 4 mm (1/1 000 of 25,4 mm)
-
- * 5 BASIC MEASURING UNIT (BMU) - 0,021 17 mm (1/1 200 of 25,4 mm
- *
- * mm)
-
- * 6 MICROMETRE - 0,001 mm
-
- * 7 PIXEL - The smallest increment that can be specified in a devic
- *
- * device
-
- * 8 DECIPOINT - 0,035 14 mm (35/996 mm)
+ * 0 -> CHARACTER - The dimensions of this unit are device-dependent
+ * 1 -> MILLIMETRE
+ * 2 -> COMPUTER DECIPOINT - 0,035 28 mm (1/720 of 25,4 mm)
+ * 3 -> DECIDIDOT - 0,037 59 mm (10/266 mm)
+ * 4 -> MIL - 0,025 4 mm (1/1 000 of 25,4 mm)
+ * 5 -> BASIC MEASURING UNIT (BMU) - 0,021 17 mm (1/1 200 of 25,4 mm)
+ * 6 -> MICROMETRE - 0,001 mm
+ * 7 -> PIXEL - The smallest increment that can be specified in a device
+ * 8 -> DECIPOINT - 0,035 14 mm (35/996 mm)
  *
  */
 #define SSU(Ps) CSI #Ps " " "I"
@@ -5320,30 +5329,17 @@
  * established unit remains in effect until the next
  * occurrence of SSU in the data stream.
 
- * The parameter values are
+ * The parameter values are:
 
- * 0 CHARACTER
-
- * - The dimensions of this unit are device-dependent 1 MILLIMETR
- *E
-
- * 2 COMPUTER DECIPOINT - 0,035 28 mm (1/720 of 25,4 mm)
-
- * 3 DECIDIDOT - 0,037 59 mm (10/266 mm)
-
- * 4 MIL - 0,025 4 mm (1/1 000 of 25,4 mm)
-
- * 5 BASIC MEASURING UNIT (BMU) - 0,021 17 mm (1/1 200 of 25,4 mm
- *
- * mm)
-
- * 6 MICROMETRE - 0,001 mm
-
- * 7 PIXEL - The smallest increment that can be specified in a devic
- *
- * device
-
- * 8 DECIPOINT - 0,035 14 mm (35/996 mm)
+ * 0 -> CHARACTER - The dimensions of this unit are device-dependent
+ * 1 -> MILLIMETRE
+ * 2 -> COMPUTER DECIPOINT - 0,035 28 mm (1/720 of 25,4 mm)
+ * 3 -> DECIDIDOT - 0,037 59 mm (10/266 mm)
+ * 4 -> MIL - 0,025 4 mm (1/1 000 of 25,4 mm)
+ * 5 -> BASIC MEASURING UNIT (BMU) - 0,021 17 mm (1/1 200 of 25,4 mm)
+ * 6 -> MICROMETRE - 0,001 mm
+ * 7 -> PIXEL - The smallest increment that can be specified in a device
+ * 8 -> DECIPOINT - 0,035 14 mm (35/996 mm)
  *
  */
 #define _SSU_ CSI " " "I"
@@ -5363,19 +5359,21 @@
  * occurrence of SSW in the data stream or until it is reset
  * to the default value by a subsequent occurrence of
  * CARRIAGE RETURN/LINE FEED (CR/LF), CARRIAGE RETURN/FORM
- * FEED (CR/FF), or of NEXT LINE (NEL) in the data stream, see annex C.
+ * FEED (CR/FF), or of NEXT LINE (NEL) in the data stream,
+ * see annex C.
 
  * Pn specifies the escapement.
 
  * The unit in which the parameter value is expressed is that
- * established by the parameter value of SELECT SIZE UNIT
- * (SSU). The default character escapement of SPACE is
- * specified by the most recent occurrence of SET CHARACTER
- * SPACING (SCS) or of SELECT CHARACTER SPACING (SHS) or of
- * SELECT SPACING INCREMENT (SPI) in the data stream if the
- * current font has constant spacing, or is specified by the
- * nominal width of the character SPACE in the current font
- * if that font has proportional spacing.
+ * established by the parameter value of SELECT SIZE UNIT (SSU).
+
+ * The default character escapement of SPACE is specified by
+ * the most recent occurrence of SET CHARACTER SPACING (SCS) or
+ * of SELECT CHARACTER SPACING (SHS) or of SELECT SPACING
+ * INCREMENT (SPI) in the data stream if the current font has
+ * constant spacing, or is specified by the nominal width of
+ * the character SPACE in the current font if that font has
+ * proportional spacing.
  *
  */
 #define SSW(Pn) CSI #Pn " " "["
@@ -5389,8 +5387,9 @@
  * @ More Info:
  * SS2 is used for code extension purposes. It causes the meanings
  * of the bit combinations following it in the data stream to
- * be changed. The use of SS2 is defined in Standard
- * ECMA-35.
+ * be changed.
+
+ * The use of SS2 is defined in Standard ECMA-35.
  *
  */
 #define SS2 ESC "N"
@@ -5404,8 +5403,9 @@
  * @ More Info:
  * SS3 is used for code extension purposes. It causes the meanings
  * of the bit combinations following it in the data stream to
- * be changed. The use of SS3 is defined in Standard
- * ECMA-35.
+ * be changed.
+
+ * The use of SS3 is defined in Standard ECMA-35.
  *
  */
 #define SS3 ESC "O"
@@ -5497,8 +5497,8 @@
  * vertical, such that the data appear to move up; where n
  * equals the value of Pn.
 
- * The active presentation position is not affected by this control
- * function.
+ * The active presentation position is not affected by this
+ * control function.
  *
  */
 #define SU(Pn) CSI #Pn "S"
@@ -5516,8 +5516,8 @@
  * vertical, such that the data appear to move up; where n
  * equals the value of Pn.
 
- * The active presentation position is not affected by this control
- * function.
+ * The active presentation position is not affected by this
+ * control function.
  *
  */
 #define _SU_ CSI "S"
@@ -5546,28 +5546,20 @@
  * SVS is used to establish the line spacing for subsequent text.
  * The established spacing remains in effect until the next
  * occurrence of SVS or of SET LINE SPACING (SLS) or of
- * SPACING INCREMENT (SPI) in the data stream. The parameter
- * values are:
+ * SPACING INCREMENT (SPI) in the data stream.
 
- * 0 6 lines per 25,4 mm
+ * The parameter values are:
 
- * 1 4 lines per 25,4 mm
-
- * 2 3 lines per 25,4 mm
-
- * 3 12 lines per 25,4 mm
-
- * 4 8 lines per 25,4 mm
-
- * 5 6 lines per 30,0 mm
-
- * 6 4 lines per 30,0 mm
-
- * 7 3 lines per 30,0 mm
-
- * 8 12 lines per 30,0 mm
-
- * 9 2 lines per 25,4 mm
+ * 0 -> 06 lines per 25,4 mm
+ * 1 -> 04 lines per 25,4 mm
+ * 2 -> 03 lines per 25,4 mm
+ * 3 -> 12 lines per 25,4 mm
+ * 4 -> 08 lines per 25,4 mm
+ * 5 -> 06 lines per 30,0 mm
+ * 6 -> 04 lines per 30,0 mm
+ * 7 -> 03 lines per 30,0 mm
+ * 8 -> 12 lines per 30,0 mm
+ * 9 -> 02 lines per 25,4 mm
  *
  */
 #define SVS(Ps) CSI #Ps " " "L"
@@ -5582,28 +5574,20 @@
  * SVS is used to establish the line spacing for subsequent text.
  * The established spacing remains in effect until the next
  * occurrence of SVS or of SET LINE SPACING (SLS) or of
- * SPACING INCREMENT (SPI) in the data stream. The parameter
- * values are:
+ * SPACING INCREMENT (SPI) in the data stream.
 
- * 0 6 lines per 25,4 mm
+ * The parameter values are:
 
- * 1 4 lines per 25,4 mm
-
- * 2 3 lines per 25,4 mm
-
- * 3 12 lines per 25,4 mm
-
- * 4 8 lines per 25,4 mm
-
- * 5 6 lines per 30,0 mm
-
- * 6 4 lines per 30,0 mm
-
- * 7 3 lines per 30,0 mm
-
- * 8 12 lines per 30,0 mm
-
- * 9 2 lines per 25,4 mm
+ * 0 -> 06 lines per 25,4 mm
+ * 1 -> 04 lines per 25,4 mm
+ * 2 -> 03 lines per 25,4 mm
+ * 3 -> 12 lines per 25,4 mm
+ * 4 -> 08 lines per 25,4 mm
+ * 5 -> 06 lines per 30,0 mm
+ * 6 -> 04 lines per 30,0 mm
+ * 7 -> 03 lines per 30,0 mm
+ * 8 -> 12 lines per 30,0 mm
+ * 9 -> 02 lines per 25,4 mm
  *
  */
 #define _SVS_ CSI " " "L"
@@ -5666,7 +5650,8 @@
  * presentation position) and lines of subsequent text in the
  * presentation component, where n equals the value of Pn.
  * TALE causes the replacement of any tabulation stop
- * previously set at that character position, but does not affect other tabulation stops.
+ * previously set at that character position, but does not affect
+ * other tabulation stops.
 
  * A text string aligned with a tabulation stop set by TALE will
  * be positioned so that the (leading edge of the) last
@@ -5690,12 +5675,12 @@
  * presentation position) and lines of subsequent text in the
  * presentation component, where n equals the value of Pn.
  * TATE causes the replacement of any tabulation stop
- * previously set at that character position, but does not affect other tabulation stops.
+ * previously set at that character position, but does not affect
+ * other tabulation stops.
 
  * A text string aligned with a tabulation stop set by TATE will
  * be positioned so that the (trailing edge of the) first
- * graphic character of the string is placed at the
- * tabulation stop.
+ * graphic character of the string is placed at the tabulation stop.
  *
  */
 #define TATE(Pn) CSI #Pn " " "`"
@@ -5710,21 +5695,16 @@
  * TBC causes one or more tabulation stops in the presentation
  * component to be cleared, depending on the parameter value:
 
- * 0 the character tabulation stop at the active presentation
+ * 0 -> the character tabulation stop at the active presentation
  * position is cleared
+ * 1 -> the line tabulation stop at the active line is cleared
+ * 2 -> all character tabulation stops in the active line are cleared
+ * 3 -> all character tabulation stops are cleared
+ * 4 -> all line tabulation stops are cleared
+ * 5 -> all tabulation stops are cleared
 
- * 1 the line tabulation stop at the active line is cleared
-
- * 2 all character tabulation stops in the active line are cleare
- *d
-
- * 3 all character tabulation stops are cleared
-
- * 4 all line tabulation stops are cleared
-
- * 5 all tabulation stops are cleared In the case of parameter
- * value 0 or 2 the number of lines affected depends on the
- * setting of the TABULATION STOP MODE (TSM)
+ * In the case of parameter value 0 or 2 the number of lines
+ * affected depends on the setting of the TABULATION STOP MODE (TSM)
  *
  */
 #define TBC(Ps) CSI #Ps "g"
@@ -5739,21 +5719,16 @@
  * TBC causes one or more tabulation stops in the presentation
  * component to be cleared, depending on the parameter value:
 
- * 0 the character tabulation stop at the active presentation
+ * 0 -> the character tabulation stop at the active presentation
  * position is cleared
+ * 1 -> the line tabulation stop at the active line is cleared
+ * 2 -> all character tabulation stops in the active line are cleared
+ * 3 -> all character tabulation stops are cleared
+ * 4 -> all line tabulation stops are cleared
+ * 5 -> all tabulation stops are cleared
 
- * 1 the line tabulation stop at the active line is cleared
-
- * 2 all character tabulation stops in the active line are cleare
- *d
-
- * 3 all character tabulation stops are cleared
-
- * 4 all line tabulation stops are cleared
-
- * 5 all tabulation stops are cleared In the case of parameter
- * value 0 or 2 the number of lines affected depends on the
- * setting of the TABULATION STOP MODE (TSM)
+ * In the case of parameter value 0 or 2 the number of lines
+ * affected depends on the setting of the TABULATION STOP MODE (TSM)
  *
  */
 #define _TBC_ CSI "g"
