@@ -3815,31 +3815,37 @@
  * direction of the string. This direction may be different
  * from that currently established. The indicated string
  * follows the preceding text. The established character
- * progression is not affected. The beginning of a directed
- * string is indicated by SDS with a parameter value not
- * equal to 0. A directed string may contain one or more
- * nested strings. These nested strings may be directed
+ * progression is not affected.
+
+ * The beginning of a directed string is indicated by SDS with
+ * a parameter value not equal to 0. A directed string may contain
+ * one or more nested strings. These nested strings may be directed
  * strings the beginnings of which are indicated by SDS with
  * a parameter value not equal to 0, or reversed strings the
  * beginnings of which are indicated by START REVERSED STRING
  * (SRS) with a parameter value of 1. Every beginning of such
- * a string invokes the next deeper level of nesting. This
- * Standard does not define the location of the active data
- * position within any such nested string. The end of a
- * directed string is indicated by SDS with a parameter value
+ * a string invokes the next deeper level of nesting.
+
+ * This Standard does not define the location of the active data
+ * position within any such nested string.
+
+ * The end of a directed string is indicated by SDS with a parameter value
  * of 0. Every end of such a string re-establishes the next
  * higher level of nesting (the one in effect prior to the
  * string just ended). The direction is re-established to
  * that in effect prior to the string just ended. The active
- * data position is moved to the character position following the characters of the string just ended.
+ * data position is moved to the character position following the characters
+ * of the string just ended. The parameter values are:
 
- * The parameter values are: 0 end of a directed string; re-establish
- * the previous direction 1 start of a directed string;
- * establish the direction left-to-right 2 start of a
- * directed string; establish the direction right-to-left
- * NOTE 1 The effect of receiving a CVT, HT, SCP, SPD or VT
- * control function within an SDS string is not defined by
- * this Standard. NOTE 2 The control functions for area
+ * 0 -> end of a directed string; re-establish the previous direction
+ * 1 -> start of a directed string; establish the direction left-to-right
+ * 2 -> start of a directed string; establish the direction right-to-left
+
+ * NOTE 1
+ * The effect of receiving a CVT, HT, SCP, SPD or VT
+ * control function within an SDS string is not defined by this Standard.
+ * NOTE 2
+ * The control functions for area
  * definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SDS string.
  *
  */
@@ -3857,31 +3863,37 @@
  * direction of the string. This direction may be different
  * from that currently established. The indicated string
  * follows the preceding text. The established character
- * progression is not affected. The beginning of a directed
- * string is indicated by SDS with a parameter value not
- * equal to 0. A directed string may contain one or more
- * nested strings. These nested strings may be directed
+ * progression is not affected.
+
+ * The beginning of a directed string is indicated by SDS with
+ * a parameter value not equal to 0. A directed string may contain
+ * one or more nested strings. These nested strings may be directed
  * strings the beginnings of which are indicated by SDS with
  * a parameter value not equal to 0, or reversed strings the
  * beginnings of which are indicated by START REVERSED STRING
  * (SRS) with a parameter value of 1. Every beginning of such
- * a string invokes the next deeper level of nesting. This
- * Standard does not define the location of the active data
- * position within any such nested string. The end of a
- * directed string is indicated by SDS with a parameter value
+ * a string invokes the next deeper level of nesting.
+
+ * This Standard does not define the location of the active data
+ * position within any such nested string.
+
+ * The end of a directed string is indicated by SDS with a parameter value
  * of 0. Every end of such a string re-establishes the next
  * higher level of nesting (the one in effect prior to the
  * string just ended). The direction is re-established to
  * that in effect prior to the string just ended. The active
- * data position is moved to the character position following the characters of the string just ended.
+ * data position is moved to the character position following the characters
+ * of the string just ended. The parameter values are:
 
- * The parameter values are: 0 end of a directed string; re-establish
- * the previous direction 1 start of a directed string;
- * establish the direction left-to-right 2 start of a
- * directed string; establish the direction right-to-left
- * NOTE 1 The effect of receiving a CVT, HT, SCP, SPD or VT
- * control function within an SDS string is not defined by
- * this Standard. NOTE 2 The control functions for area
+ * 0 -> end of a directed string; re-establish the previous direction
+ * 1 -> start of a directed string; establish the direction left-to-right
+ * 2 -> start of a directed string; establish the direction right-to-left
+
+ * NOTE 1
+ * The effect of receiving a CVT, HT, SCP, SPD or VT
+ * control function within an SDS string is not defined by this Standard.
+ * NOTE 2
+ * The control functions for area
  * definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SDS string.
  *
  */
@@ -3900,16 +3912,14 @@
  * in the data stream. The editing extent depends on the
  * parameter value:
 
- * 0 the shifted part is limited to the active page in the
- * presentation component 1 the shifted part is limited to
- * the active line in the presentation component
-
- * 2 the shifted part is limited to the active
-
- * field in the presentation component 3 the shifted part is
- * limited to the active qualified area
-
- * 4 the shifted part consists of the relevant part of the entire
+ * 0 -> the shifted part is limited to the active page in the
+ * presentation component
+ * 1 -> the shifted part is limited to the active line in the
+ * presentation component
+ * 2 -> the shifted part is limited to the active field in the
+ * presentation component
+ * 3 -> the shifted part is limited to the active qualified area
+ * 4 -> the shifted part consists of the relevant part of the entire
  * presentation component.
  *
  */
@@ -3928,16 +3938,14 @@
  * in the data stream. The editing extent depends on the
  * parameter value:
 
- * 0 the shifted part is limited to the active page in the
- * presentation component 1 the shifted part is limited to
- * the active line in the presentation component
-
- * 2 the shifted part is limited to the active
-
- * field in the presentation component 3 the shifted part is
- * limited to the active qualified area
-
- * 4 the shifted part consists of the relevant part of the entire
+ * 0 -> the shifted part is limited to the active page in the
+ * presentation component
+ * 1 -> the shifted part is limited to the active line in the
+ * presentation component
+ * 2 -> the shifted part is limited to the active field in the
+ * presentation component
+ * 3 -> the shifted part is limited to the active qualified area
+ * 4 -> the shifted part consists of the relevant part of the entire
  * presentation component.
  *
  */
@@ -3953,22 +3961,24 @@
  * SEF causes a sheet of paper to be ejected from a printing
  * device into a specified output stacker and another sheet
  * to be loaded into the printing device from a specified
- * paper bin. Parameter values of Ps1 are: 0 eject sheet, no
- * new sheet loaded 1 eject sheet and load another from bin 1
-
- * 2 eject sheet and load another from bin 2
-
+ * paper bin.
+ * Parameter values of Ps1 are:
+ * 0 -> eject sheet, no new sheet loaded
+ * 1 -> eject sheet and load another from bin 1
+ * 2 -> eject sheet and load another from bin 2.
  * .
-
  * .
-
  * .
+ * n -> eject sheet and load another from bin n
 
- * n eject sheet and load another from bin n Parameter values of
- * Ps2 are: 0 eject sheet, no stacker specified 1 eject sheet
- * into stacker 1 2 eject sheet into stacker 2 . . .
-
- * n eject sheet into stacker n
+ * Parameter values of Ps2 are:
+ * 0 -> eject sheet, no stacker specified
+ * 1 -> eject sheet into stacker 1
+ * 2 -> eject sheet into stacker 2
+ * .
+ * .
+ * .
+ * n -> eject sheet into stacker n
  *
  */
 #define SEF(Ps1, Ps2) CSI #Ps1 ";" #Ps2 " " "Y"
@@ -3983,22 +3993,24 @@
  * SEF causes a sheet of paper to be ejected from a printing
  * device into a specified output stacker and another sheet
  * to be loaded into the printing device from a specified
- * paper bin. Parameter values of Ps1 are: 0 eject sheet, no
- * new sheet loaded 1 eject sheet and load another from bin 1
-
- * 2 eject sheet and load another from bin 2
-
+ * paper bin.
+ * Parameter values of Ps1 are:
+ * 0 -> eject sheet, no new sheet loaded
+ * 1 -> eject sheet and load another from bin 1
+ * 2 -> eject sheet and load another from bin 2.
  * .
-
  * .
-
  * .
+ * n -> eject sheet and load another from bin n
 
- * n eject sheet and load another from bin n Parameter values of
- * Ps2 are: 0 eject sheet, no stacker specified 1 eject sheet
- * into stacker 1 2 eject sheet into stacker 2 . . .
-
- * n eject sheet into stacker n
+ * Parameter values of Ps2 are:
+ * 0 -> eject sheet, no stacker specified
+ * 1 -> eject sheet into stacker 1
+ * 2 -> eject sheet into stacker 2
+ * .
+ * .
+ * .
+ * n -> eject sheet into stacker n
  *
  */
 #define _SEF(Ps1) CSI #Ps1 ";" " " "Y"
@@ -4006,29 +4018,28 @@
 /*
  * SEF - SHEET EJECT AND FEED
 
- * @ Parameters Required: 
- * Ps2
-
  * @ More Info:
  * SEF causes a sheet of paper to be ejected from a printing
  * device into a specified output stacker and another sheet
  * to be loaded into the printing device from a specified
- * paper bin. Parameter values of Ps1 are: 0 eject sheet, no
- * new sheet loaded 1 eject sheet and load another from bin 1
-
- * 2 eject sheet and load another from bin 2
-
+ * paper bin.
+ * Parameter values of Ps1 are:
+ * 0 -> eject sheet, no new sheet loaded
+ * 1 -> eject sheet and load another from bin 1
+ * 2 -> eject sheet and load another from bin 2.
  * .
-
  * .
-
  * .
+ * n -> eject sheet and load another from bin n
 
- * n eject sheet and load another from bin n Parameter values of
- * Ps2 are: 0 eject sheet, no stacker specified 1 eject sheet
- * into stacker 1 2 eject sheet into stacker 2 . . .
-
- * n eject sheet into stacker n
+ * Parameter values of Ps2 are:
+ * 0 -> eject sheet, no stacker specified
+ * 1 -> eject sheet into stacker 1
+ * 2 -> eject sheet into stacker 2
+ * .
+ * .
+ * .
+ * n -> eject sheet into stacker n
  *
  */
 #define __SEF(Ps2) CSI ";" #Ps2 " " "Y"
@@ -4043,22 +4054,24 @@
  * SEF causes a sheet of paper to be ejected from a printing
  * device into a specified output stacker and another sheet
  * to be loaded into the printing device from a specified
- * paper bin. Parameter values of Ps1 are: 0 eject sheet, no
- * new sheet loaded 1 eject sheet and load another from bin 1
-
- * 2 eject sheet and load another from bin 2
-
+ * paper bin.
+ * Parameter values of Ps1 are:
+ * 0 -> eject sheet, no new sheet loaded
+ * 1 -> eject sheet and load another from bin 1
+ * 2 -> eject sheet and load another from bin 2.
  * .
-
  * .
-
  * .
+ * n -> eject sheet and load another from bin n
 
- * n eject sheet and load another from bin n Parameter values of
- * Ps2 are: 0 eject sheet, no stacker specified 1 eject sheet
- * into stacker 1 2 eject sheet into stacker 2 . . .
-
- * n eject sheet into stacker n
+ * Parameter values of Ps2 are:
+ * 0 -> eject sheet, no stacker specified
+ * 1 -> eject sheet into stacker 1
+ * 2 -> eject sheet into stacker 2
+ * .
+ * .
+ * .
+ * n -> eject sheet into stacker n
  *
  */
 #define _SEF_ CSI ";" " " "Y"
@@ -4074,58 +4087,88 @@
  * for subsequent text. The established aspects remain in
  * effect until the next occurrence of SGR in the data
  * stream, depending on the setting of the GRAPHIC RENDITION
- * COMBINATION MODE (GRCM). Each graphic rendition aspect is
- * specified by a parameter value:
+ * COMBINATION MODE (GRCM).
 
- * 0 default rendition (implementation-defined), cancels the
+ * Each graphic rendition aspect is specified by a parameter value:
+
+ * 00 -> default rendition (implementation-defined), cancels the
  * effect of any preceding occurrence of SGR in the data
  * stream regardless of the setting of the GRAPHIC RENDITION
- * COMBINATION MODE (GRCM) 1 bold or increased intensity 2
- * faint, decreased intensity or second colour 3 italicized 4
- * singly underlined 5 slowly blinking (less then 150 per
- * minute) 6 rapidly blinking (150 per minute or more) 7
- * negative image 8 concealed characters 9 crossed-out
- * (characters still legible but marked as to be deleted) 10
- * primary (default) font 11 first alternative font 12 second
- * alternative font 13 third alternative font 14 fourth
- * alternative font 15 fifth alternative font 16 sixth
- * alternative font 17 seventh alternative font 18 eighth
- * alternative font 19 ninth alternative font 20 Fraktur
- * (Gothic) 21 doubly underlined 22 normal colour or normal
- * intensity (neither bold nor faint) 23 not italicized, not
- * fraktur 24 not underlined (neither singly nor doubly) 25
- * steady (not blinking) 26 (reserved for proportional
- * spacing as specified in CCITT Recommendation T.61) 27 positive image 28 revealed characters
+ * COMBINATION MODE (GRCM)
+ * 01 -> bold or increased intensity
+ * 02 -> faint, decreased intensity or second colour
+ * 03 -> italicized
+ * 04 -> singly underlined
+ * 05 -> slowly blinking (less then 150 per minute)
+ * 06 -> rapidly blinking (150 per minute or more)
+ * 07 -> negative image
+ * 08 -> concealed characters
+ * 09 -> crossed-out (characters still legible but marked as to be deleted)
+ * 10 -> primary (default) font
+ * 11 -> first alternative font
+ * 12 -> second alternative font
+ * 13 -> third alternative font
+ * 14 -> fourth alternative font
+ * 15 -> fifth alternative font
+ * 16 -> sixth alternative font
+ * 17 -> seventh alternative font
+ * 18 -> eighth alternative font
+ * 19 -> ninth alternative font
+ * 20 -> Fraktur (Gothic)
+ * 21 -> doubly underlined
+ * 22 -> normal colour or normal intensity (neither bold nor faint)
+ * 23 -> not italicized, not fraktur
+ * 24 -> not underlined (neither singly nor doubly)
+ * 25 -> steady (not blinking)
+ * 26 -> (reserved for proportional spacing as specified in CCITT
+ * Recommendation T.61)
+ * 27 -> positive image
+ * 28 -> revealed characters
+ * 29 -> not crossed out
+ * 30 -> black display
+ * 31 -> red display
+ * 32 -> green display
+ * 33 -> yellow display
+ * 34 -> blue display
+ * 35 -> magenta display
+ * 36 -> cyan display
+ * 37 -> white display
+ * 38 -> (reserved for future standardization; intended for setting character
+ * foreground colour as specified in ISO 8613-6 [CCITT Recommendation T.416])
+ * 39 -> default display colour (implementation-defined)
+ * 40 -> black background
+ * 41 -> red background
+ * 42 -> green background
+ * 43 -> yellow background
+ * 44 -> blue background
+ * 45 -> magenta background
+ * 46 -> cyan background
+ * 47 -> white background
+ * 48 -> (reserved for future standardization; intended for setting
+ * character background colour as specified in ISO 8613-6
+ * [CCITT Recommendation T.416])
+ * 49 -> default background colour (implementation-defined)
+ * 50 -> (reserved for cancelling the effect of the rendering aspect established
+ * by -> parameter value 26)
+ * 51 -> framed
+ * 52 -> encircled
+ * 53 -> overlined
+ * 54 -> not framed, not encircled
+ * 55 -> not overlined
+ * 56 -> (reserved for future standardization)
+ * 57 -> (reserved for future standardization)
+ * 58 -> (reserved for future standardization)
+ * 59 -> (reserved for future standardization)
+ * 60 -> ideogram underline or right side line
+ * 61 -> ideogram double underline or double line on the right side
+ * 62 -> ideogram overline or left side line
+ * 63 -> ideogram double overline or double line on the left side
+ * 64 -> ideogram stress marking
+ * 65 -> cancels the effect of the rendition aspects established by
+ * parameter values 60 to 64
 
- * 29 not crossed out 30 black display 31 red display 32 green
- * display 33 yellow display 34 blue display 35 magenta
- * display 36 cyan display 37 white display 38 (reserved for
- * future standardization; intended for setting character
- * foreground colour as specified in ISO 8613-6 [CCITT
- * Recommendation T.416]) 39 default display colour
- * (implementation-defined) 40 black background 41 red
- * background 42 green background 43 yellow background 44
- * blue background 45 magenta background 46 cyan background
- * 47 white background 48 (reserved for future
- * standardization; intended for setting character background
- * colour as specified in ISO 8613-6 [CCITT Recommendation
- * T.416]) 49 default background colour
- * (implementation-defined) 50 (reserved for cancelling the
- * effect of the rendering aspect established by parameter
- * value 26) 51 framed 52 encircled 53 overlined 54 not
- * framed, not encircled 55 not overlined 56 (reserved for
- * future standardization) 57 (reserved for future
- * standardization) 58 (reserved for future standardization) 59 (reserved for future standardization) 60 ideogram underline or right side line
-
- * 61 ideogram double underline or double line on the right sid
- *e
-
- * 62 ideogram overline or left side line 63 ideogram double
- * overline or double line on the left side 64 ideogram
- * stress marking 65 cancels the effect of the rendition
- * aspects established by parameter values 60 to 64
-
- * NOTE The usable combinations of parameter values are determined
+ * NOTE
+ * The usable combinations of parameter values are determined
  * by the implementation.
  *
  */
@@ -4142,58 +4185,88 @@
  * for subsequent text. The established aspects remain in
  * effect until the next occurrence of SGR in the data
  * stream, depending on the setting of the GRAPHIC RENDITION
- * COMBINATION MODE (GRCM). Each graphic rendition aspect is
- * specified by a parameter value:
+ * COMBINATION MODE (GRCM).
 
- * 0 default rendition (implementation-defined), cancels the
+ * Each graphic rendition aspect is specified by a parameter value:
+
+ * 00 -> default rendition (implementation-defined), cancels the
  * effect of any preceding occurrence of SGR in the data
  * stream regardless of the setting of the GRAPHIC RENDITION
- * COMBINATION MODE (GRCM) 1 bold or increased intensity 2
- * faint, decreased intensity or second colour 3 italicized 4
- * singly underlined 5 slowly blinking (less then 150 per
- * minute) 6 rapidly blinking (150 per minute or more) 7
- * negative image 8 concealed characters 9 crossed-out
- * (characters still legible but marked as to be deleted) 10
- * primary (default) font 11 first alternative font 12 second
- * alternative font 13 third alternative font 14 fourth
- * alternative font 15 fifth alternative font 16 sixth
- * alternative font 17 seventh alternative font 18 eighth
- * alternative font 19 ninth alternative font 20 Fraktur
- * (Gothic) 21 doubly underlined 22 normal colour or normal
- * intensity (neither bold nor faint) 23 not italicized, not
- * fraktur 24 not underlined (neither singly nor doubly) 25
- * steady (not blinking) 26 (reserved for proportional
- * spacing as specified in CCITT Recommendation T.61) 27 positive image 28 revealed characters
+ * COMBINATION MODE (GRCM)
+ * 01 -> bold or increased intensity
+ * 02 -> faint, decreased intensity or second colour
+ * 03 -> italicized
+ * 04 -> singly underlined
+ * 05 -> slowly blinking (less then 150 per minute)
+ * 06 -> rapidly blinking (150 per minute or more)
+ * 07 -> negative image
+ * 08 -> concealed characters
+ * 09 -> crossed-out (characters still legible but marked as to be deleted)
+ * 10 -> primary (default) font
+ * 11 -> first alternative font
+ * 12 -> second alternative font
+ * 13 -> third alternative font
+ * 14 -> fourth alternative font
+ * 15 -> fifth alternative font
+ * 16 -> sixth alternative font
+ * 17 -> seventh alternative font
+ * 18 -> eighth alternative font
+ * 19 -> ninth alternative font
+ * 20 -> Fraktur (Gothic)
+ * 21 -> doubly underlined
+ * 22 -> normal colour or normal intensity (neither bold nor faint)
+ * 23 -> not italicized, not fraktur
+ * 24 -> not underlined (neither singly nor doubly)
+ * 25 -> steady (not blinking)
+ * 26 -> (reserved for proportional spacing as specified in CCITT
+ * Recommendation T.61)
+ * 27 -> positive image
+ * 28 -> revealed characters
+ * 29 -> not crossed out
+ * 30 -> black display
+ * 31 -> red display
+ * 32 -> green display
+ * 33 -> yellow display
+ * 34 -> blue display
+ * 35 -> magenta display
+ * 36 -> cyan display
+ * 37 -> white display
+ * 38 -> (reserved for future standardization; intended for setting character
+ * foreground colour as specified in ISO 8613-6 [CCITT Recommendation T.416])
+ * 39 -> default display colour (implementation-defined)
+ * 40 -> black background
+ * 41 -> red background
+ * 42 -> green background
+ * 43 -> yellow background
+ * 44 -> blue background
+ * 45 -> magenta background
+ * 46 -> cyan background
+ * 47 -> white background
+ * 48 -> (reserved for future standardization; intended for setting
+ * character background colour as specified in ISO 8613-6
+ * [CCITT Recommendation T.416])
+ * 49 -> default background colour (implementation-defined)
+ * 50 -> (reserved for cancelling the effect of the rendering aspect established
+ * by -> parameter value 26)
+ * 51 -> framed
+ * 52 -> encircled
+ * 53 -> overlined
+ * 54 -> not framed, not encircled
+ * 55 -> not overlined
+ * 56 -> (reserved for future standardization)
+ * 57 -> (reserved for future standardization)
+ * 58 -> (reserved for future standardization)
+ * 59 -> (reserved for future standardization)
+ * 60 -> ideogram underline or right side line
+ * 61 -> ideogram double underline or double line on the right side
+ * 62 -> ideogram overline or left side line
+ * 63 -> ideogram double overline or double line on the left side
+ * 64 -> ideogram stress marking
+ * 65 -> cancels the effect of the rendition aspects established by
+ * parameter values 60 to 64
 
- * 29 not crossed out 30 black display 31 red display 32 green
- * display 33 yellow display 34 blue display 35 magenta
- * display 36 cyan display 37 white display 38 (reserved for
- * future standardization; intended for setting character
- * foreground colour as specified in ISO 8613-6 [CCITT
- * Recommendation T.416]) 39 default display colour
- * (implementation-defined) 40 black background 41 red
- * background 42 green background 43 yellow background 44
- * blue background 45 magenta background 46 cyan background
- * 47 white background 48 (reserved for future
- * standardization; intended for setting character background
- * colour as specified in ISO 8613-6 [CCITT Recommendation
- * T.416]) 49 default background colour
- * (implementation-defined) 50 (reserved for cancelling the
- * effect of the rendering aspect established by parameter
- * value 26) 51 framed 52 encircled 53 overlined 54 not
- * framed, not encircled 55 not overlined 56 (reserved for
- * future standardization) 57 (reserved for future
- * standardization) 58 (reserved for future standardization) 59 (reserved for future standardization) 60 ideogram underline or right side line
-
- * 61 ideogram double underline or double line on the right sid
- *e
-
- * 62 ideogram overline or left side line 63 ideogram double
- * overline or double line on the left side 64 ideogram
- * stress marking 65 cancels the effect of the rendition
- * aspects established by parameter values 60 to 64
-
- * NOTE The usable combinations of parameter values are determined
+ * NOTE
+ * The usable combinations of parameter values are determined
  * by the implementation.
  *
  */
@@ -4209,30 +4282,16 @@
  * SHS is used to establish the character spacing for subsequent
  * text. The established spacing remains in effect until the
  * next occurrence of SHS or of SET CHARACTER SPACING (SCS)
- * or of SPACING INCREMENT (SPI) in the data stream. The
- * parameter values are
+ * or of SPACING INCREMENT (SPI) in the data stream.
+ * The parameter values are:
 
- * 0 10 characters per 25,4 mm
-
- * 1 12 characters per 25,4 mm
-
- * 2 15 characters per 25,4 mm
-
- * 3
-
- * 6 characters per 25,4 mm
-
- * 4
-
- * 3 characters per 25,4 mm
-
- * 5
-
- * 9 characters per 50,8 mm
-
- * 6
-
- * 4 characters per 25,4 mm
+ * 0 -> 10 characters per 25,4 mm
+ * 1 -> 12 characters per 25,4 mm
+ * 2 -> 15 characters per 25,4 mm
+ * 3 -> 06 characters per 25,4 mm
+ * 4 -> 03 characters per 25,4 mm
+ * 5 -> 09 characters per 50,8 mm
+ * 6 -> 04 characters per 25,4 mm
  *
  */
 #define SHS(Ps) CSI #Ps " " "K"
@@ -4247,30 +4306,16 @@
  * SHS is used to establish the character spacing for subsequent
  * text. The established spacing remains in effect until the
  * next occurrence of SHS or of SET CHARACTER SPACING (SCS)
- * or of SPACING INCREMENT (SPI) in the data stream. The
- * parameter values are
+ * or of SPACING INCREMENT (SPI) in the data stream.
+ * The parameter values are:
 
- * 0 10 characters per 25,4 mm
-
- * 1 12 characters per 25,4 mm
-
- * 2 15 characters per 25,4 mm
-
- * 3
-
- * 6 characters per 25,4 mm
-
- * 4
-
- * 3 characters per 25,4 mm
-
- * 5
-
- * 9 characters per 50,8 mm
-
- * 6
-
- * 4 characters per 25,4 mm
+ * 0 -> 10 characters per 25,4 mm
+ * 1 -> 12 characters per 25,4 mm
+ * 2 -> 15 characters per 25,4 mm
+ * 3 -> 06 characters per 25,4 mm
+ * 4 -> 03 characters per 25,4 mm
+ * 5 -> 09 characters per 50,8 mm
+ * 6 -> 04 characters per 25,4 mm
  *
  */
 #define _SHS_ CSI " " "K"
@@ -4288,7 +4333,8 @@
 
  * The use of SI is defined in Standard ECMA-35.
 
- * NOTE SI is used in 7-bit environments only; in 8-bit environments
+ * NOTE
+ * SI is used in 7-bit environments only; in 8-bit environments
  * LOCKING-SHIFT ZERO (LS0) is used instead.
  *
  */
@@ -4304,10 +4350,13 @@
  * SIMD is used to select the direction of implicit movement of
  * the data position relative to the character progression.
  * The direction selected remains in effect until the next
- * occurrence of SIMD. The parameter values are: 0 the
- * direction of implicit movement is the same as that of the
- * character progression 1 the direction of implicit movement
- * is opposite to that of the character progression.
+ * occurrence of SIMD.
+
+ * The parameter values are:
+ * 0 -> the direction of implicit movement is the same as that of the
+ * character progression
+ * 1 -> the direction of implicit movement is opposite to that of the
+ * character progression.
  *
  */
 #define SIMD(Ps) CSI #Ps "^"
@@ -4322,10 +4371,13 @@
  * SIMD is used to select the direction of implicit movement of
  * the data position relative to the character progression.
  * The direction selected remains in effect until the next
- * occurrence of SIMD. The parameter values are: 0 the
- * direction of implicit movement is the same as that of the
- * character progression 1 the direction of implicit movement
- * is opposite to that of the character progression.
+ * occurrence of SIMD.
+
+ * The parameter values are:
+ * 0 -> the direction of implicit movement is the same as that of the
+ * character progression
+ * 1 -> the direction of implicit movement is opposite to that of the
+ * character progression.
  *
  */
 #define _SIMD_ CSI "^"
@@ -4388,17 +4440,22 @@
  * where n equals the value of Pn. In the case of a device
  * without data component, it is also the position ahead of
  * which no implicit movement of the active presentation
- * position shall occur. If the DEVICE COMPONENT SELECT MODE
- * is set to DATA, SLH is used to establish at character
- * position n in the active line (the line that contains the
- * active data position) and lines of subsequent text in the
- * data component the position to which the active data
- * position will be moved by subsequent occurrences of
- * CARRIAGE RETURN (CR), DELETE LINE (DL), INSERT LINE (IL)
- * or NEXT LINE (NEL) in the data stream; where n equals the
- * value of Pn. It is also the position ahead of which no
- * implicit movement of the active data position shall occur.
- * The established position is called the line home position and remains in effect until the next occurrence of SLH in the data stream.
+ * position shall occur.
+
+ * If the DEVICE COMPONENT SELECT MODE is set to DATA, SLH is
+ * used to establish at character position n in the active
+ * line (the line that contains the active data position)
+ * and lines of subsequent text in the data component the
+ * position to which the active data position will be moved
+ * by subsequent occurrences of CARRIAGE RETURN (CR), DELETE
+ * LINE (DL), INSERT LINE (IL) or NEXT LINE (NEL) in the
+ * data stream; where n equals the value of Pn. It is also
+ * the position ahead of which no implicit movement of the
+ * active data position shall occur.
+
+ * The established position is called the line home position
+ * and remains in effect until the next occurrence of SLH in
+ * the data stream.
  *
  */
 #define SLH(Pn) CSI #Pn " " "U"
@@ -4424,7 +4481,9 @@
  * the value of Pn. In the case of a device without data
  * component, it is also the position beyond which no
  * implicit movement of the active presentation position
- * shall occur. If the DEVICE COMPONENT SELECT MODE is set to
+ * shall occur.
+
+ * If the DEVICE COMPONENT SELECT MODE is set to
  * DATA, SLL is used to establish at character position n in
  * the active line (the line that contains the active data
  * position) and lines of subsequent text in the data
@@ -4432,7 +4491,8 @@
  * of the active data position shall occur. It is also the
  * position in the data component to which the active data
  * position will be moved by subsequent occurrences of CR or
- * NEL in the data stream, if the parameter value of SELECT IMPLICIT MOVEMENT DIRECTION (SIMD) is equal to 1.
+ * NEL in the data stream, if the parameter value of
+ * SELECT IMPLICIT MOVEMENT DIRECTION (SIMD) is equal to 1.
 
  * The established position is called the line limit position and
  * remains in effect until the next occurrence of SLL in the
@@ -4475,42 +4535,31 @@
  * SM causes the modes of the receiving device to be set as
  * specified by the parameter values:
 
- * 1 GUARDED AREA TRANSFER MODE (GATM)
+ * 01 -> GUARDED AREA TRANSFER MODE (GATM)
+ * 02 -> KEYBOARD ACTION MODE (KAM)
+ * 03 -> CONTROL REPRESENTATION MODE (CRM)
+ * 04 -> INSERTION REPLACEMENT MODE (IRM)
+ * 05 -> STATUS REPORT TRANSFER MODE (SRTM)
+ * 06 -> ERASURE MODE (ERM)
+ * 07 -> LINE EDITING MODE (VEM)
+ * 08 -> BI-DIRECTIONAL SUPPORT MODE (BDSM)
+ * 09 -> DEVICE COMPONENT SELECT MODE (DCSM)
+ * 10 -> CHARACTER EDITING MODE (HEM)
+ * 11 -> POSITIONING UNIT MODE (PUM) (see F.4.1 in annex F)
+ * 12 -> SEND/RECEIVE MODE (SRM)
+ * 13 -> FORMAT EFFECTOR ACTION MODE (FEAM)
+ * 14 -> FORMAT EFFECTOR TRANSFER MODE (FETM)
+ * 15 -> MULTIPLE AREA TRANSFER MODE (MATM)
+ * 16 -> TRANSFER TERMINATION MODE (TTM)
+ * 17 -> SELECTED AREA TRANSFER MODE (SATM)
+ * 18 -> TABULATION STOP MODE (TSM)
+ * 19 -> (Shall not be used; see F.5.1 in annex F)
+ * 20 -> (Shall not be used; see F.5.2 in annex F)
+ * 21 -> GRAPHIC RENDITION COMBINATION (GRCM)
+ * 22 -> ZERO DEFAULT MODE (ZDM) (see F.4.2 in annex F)
 
- * 2 KEYBOARD ACTION MODE (KAM)
-
- * 3 CONTROL REPRESENTATION MODE (CRM)
-
- * 4 INSERTION REPLACEMENT MODE (IRM)
-
- * 5 STATUS REPORT TRANSFER MODE (SRTM)
-
- * 6 ERASURE MODE (ERM)
-
- * 7 LINE EDITING MODE (VEM)
-
- * 8 BI-DIRECTIONAL SUPPORT MODE (BDSM) 9 DEVICE COMPONENT SELECT
- * MODE (DCSM) 10 CHARACTER EDITING MODE (HEM)
-
- * 11 POSITIONING UNIT MODE (PUM) (see F.4.1 in annex F) 12
- * SEND/RECEIVE MODE (SRM)
-
- * 13 FORMAT EFFECTOR ACTION MODE (FEAM)
-
- * 14 FORMAT EFFECTOR TRANSFER MODE (FETM)
-
- * 15 MULTIPLE AREA TRANSFER MODE (MATM)
-
- * 16 TRANSFER TERMINATION MODE (TTM)
-
- * 17 SELECTED AREA TRANSFER MODE (SATM)
-
- * 18 TABULATION STOP MODE (TSM)
-
- * 19 (Shall not be used; see F.5.1 in annex F) 20 (Shall not be
- * used; see F.5.2 in annex F) 21 GRAPHIC RENDITION
- * COMBINATION (GRCM) 22 ZERO DEFAULT MODE (ZDM) (see F.4.2
- * in annex F) NOTE Private modes may be implemented using
+ * NOTE
+ * Private modes may be implemented using
  * private parameters, see 5.4.1 and 7.4.
  *
  */
@@ -4524,12 +4573,12 @@
 
  * @ More Info:
  * SO is used for code extension purposes. It causes the meanings
- * of the bit combinations following it in the data stream to
- * be changed.
+ * of the bit combinations following it in the data stream to be changed.
 
  * The use of SO is defined in Standard ECMA-35.
 
- * NOTE SO is used in 7-bit environments only; in 8-bit environments
+ * NOTE
+ * SO is used in 7-bit environments only; in 8-bit environments
  * LOCKING-SHIFT ONE (LS1) is used instead.
  *
  */
@@ -4580,9 +4629,11 @@
  * transmission or transfer, depending on the setting of the
  * GUARDED AREA TRANSFER MODE (GATM) and may be protected
  * against erasure, depending on the setting of the ERASURE
- * MODE (ERM). The end of this string is indicated by END OF GUARDED AREA (EPA).
+ * MODE (ERM). The end of this string is indicated by
+ * END OF GUARDED AREA (EPA).
 
- * NOTE The control functions for area definition (DAQ, EPA, ESA,
+ * NOTE
+ * The control functions for area definition (DAQ, EPA, ESA,
  * SPA, SSA) should not be used within an SRS string or an
  * SDS string.
  *
@@ -4600,92 +4651,66 @@
  * and the character path in the presentation component. It
  * is also used to update the content of the presentation
  * component and the content of the data component. This
- * takes effect immediately. Ps1 specifies the line
- * orientation, the line progression and the character path: 0 line orientation:
+ * takes effect immediately.
 
- * horizontal
+ * Ps1 specifies the line orientation, the line progression
+ * and the character path:
 
- * line progression: top-to-bottom
+ * 0 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		left-to-right
 
- * character path:
+ * 1 ->	line orientation:		vertical
+ * 	line progression: 		right-to-left
+ * 	character path:			top-to-bottom
 
- * left-to-right 1 line orientation:
+ * 2 ->	line orientation:		vertical
+ * 	line progression: 		left-to-right
+ *		character path:			top-to-bottom
 
- * vertical
+ * 3 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		right-to-left
 
- * line progression: right-to-left
+ * 4 ->	line orientation: 		vertical
+ * 	line progression: 		left-to-right
+ * 	character path: 		bottom-to-top
 
- * character path:
+ * 5 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path:			right-to-left
 
- * top-to-bottom 2 line orientation:
+ * 6 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path: 		left-to-right
 
- * vertical
+ * 7 ->	line orientation:	 	vertical
+ * 	line progression: 		right-to-left
+ * 	character path: 		bottom-to-top
 
- * line progression: left-to-right
-
- * character path:
-
- * top-to-bottom 3 line orientation:
-
- * horizontal
-
- * line progression: top-to-bottom
-
- * character path:
-
- * right-to-left 4 line orientation:
-
- * vertical
-
- * line progression: left-to-right
-
- * character path:
-
- * bottom-to-top 5 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * right-to-left
-
- * 6 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * left-to-right 7 line orientation:
-
- * vertical
-
- * line progression: right-to-left
-
- * character path:
-
- * bottom-to-top Ps2 specifies the effect on the content of the
+ * Ps2 specifies the effect on the content of the
  * presentation component and the content of the data
- * component: 0 undefined (implementation-dependent) NOTE
+ * component:
+
+ * 0 -> undefined (implementation-dependent)
+ * NOTE
  * This may also permit the effect to take place after the
  * next occurrence of CR, FF or any control function which
  * initiates an absolute movement of the active presentation
- * position or the active data position. 1 the content of the
- * presentation component is updated to correspond to the
- * content of the data component according to the newly
- * established characteristics of the presentation component;
- * the active data position is moved to the first character
- * position in the first line in the data component, the
- * active presentation position in the presentation component
- * is updated accordingly 2 the content of the data component
- * is updated to correspond to the content of the
- * presentation component according to the newly established
- * characteristics of the presentation component; the active
- * presentation position is moved to the first character
- * position in the first line in the presentation component, the active data position in the data component is updated accordingly.
+ * position or the active data position.
+ * 1 -> the content of the presentation component is updated to
+ * correspond to the content of the data component according
+ * to the newly established characteristics of the presentation
+ * component; the active data position is moved to the first
+ * character position in the first line in the data component,
+ * the active presentation position in the presentation component
+ * is updated accordingly
+ * 2 -> the content of the data component is updated to correspond
+ * to the content of the presentation component according to the
+ * newly established characteristics of the presentation component;
+ * the active presentation position is moved to the first character
+ * position in the first line in the presentation component, the
+ * active data position in the data component is updated accordingly.
  *
  */
 #define SPD(Ps1, Ps2) CSI #Ps1 ";" #Ps2  " " "S"
@@ -4701,92 +4726,66 @@
  * and the character path in the presentation component. It
  * is also used to update the content of the presentation
  * component and the content of the data component. This
- * takes effect immediately. Ps1 specifies the line
- * orientation, the line progression and the character path: 0 line orientation:
+ * takes effect immediately.
 
- * horizontal
+ * Ps1 specifies the line orientation, the line progression
+ * and the character path:
 
- * line progression: top-to-bottom
+ * 0 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		left-to-right
 
- * character path:
+ * 1 ->	line orientation:		vertical
+ * 	line progression: 		right-to-left
+ * 	character path:			top-to-bottom
 
- * left-to-right 1 line orientation:
+ * 2 ->	line orientation:		vertical
+ * 	line progression: 		left-to-right
+ *		character path:			top-to-bottom
 
- * vertical
+ * 3 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		right-to-left
 
- * line progression: right-to-left
+ * 4 ->	line orientation: 		vertical
+ * 	line progression: 		left-to-right
+ * 	character path: 		bottom-to-top
 
- * character path:
+ * 5 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path:			right-to-left
 
- * top-to-bottom 2 line orientation:
+ * 6 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path: 		left-to-right
 
- * vertical
+ * 7 ->	line orientation:	 	vertical
+ * 	line progression: 		right-to-left
+ * 	character path: 		bottom-to-top
 
- * line progression: left-to-right
-
- * character path:
-
- * top-to-bottom 3 line orientation:
-
- * horizontal
-
- * line progression: top-to-bottom
-
- * character path:
-
- * right-to-left 4 line orientation:
-
- * vertical
-
- * line progression: left-to-right
-
- * character path:
-
- * bottom-to-top 5 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * right-to-left
-
- * 6 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * left-to-right 7 line orientation:
-
- * vertical
-
- * line progression: right-to-left
-
- * character path:
-
- * bottom-to-top Ps2 specifies the effect on the content of the
+ * Ps2 specifies the effect on the content of the
  * presentation component and the content of the data
- * component: 0 undefined (implementation-dependent) NOTE
+ * component:
+
+ * 0 -> undefined (implementation-dependent)
+ * NOTE
  * This may also permit the effect to take place after the
  * next occurrence of CR, FF or any control function which
  * initiates an absolute movement of the active presentation
- * position or the active data position. 1 the content of the
- * presentation component is updated to correspond to the
- * content of the data component according to the newly
- * established characteristics of the presentation component;
- * the active data position is moved to the first character
- * position in the first line in the data component, the
- * active presentation position in the presentation component
- * is updated accordingly 2 the content of the data component
- * is updated to correspond to the content of the
- * presentation component according to the newly established
- * characteristics of the presentation component; the active
- * presentation position is moved to the first character
- * position in the first line in the presentation component, the active data position in the data component is updated accordingly.
+ * position or the active data position.
+ * 1 -> the content of the presentation component is updated to
+ * correspond to the content of the data component according
+ * to the newly established characteristics of the presentation
+ * component; the active data position is moved to the first
+ * character position in the first line in the data component,
+ * the active presentation position in the presentation component
+ * is updated accordingly
+ * 2 -> the content of the data component is updated to correspond
+ * to the content of the presentation component according to the
+ * newly established characteristics of the presentation component;
+ * the active presentation position is moved to the first character
+ * position in the first line in the presentation component, the
+ * active data position in the data component is updated accordingly.
  *
  */
 #define _SPD(Ps1) CSI #Ps1 ";" " " "S"
@@ -4802,92 +4801,66 @@
  * and the character path in the presentation component. It
  * is also used to update the content of the presentation
  * component and the content of the data component. This
- * takes effect immediately. Ps1 specifies the line
- * orientation, the line progression and the character path: 0 line orientation:
+ * takes effect immediately.
 
- * horizontal
+ * Ps1 specifies the line orientation, the line progression
+ * and the character path:
 
- * line progression: top-to-bottom
+ * 0 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		left-to-right
 
- * character path:
+ * 1 ->	line orientation:		vertical
+ * 	line progression: 		right-to-left
+ * 	character path:			top-to-bottom
 
- * left-to-right 1 line orientation:
+ * 2 ->	line orientation:		vertical
+ * 	line progression: 		left-to-right
+ *		character path:			top-to-bottom
 
- * vertical
+ * 3 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		right-to-left
 
- * line progression: right-to-left
+ * 4 ->	line orientation: 		vertical
+ * 	line progression: 		left-to-right
+ * 	character path: 		bottom-to-top
 
- * character path:
+ * 5 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path:			right-to-left
 
- * top-to-bottom 2 line orientation:
+ * 6 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path: 		left-to-right
 
- * vertical
+ * 7 ->	line orientation:	 	vertical
+ * 	line progression: 		right-to-left
+ * 	character path: 		bottom-to-top
 
- * line progression: left-to-right
-
- * character path:
-
- * top-to-bottom 3 line orientation:
-
- * horizontal
-
- * line progression: top-to-bottom
-
- * character path:
-
- * right-to-left 4 line orientation:
-
- * vertical
-
- * line progression: left-to-right
-
- * character path:
-
- * bottom-to-top 5 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * right-to-left
-
- * 6 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * left-to-right 7 line orientation:
-
- * vertical
-
- * line progression: right-to-left
-
- * character path:
-
- * bottom-to-top Ps2 specifies the effect on the content of the
+ * Ps2 specifies the effect on the content of the
  * presentation component and the content of the data
- * component: 0 undefined (implementation-dependent) NOTE
+ * component:
+
+ * 0 -> undefined (implementation-dependent)
+ * NOTE
  * This may also permit the effect to take place after the
  * next occurrence of CR, FF or any control function which
  * initiates an absolute movement of the active presentation
- * position or the active data position. 1 the content of the
- * presentation component is updated to correspond to the
- * content of the data component according to the newly
- * established characteristics of the presentation component;
- * the active data position is moved to the first character
- * position in the first line in the data component, the
- * active presentation position in the presentation component
- * is updated accordingly 2 the content of the data component
- * is updated to correspond to the content of the
- * presentation component according to the newly established
- * characteristics of the presentation component; the active
- * presentation position is moved to the first character
- * position in the first line in the presentation component, the active data position in the data component is updated accordingly.
+ * position or the active data position.
+ * 1 -> the content of the presentation component is updated to
+ * correspond to the content of the data component according
+ * to the newly established characteristics of the presentation
+ * component; the active data position is moved to the first
+ * character position in the first line in the data component,
+ * the active presentation position in the presentation component
+ * is updated accordingly
+ * 2 -> the content of the data component is updated to correspond
+ * to the content of the presentation component according to the
+ * newly established characteristics of the presentation component;
+ * the active presentation position is moved to the first character
+ * position in the first line in the presentation component, the
+ * active data position in the data component is updated accordingly.
  *
  */
 #define __SPD(Ps2) CSI ";" #Ps2 " " "S"
@@ -4903,92 +4876,66 @@
  * and the character path in the presentation component. It
  * is also used to update the content of the presentation
  * component and the content of the data component. This
- * takes effect immediately. Ps1 specifies the line
- * orientation, the line progression and the character path: 0 line orientation:
+ * takes effect immediately.
 
- * horizontal
+ * Ps1 specifies the line orientation, the line progression
+ * and the character path:
 
- * line progression: top-to-bottom
+ * 0 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		left-to-right
 
- * character path:
+ * 1 ->	line orientation:		vertical
+ * 	line progression: 		right-to-left
+ * 	character path:			top-to-bottom
 
- * left-to-right 1 line orientation:
+ * 2 ->	line orientation:		vertical
+ * 	line progression: 		left-to-right
+ *		character path:			top-to-bottom
 
- * vertical
+ * 3 ->	line orientation: 		horizontal
+ * 	line progression: 		top-to-bottom
+ * 	character path: 		right-to-left
 
- * line progression: right-to-left
+ * 4 ->	line orientation: 		vertical
+ * 	line progression: 		left-to-right
+ * 	character path: 		bottom-to-top
 
- * character path:
+ * 5 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path:			right-to-left
 
- * top-to-bottom 2 line orientation:
+ * 6 ->	line orientation:		horizontal
+ * 	line progression: 		bottom-to-top
+ * 	character path: 		left-to-right
 
- * vertical
+ * 7 ->	line orientation:	 	vertical
+ * 	line progression: 		right-to-left
+ * 	character path: 		bottom-to-top
 
- * line progression: left-to-right
-
- * character path:
-
- * top-to-bottom 3 line orientation:
-
- * horizontal
-
- * line progression: top-to-bottom
-
- * character path:
-
- * right-to-left 4 line orientation:
-
- * vertical
-
- * line progression: left-to-right
-
- * character path:
-
- * bottom-to-top 5 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * right-to-left
-
- * 6 line orientation:
-
- * horizontal
-
- * line progression: bottom-to-top
-
- * character path:
-
- * left-to-right 7 line orientation:
-
- * vertical
-
- * line progression: right-to-left
-
- * character path:
-
- * bottom-to-top Ps2 specifies the effect on the content of the
+ * Ps2 specifies the effect on the content of the
  * presentation component and the content of the data
- * component: 0 undefined (implementation-dependent) NOTE
+ * component:
+
+ * 0 -> undefined (implementation-dependent)
+ * NOTE
  * This may also permit the effect to take place after the
  * next occurrence of CR, FF or any control function which
  * initiates an absolute movement of the active presentation
- * position or the active data position. 1 the content of the
- * presentation component is updated to correspond to the
- * content of the data component according to the newly
- * established characteristics of the presentation component;
- * the active data position is moved to the first character
- * position in the first line in the data component, the
- * active presentation position in the presentation component
- * is updated accordingly 2 the content of the data component
- * is updated to correspond to the content of the
- * presentation component according to the newly established
- * characteristics of the presentation component; the active
- * presentation position is moved to the first character
- * position in the first line in the presentation component, the active data position in the data component is updated accordingly.
+ * position or the active data position.
+ * 1 -> the content of the presentation component is updated to
+ * correspond to the content of the data component according
+ * to the newly established characteristics of the presentation
+ * component; the active data position is moved to the first
+ * character position in the first line in the data component,
+ * the active presentation position in the presentation component
+ * is updated accordingly
+ * 2 -> the content of the data component is updated to correspond
+ * to the content of the presentation component according to the
+ * newly established characteristics of the presentation component;
+ * the active presentation position is moved to the first character
+ * position in the first line in the presentation component, the
+ * active data position in the data component is updated accordingly.
  *
  */
 #define _SPD_ CSI ";" " " "S"
@@ -5010,7 +4957,9 @@
  * equals the value of Pn. In the case of a device without
  * data component, it is also the position ahead of which no
  * implicit movement of the active presentation position
- * shall occur. If the DEVICE COMPONENT SELECT MODE is set to
+ * shall occur.
+
+ * If the DEVICE COMPONENT SELECT MODE is set to
  * DATA, SPH is used to establish at line position n in the
  * active page (the page that contains the active data
  * position) and subsequent pages in the data component the
@@ -5018,8 +4967,11 @@
  * by subsequent occurrences of FORM FEED (FF) in the data
  * stream; where n equals the value of Pn. It is also the
  * position ahead of which no implicit movement of the active
- * presentation position shall occur. The established
- * position is called the page home position and remains in effect until the next occurrence of SPH in the data stream.
+ * presentation position shall occur.
+
+ * The established position is called the page home position
+ * and remains in effect until the next occurrence of SPH in
+ * the data stream.
  *
  */
 #define SPH(Pn) CSI #Pn " " "i"
@@ -5043,12 +4995,9 @@
  * data stream, see annex C.
 
  * Pn1 specifies the line spacing
-
  * Pn2 specifies the character spacing
 
  * The unit in which the parameter values are expressed is that
- * established by the parameter value of SELECT SIZE UNIT (SSU)
- *
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
@@ -5070,12 +5019,13 @@
  * moved; where n equals the value of Pn. In the case of a
  * device without data component, it is also the position
  * beyond which no implicit movement of the active
- * presentation position shall occur. If the DEVICE COMPONENT
- * SELECT MODE is set to DATA, SPL is used to establish at
- * line position n in the active page (the page that contains
- * the active data position) and pages of subsequent text in
- * the data component the position beyond which no implicit
- * movement of the active data position shall occur.
+ * presentation position shall occur.
+
+ * If the DEVICE COMPONENT SELECT MODE is set to DATA, SPL is
+ * used to establish at line position n in the active page
+ * (the page that contains the active data position) and pages
+ * of subsequent text in the data component the position beyond
+ * which no implicit movement of the active data position shall occur.
 
  * The established position is called the page limit position and
  * remains in effect until the next occurrence of SPL in the
@@ -5094,14 +5044,13 @@
  * SPQR is used to select the relative print quality and the print
  * speed for devices the output quality and speed of which
  * are inversely related. The selected values remain in
- * effect until the next occurrence of SPQR in the data
- * stream. The parameter values are
+ * effect until the next occurrence of SPQR in the data stream.
 
- * 0 highest available print quality, low print speed
+ * The parameter values are:
 
- * 1 medium print quality, medium print speed
-
- * 2 draft print quality, highest available print speed
+ * 0 -> highest available print quality, low print speed
+ * 1 -> medium print quality, medium print speed
+ * 2 -> draft print quality, highest available print speed
  *
  */
 #define SPQR(Ps) CSI #Ps " " "X"
@@ -5116,14 +5065,13 @@
  * SPQR is used to select the relative print quality and the print
  * speed for devices the output quality and speed of which
  * are inversely related. The selected values remain in
- * effect until the next occurrence of SPQR in the data
- * stream. The parameter values are
+ * effect until the next occurrence of SPQR in the data stream.
 
- * 0 highest available print quality, low print speed
+ * The parameter values are:
 
- * 1 medium print quality, medium print speed
-
- * 2 draft print quality, highest available print speed
+ * 0 -> highest available print quality, low print speed
+ * 1 -> medium print quality, medium print speed
+ * 2 -> draft print quality, highest available print speed
  *
  */
 #define _SPQR_ CSI " " "X"
@@ -5185,8 +5133,6 @@
  * escapement is reduced.
 
  * The unit in which the parameter values are expressed is that
- * established by the parameter value of SELECT SIZE UNIT (SSU)
- *
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
@@ -5211,8 +5157,6 @@
  * escapement is reduced.
 
  * The unit in which the parameter values are expressed is that
- * established by the parameter value of SELECT SIZE UNIT (SSU)
- *
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
@@ -5230,12 +5174,13 @@
  * direction of the string. This direction is opposite to
  * that currently established. The indicated string follows
  * the preceding text. The established character progression
- * is not affected. The beginning of a reversed string is
- * indicated by SRS with a parameter value of 1. A reversed
- * string may contain one or more nested strings. These
- * nested strings may be reversed strings the beginnings of
- * which are indicated by SRS with a parameter value of 1, or
- * directed strings the beginnings of which are indicated by
+ * is not affected.
+
+ * The beginning of a reversed string is indicated by SRS with a
+ * parameter value of 1. A reversed string may contain one or
+ * more nested strings. These nested strings may be reversed strings
+ * the beginnings of which are indicated by SRS with a parameter
+ * value of 1, or directed strings the beginnings of which are indicated by
  * START DIRECTED STRING (SDS) with a parameter value not
  * equal to 0. Every beginning of such a string invokes the
  * next deeper level of nesting. This Standard does not
