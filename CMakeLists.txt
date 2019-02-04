@@ -29,8 +29,7 @@ message("# ============================== LIB ============================== #")
 message("Building Project Standard Libraries")
 # Console Library
 message("Building Console Libraries")
-add_library(lconsole
-        src/Console/ctrlFuncCodedCharSet.c)
+add_library(lconsole src/Console/ctrlfunc.c)
 message("Library Built: lconsole|Console")
 
 # ----------------- Exercises ----------------- #
