@@ -37,7 +37,7 @@ void moveBy_CharHorz(int n) {
 	if (n > 0) {
 		printf(CUF(n));
 	} else {
-		printf(CUB(n));
+		printf(CUB(-n));
 	}
 
 }
@@ -47,7 +47,7 @@ void moveBy_CharVert(int n) {
 	if (n > 0) {
 		printf(CUD(n));
 	} else {
-		printf(CUU(n));
+		printf(CUU(-n));
 	}
 
 }
@@ -57,7 +57,7 @@ void moveBy_Line(int n) {
 	if (n > 0) {
 		printf(CNL(n));
 	} else {
-		printf(CPL(n));
+		printf(CPL(-n));
 	}
 
 }
@@ -67,7 +67,7 @@ void moveBy_Tab(int n) {
 	if (n > 0) {
 		printf(CHT(n));
 	} else {
-		printf(CBT(n));
+		printf(CBT(-n));
 	}
 
 }
