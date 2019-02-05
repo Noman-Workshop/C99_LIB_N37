@@ -3,7 +3,9 @@
 # Created On: 1/14/19; 4:04 AM
 */
 
-#pragma once
+#ifndef EXERCISE_TEMPERATURE_CELSIUS_N_FAHRENHEIT
+#define EXERCISE_TEMPERATURE_CELSIUS_N_FAHRENHEIT
+
 
 /**
  * Converts the temperature of degree celsius scale into fahrenheit scale
@@ -12,9 +14,13 @@
  */
 float celsius2Fahrenheit(float degCel);
 
+
 /**
  * Converts the temperature of fahrenheit scale into degree celsius
  * @param degFahrenheit => the temperature in degree fahrenheit
  * @return temperature in degree Celsius
  */
 float fahrenheit2Celsius(float degFahrenheit);
+
+
+#endif

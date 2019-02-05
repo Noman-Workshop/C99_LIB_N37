@@ -3,7 +3,8 @@
 # Created On: 2/3/19; 8:22 PM
 */
 
-#pragma once
+#ifndef CONSOLE_CTRL_FUNC_CODED_CHAR_SET_H
+#define CONSOLE_CTRL_FUNC_CODED_CHAR_SET_H
 
 /*
  * ESC - ESCAPE
@@ -36,7 +37,7 @@
 /*
  * ACK - ACKNOWLEDGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -50,7 +51,7 @@
 /*
  * APC - APPLICATION PROGRAM COMMAND
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -66,7 +67,7 @@
 /*
  * BEL - BELL
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -79,7 +80,7 @@
 /*
  * BPH - BREAK PERMITTED HERE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -93,7 +94,7 @@
 /*
  * BS - BACKSPACE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -110,7 +111,7 @@
 /*
  * CAN - CANCEL
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -126,7 +127,7 @@
 /*
  * CBT - CURSOR BACKWARD TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -136,12 +137,13 @@
  * according to the character path, where n equals the value of Pn.
  *
  */
-#define CBT(Pn) CSI Pn "Z"
+#define CBT(Pn) CSI "%d" "Z", Pn
+/* #define CBT(Pn) CSI Pn "Z" */
 
 /*
  * CBT - CURSOR BACKWARD TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -156,7 +158,7 @@
 /*
  * CCH - CANCEL CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -176,7 +178,7 @@
 /*
  * CHA - CURSOR CHARACTER ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -185,12 +187,13 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CHA(Pn) CSI Pn "G"
+#define CHA(Pn) CSI "%d" "G", Pn
+/* #define CHA(Pn) CSI Pn "G" */
 
 /*
  * CHA - CURSOR CHARACTER ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -204,7 +207,7 @@
 /*
  * CHT - CURSOR FORWARD TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -214,12 +217,13 @@
  * according to the character path, where n equals the value of Pn.
  *
  */
-#define CHT(Pn) CSI Pn "I"
+#define CHT(Pn) CSI "%d" "I", Pn
+/* #define CHT(Pn) CSI Pn "I" */
 
 /*
  * CHT - CURSOR FORWARD TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -234,8 +238,8 @@
 /*
  * CMD - CODING METHOD DELIMITER
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * CMD is used as the delimiter of a string of data coded according
@@ -246,12 +250,12 @@
  * specifying the length of the string.
  *
  */
-#define CMD(Fs) ESC "d"
+#define CMD ESC "d"
 
 /*
  * CNL - CURSOR NEXT LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -260,12 +264,13 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CNL(Pn) CSI Pn "E"
+#define CNL(Pn) CSI "%d" "E", Pn
+/* #define CNL(Pn) CSI Pn "E" */
 
 /*
  * CNL - CURSOR NEXT LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -279,7 +284,7 @@
 /*
  * CPL - CURSOR PRECEDING LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -288,12 +293,13 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CPL(Pn) CSI Pn "F"
+#define CPL(Pn) CSI "%d" "F", Pn
+/* #define CPL(Pn) CSI Pn "F" */
 
 /*
  * CPL - CURSOR PRECEDING LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -307,7 +313,7 @@
 /*
  * CPR - ACTIVE POSITION REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -329,12 +335,13 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define CPR(Pn1, Pn2) CSI Pn1 ";" Pn2 "R"
+#define CPR(Pn1, Pn2) CSI "%d" ";" "%d" "R", Pn1, Pn2
+/* #define CPR(Pn1, Pn2) CSI Pn1 ";" Pn2 "R" */
 
 /*
  * CPR - ACTIVE POSITION REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1
 
  * @ More Info:
@@ -356,12 +363,13 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define _CPR(Pn1) CSI Pn1 ";" "R"
+#define _CPR(Pn1) CSI "%d" ";" "R", Pn1
+/* #define _CPR(Pn1) CSI Pn1 ";" "R" */
 
 /*
  * CPR - ACTIVE POSITION REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn2
 
  * @ More Info:
@@ -383,12 +391,13 @@
  * CPR may be solicited by a DEVICE STATUS REPORT (DSR) or be sent unsolicited.
  *
  */
-#define __CPR(Pn2) CSI ";" Pn2 "R"
+#define __CPR(Pn2) CSI ";" "%d" "R", Pn2
+/* #define __CPR(Pn2) CSI ";" Pn2 "R" */
 
 /*
  * CPR - ACTIVE POSITION REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -415,7 +424,7 @@
 /*
  * CR - CARRIAGE RETURN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -452,7 +461,7 @@
 /*
  * CTC - CURSOR TABULATION CONTROL
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -472,10 +481,13 @@
  * depends on the setting of the TABULATION STOP MODE (TSM).
  *
  */
+#define CTC(Ps) CSI "%s" "W", Ps
+/* #define CTC(Ps) CSI Ps "W" */
+
 /*
  * CTC - CURSOR TABULATION CONTROL
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -500,7 +512,7 @@
 /*
  * CUB - CURSOR LEFT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -511,12 +523,13 @@
  * value of Pn.
  *
  */
-#define CUB(Pn) CSI Pn "D"
+#define CUB(Pn) CSI "%d" "D", Pn
+/* #define CUB(Pn) CSI Pn "D" */
 
 /*
  * CUB - CURSOR LEFT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -532,7 +545,7 @@
 /*
  * CUD - CURSOR DOWN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -543,12 +556,13 @@
  * value of Pn.
  *
  */
-#define CUD(Pn) CSI Pn "B"
+#define CUD(Pn) CSI "%d" "B", Pn
+/* #define CUD(Pn) CSI Pn "B" */
 
 /*
  * CUD - CURSOR DOWN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -564,7 +578,7 @@
 /*
  * CUF - CURSOR RIGHT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -575,12 +589,13 @@
  * equals the value of Pn.
  *
  */
-#define CUF(Pn) CSI Pn "C"
+#define CUF(Pn) CSI "%d" "C", Pn
+/* #define CUF(Pn) CSI Pn "C" */
 
 /*
  * CUF - CURSOR RIGHT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -596,7 +611,7 @@
 /*
  * CUP - CURSOR POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -607,12 +622,13 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define CUP(Pn1, Pn2) CSI Pn1 ";" Pn2 "H"
+#define CUP(Pn1, Pn2) CSI "%d" ";" "%d" "H", Pn1, Pn2
+/* #define CUP(Pn1, Pn2) CSI Pn1 ";" Pn2 "H" */
 
 /*
  * CUP - CURSOR POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1
 
  * @ More Info:
@@ -623,12 +639,13 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define _CUP(Pn1) CSI Pn1 ";" "H"
+#define _CUP(Pn1) CSI "%d" ";" "H", Pn1
+/* #define _CUP(Pn1) CSI Pn1 ";" "H" */
 
 /*
  * CUP - CURSOR POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn2
 
  * @ More Info:
@@ -639,12 +656,13 @@
  * of Pn1 and m equals the value of Pn2.
  *
  */
-#define __CUP(Pn2) CSI ";" Pn2 "H"
+#define __CUP(Pn2) CSI ";" "%d" "H", Pn2
+/* #define __CUP(Pn2) CSI ";" Pn2 "H" */
 
 /*
  * CUP - CURSOR POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -660,7 +678,7 @@
 /*
  * CUU - CURSOR UP
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -671,12 +689,13 @@
  * value of Pn.
  *
  */
-#define CUU(Pn) CSI Pn "A"
+#define CUU(Pn) CSI "%d" "A", Pn
+/* #define CUU(Pn) CSI Pn "A" */
 
 /*
  * CUU - CURSOR UP
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -692,7 +711,7 @@
 /*
  * CVT - CURSOR LINE TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -702,12 +721,13 @@
  * presentation component, where n equals the value of Pn.
  *
  */
-#define CVT(Pn) CSI Pn "Y"
+#define CVT(Pn) CSI "%d" "Y", Pn
+/* #define CVT(Pn) CSI Pn "Y" */
 
 /*
  * CVT - CURSOR LINE TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -722,7 +742,7 @@
 /*
  * DA - DEVICE ATTRIBUTES
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -733,12 +753,13 @@
  * DA is used to request an identifying DA from a device.
  *
  */
-#define DA(Ps) CSI Ps "c"
+#define DA(Ps) CSI "%d" "c", Ps
+/* #define DA(Ps) CSI Ps "c" */
 
 /*
  * DA - DEVICE ATTRIBUTES
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -754,7 +775,7 @@
 /*
  * DAQ - DEFINE AREA QUALIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -793,12 +814,13 @@
  * should not be used within an SRS string or an SDS string.
  *
  */
-#define DAQ(Ps) CSI Ps "o"
+#define DAQ(Ps) CSI "%s" "o", Ps
+/* #define DAQ(Ps) CSI Ps "o" */
 
 /*
  * DAQ - DEFINE AREA QUALIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -842,7 +864,7 @@
 /*
  * DCH - DELETE CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -874,12 +896,13 @@
  * end of the shifted part, n character positions are put into the erased state.
  *
  */
-#define DCH(Pn) CSI Pn "P"
+#define DCH(Pn) CSI "%d" "P", Pn
+/* #define DCH(Pn) CSI Pn "P" */
 
 /*
  * DCH - DELETE CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -916,7 +939,7 @@
 /*
  * DCS - DEVICE CONTROL STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -936,7 +959,7 @@
 /*
  * DC1 - DEVICE CONTROL ONE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -955,7 +978,7 @@
 /*
  * DC2 - DEVICE CONTROL TWO
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -972,7 +995,7 @@
 /*
  * DC3 - DEVICE CONTROL THREE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -992,7 +1015,7 @@
 /*
  * DC4 - DEVICE CONTROL FOUR
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1007,7 +1030,7 @@
 /*
  * DL - DELETE LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -1048,12 +1071,13 @@
  * position is established by the parameter value of SET LINE HOME (SLH).
  *
  */
-#define DL(Pn) CSI Pn "M"
+#define DL(Pn) CSI "%d" "M", Pn
+/* #define DL(Pn) CSI Pn "M" */
 
 /*
  * DL - DELETE LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1099,7 +1123,7 @@
 /*
  * DLE - DATA LINK ESCAPE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1113,19 +1137,19 @@
 /*
  * DMI - DISABLE MANUAL INPUT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * DMI causes the manual input facilities of a device to be disabled.
  *
  */
-#define DMI(Fs) ESC "`"
+#define DMI ESC "`"
 
 /*
  * DSR - DEVICE STATUS REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1147,12 +1171,13 @@
  * with a parameter value 5 or MESSAGE WAITING (MW).
  *
  */
-#define DSR(Ps) CSI Ps "n"
+#define DSR(Ps) CSI "%d" "n", Ps
+/* #define DSR(Ps) CSI Ps "n" */
 
 /*
  * DSR - DEVICE STATUS REPORT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1179,7 +1204,7 @@
 /*
  * DTA - DIMENSION TEXT AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -1194,12 +1219,13 @@
  * by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define DTA(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "T"
+#define DTA(Pn1, Pn2) CSI "%d" ";" "%d" " " "T", Pn1, Pn2
+/* #define DTA(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "T" */
 
 /*
  * EA - ERASE IN AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1233,12 +1259,13 @@
  * areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EA(Ps) CSI Ps "O"
+#define EA(Ps) CSI "%d" "O", Ps
+/* #define EA(Ps) CSI Ps "O" */
 
 /*
  * EA - ERASE IN AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1277,7 +1304,7 @@
 /*
  * ECH - ERASE CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -1297,12 +1324,13 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define ECH(Pn) CSI Pn "X"
+#define ECH(Pn) CSI "%d" "X", Pn
+/* #define ECH(Pn) CSI Pn "X" */
 
 /*
  * ECH - ERASE CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1327,7 +1355,7 @@
 /*
  * ED - ERASE IN PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1360,12 +1388,13 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define ED(Ps) CSI Ps "J"
+#define ED(Ps) CSI "%d" "J", Ps
+/* #define ED(Ps) CSI Ps "J" */
 
 /*
  * ED - ERASE IN PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1403,7 +1432,7 @@
 /*
  * EF - ERASE IN FIELD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1435,12 +1464,13 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EF(Ps) CSI Ps "N"
+#define EF(Ps) CSI "%d" "N", Ps
+/* #define EF(Ps) CSI Ps "N" */
 
 /*
  * EF - ERASE IN FIELD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1477,7 +1507,7 @@
 /*
  * EL - ERASE IN LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1510,12 +1540,13 @@
  * unprotected areas only, depends on the setting of the ERASURE MODE (ERM).
  *
  */
-#define EL(Ps) CSI Ps "K"
+#define EL(Ps) CSI "%d" "K", Ps
+/* #define EL(Ps) CSI Ps "K" */
 
 /*
  * EL - ERASE IN LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1553,7 +1584,7 @@
 /*
  * EM - END OF MEDIUM
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1567,19 +1598,19 @@
 /*
  * EMI - ENABLE MANUAL INPUT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * EMI is used to enable the manual input facilities of a device.
  *
  */
-#define EMI(Fs) ESC "b"
+#define EMI ESC "b"
 
 /*
  * ENQ - ENQUIRY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1593,7 +1624,7 @@
 /*
  * EOT - END OF TRANSMISSION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1608,7 +1639,7 @@
 /*
  * EPA - END OF GUARDED AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1632,7 +1663,7 @@
 /*
  * ESA - END OF SELECTED AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1653,7 +1684,7 @@
 /*
  * ETB - END OF TRANSMISSION BLOCK
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1668,7 +1699,7 @@
 /*
  * ETX - END OF TEXT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1682,7 +1713,7 @@
 /*
  * FF - FORM FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1698,7 +1729,7 @@
 /*
  * FNK - FUNCTION KEY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -1708,12 +1739,13 @@
  * the function key which has been operated.
  *
  */
-#define FNK(Pn) CSI Pn " " "W"
+#define FNK(Pn) CSI "%d" " " "W", Pn
+/* #define FNK(Pn) CSI Pn " " "W" */
 
 /*
  * FNT - FONT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1, Ps2
 
  * @ More Info:
@@ -1737,12 +1769,13 @@
  * is to be established.
  *
  */
-#define FNT(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "D"
+#define FNT(Ps1, Ps2) CSI "%d" ";" "%d" " " "D", Ps1, Ps2
+/* #define FNT(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "D" */
 
 /*
  * FNT - FONT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1
 
  * @ More Info:
@@ -1766,12 +1799,13 @@
  * is to be established.
  *
  */
-#define _FNT(Ps1) CSI Ps1 ";" " " "D"
+#define _FNT(Ps1) CSI "%d" ";" " " "D", Ps1
+/* #define _FNT(Ps1) CSI Ps1 ";" " " "D" */
 
 /*
  * FNT - FONT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps2
 
  * @ More Info:
@@ -1795,12 +1829,13 @@
  * is to be established.
  *
  */
-#define __FNT(Ps2) CSI ";" Ps2 " " "D"
+#define __FNT(Ps2) CSI ";" "%d" " " "D", Ps2
+/* #define __FNT(Ps2) CSI ";" Ps2 " " "D" */
 
 /*
  * FNT - FONT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1829,7 +1864,7 @@
 /*
  * GCC - GRAPHIC CHARACTER COMBINATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -1851,12 +1886,13 @@
  * normal-size Kanji character.
  *
  */
-#define GCC(Ps) CSI Ps " " "_"
+#define GCC(Ps) CSI "%d" " " "_", Ps
+/* #define GCC(Ps) CSI Ps " " "_" */
 
 /*
  * GCC - GRAPHIC CHARACTER COMBINATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1883,7 +1919,7 @@
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -1897,12 +1933,13 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define GSM(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "B"
+#define GSM(Pn1, Pn2) CSI "%d" ";" "%d" " " "B", Pn1, Pn2
+/* #define GSM(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "B" */
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1
 
  * @ More Info:
@@ -1916,12 +1953,13 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define _GSM(Pn1) CSI Pn1 ";" " " "B"
+#define _GSM(Pn1) CSI "%d" ";" " " "B", Pn1
+/* #define _GSM(Pn1) CSI Pn1 ";" " " "B" */
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn2
 
  * @ More Info:
@@ -1935,12 +1973,13 @@
  * Pn2 specifies the width as a percentage of the width established by GSS
  *
  */
-#define __GSM(Pn2) CSI ";" Pn2 " " "B"
+#define __GSM(Pn2) CSI ";" "%d" " " "B", Pn2
+/* #define __GSM(Pn2) CSI ";" Pn2 " " "B" */
 
 /*
  * GSM - GRAPHIC SIZE MODIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -1959,7 +1998,7 @@
 /*
  * GSS - GRAPHIC SIZE SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -1977,12 +2016,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define GSS(Pn) CSI Pn " " "C"
+#define GSS(Pn) CSI "%d" " " "C", Pn
+/* #define GSS(Pn) CSI Pn " " "C" */
 
 /*
  * HPA - CHARACTER POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -1992,12 +2032,13 @@
  * equals the value of Pn.
  *
  */
-#define HPA(Pn) CSI Pn "`"
+#define HPA(Pn) CSI "%d" "`", Pn
+/* #define HPA(Pn) CSI Pn "`" */
 
 /*
  * HPA - CHARACTER POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2012,7 +2053,7 @@
 /*
  * HPB - CHARACTER POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -2022,12 +2063,13 @@
  * value of Pn.
  *
  */
-#define HPB(Pn) CSI Pn "j"
+#define HPB(Pn) CSI "%d" "j", Pn
+/* #define HPB(Pn) CSI Pn "j" */
 
 /*
  * HPB - CHARACTER POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2042,7 +2084,7 @@
 /*
  * HPR - CHARACTER POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -2051,12 +2093,13 @@
  * character progression, where n equals the value of Pn.
  *
  */
-#define HPR(Pn) CSI Pn "a"
+#define HPR(Pn) CSI "%d" "a", Pn
+/* #define HPR(Pn) CSI Pn "a" */
 
 /*
  * HPR - CHARACTER POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2070,7 +2113,7 @@
 /*
  * HT - CHARACTER TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2093,7 +2136,7 @@
 /*
  * HTJ - CHARACTER TABULATION WITH JUSTIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2112,7 +2155,7 @@
 /*
  * HTS - CHARACTER TABULATION SET
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2128,7 +2171,7 @@
 /*
  * HVP - CHARACTER AND LINE POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -2139,12 +2182,13 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define HVP(Pn1, Pn2) CSI Pn1 ";" Pn2 "f"
+#define HVP(Pn1, Pn2) CSI "%d" ";" "%d" "f", Pn1, Pn2
+/* #define HVP(Pn1, Pn2) CSI Pn1 ";" Pn2 "f" */
 
 /*
  * HVP - CHARACTER AND LINE POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1
 
  * @ More Info:
@@ -2155,12 +2199,13 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define _HVP(Pn1) CSI Pn1 ";" "f"
+#define _HVP(Pn1) CSI "%d" ";" "f", Pn1
+/* #define _HVP(Pn1) CSI Pn1 ";" "f" */
 
 /*
  * HVP - CHARACTER AND LINE POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn2
 
  * @ More Info:
@@ -2171,12 +2216,13 @@
  * Pn1 and m equals the value of Pn2.
  *
  */
-#define __HVP(Pn2) CSI ";" Pn2 "f"
+#define __HVP(Pn2) CSI ";" "%d" "f", Pn2
+/* #define __HVP(Pn2) CSI ";" Pn2 "f" */
 
 /*
  * HVP - CHARACTER AND LINE POSITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2192,7 +2238,7 @@
 /*
  * ICH - INSERT CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -2233,12 +2279,13 @@
  * parameter value of SET LINE HOME (SLH).
  *
  */
-#define ICH(Pn) CSI Pn "@"
+#define ICH(Pn) CSI "%d" "@", Pn
+/* #define ICH(Pn) CSI Pn "@" */
 
 /*
  * ICH - INSERT CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2284,7 +2331,7 @@
 /*
  * IDCS - IDENTIFY DEVICE CONTROL STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2308,12 +2355,13 @@
  * string, a private parameter value shall be used.
  *
  */
-#define IDCS(Ps) CSI Ps " " "O"
+#define IDCS(Ps) CSI "%d" " " "O", Ps
+/* #define IDCS(Ps) CSI Ps " " "O" */
 
 /*
  * IGS - IDENTIFY GRAPHIC SUBREPERTOIRE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2325,12 +2373,13 @@
  * repertoire registered in accordance with ISO/IEC 7350.
  *
  */
-#define IGS(Ps) CSI Ps " " "M"
+#define IGS(Ps) CSI "%d" " " "M", Ps
+/* #define IGS(Ps) CSI Ps " " "M" */
 
 /*
  * IL - INSERT LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -2371,12 +2420,13 @@
  * by the parameter value of SET LINE HOME (SLH).
  *
  */
-#define IL(Pn) CSI Pn "L"
+#define IL(Pn) CSI "%d" "L", Pn
+/* #define IL(Pn) CSI Pn "L" */
 
 /*
  * IL - INSERT LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2422,8 +2472,8 @@
 /*
  * INT - INTERRUPT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * INT is used to indicate to the receiving device that the current
@@ -2432,7 +2482,7 @@
  * either direction of transmission.
  *
  */
-#define INT(Fs) ESC "a"
+#define INT ESC "a"
 
 /*
  * IS1 - INFORMATION SEPARATOR ONE (US - UNIT SEPARATOR)
@@ -2467,7 +2517,7 @@
 /*
  * IS3 - INFORMATION SEPARATOR THREE (GS - GROUP SEPARATOR)
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2482,7 +2532,7 @@
 /*
  * IS4 - INFORMATION SEPARATOR FOUR (FS - FILE SEPARATOR)
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2497,7 +2547,7 @@
 /*
  * JFY - JUSTIFY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2524,12 +2574,13 @@
  * established by the parameter value of SET LINE LIMIT (SLL).
  *
  */
-#define JFY(Ps) CSI Ps " " "F"
+#define JFY(Ps) CSI "%s" " " "F", Ps
+/* #define JFY(Ps) CSI Ps " " "F" */
 
 /*
  * JFY - JUSTIFY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2561,7 +2612,7 @@
 /*
  * LF - LINE FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2580,7 +2631,7 @@
 /*
  * LS0 - LOCKING-SHIFT ZERO
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2599,7 +2650,7 @@
 /*
  * LS1 - LOCKING-SHIFT ONE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2618,8 +2669,8 @@
 /*
  * LS1R - LOCKING-SHIFT ONE RIGHT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * LS1R is used for code extension purposes. It causes the meanings
@@ -2628,13 +2679,13 @@
  * The use of LS1R is defined in Standard ECMA-35.
  *
  */
-#define LS1R(Fs) ESC "~"
+#define LS1R ESC "~"
 
 /*
  * LS2 - LOCKING-SHIFT TWO
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * LS2 is used for code extension purposes. It causes the meanings
@@ -2643,13 +2694,13 @@
  * The use of LS2 is defined in Standard ECMA-35.
  *
  */
-#define LS2(Fs) ESC "n"
+#define LS2 ESC "n"
 
 /*
  * LS2R - LOCKING-SHIFT TWO RIGHT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * LS2R is used for code extension purposes. It causes the meanings
@@ -2658,13 +2709,13 @@
  * The use of LS2R is defined in Standard ECMA-35.
  *
  */
-#define LS2R(Fs) ESC "}"
+#define LS2R ESC "}"
 
 /*
  * LS3 - LOCKING-SHIFT THREE
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * LS3 is used for code extension purposes. It causes the meanings
@@ -2673,13 +2724,13 @@
  * The use of LS3 is defined in Standard ECMA-35.
  *
  */
-#define LS3(Fs) ESC "o"
+#define LS3 ESC "o"
 
 /*
  * LS3R - LOCKING-SHIFT THREE RIGHT
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * LS3R is used for code extension purposes. It causes the meanings
@@ -2688,12 +2739,12 @@
  * The use of LS3R is defined in Standard ECMA-35.
  *
  */
-#define LS3R(Fs) ESC "|"
+#define LS3R ESC "|"
 
 /*
  * MC - MEDIA COPY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2715,12 +2766,13 @@
  * auxiliary device.
  *
  */
-#define MC(Ps) CSI Ps "i"
+#define MC(Ps) CSI "%d" "i", Ps
+/* #define MC(Ps) CSI Ps "i" */
 
 /*
  * MC - MEDIA COPY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2747,7 +2799,7 @@
 /*
  * MW - MESSAGE WAITING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2761,7 +2813,7 @@
 /*
  * NAK - NEGATIVE ACKNOWLEDGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2776,7 +2828,7 @@
 /*
  * NBH - NO BREAK HERE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2790,7 +2842,7 @@
 /*
  * NEL - NEXT LINE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2829,7 +2881,7 @@
 /*
  * NP - NEXT PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -2840,12 +2892,13 @@
  * position is not defined by this Standard.
  *
  */
-#define NP(Pn) CSI Pn "U"
+#define NP(Pn) CSI "%d" "U", Pn
+/* #define NP(Pn) CSI Pn "U" */
 
 /*
  * NP - NEXT PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2861,7 +2914,7 @@
 /*
  * NUL - NULL
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2877,7 +2930,7 @@
 /*
  * OSC - OPERATING SYSTEM COMMAND
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2894,7 +2947,7 @@
 /*
  * PEC - PRESENTATION EXPAND OR CONTRACT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2914,12 +2967,13 @@
  * 2 -> condensed (multiplied by a factor not less than 0,5)
  *
  */
-#define PEC(Ps) CSI Ps " " "Z"
+#define PEC(Ps) CSI "%d" " " "Z", Ps
+/* #define PEC(Ps) CSI Ps " " "Z" */
 
 /*
  * PEC - PRESENTATION EXPAND OR CONTRACT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -2944,7 +2998,7 @@
 /*
  * PFS - PAGE FORMAT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -2979,12 +3033,13 @@
  * established by the parameter value of SET PAGE LIMIT (SPL).
  *
  */
-#define PFS(Ps) CSI Ps " " "J"
+#define PFS(Ps) CSI "%d" " " "J", Ps
+/* #define PFS(Ps) CSI Ps " " "J" */
 
 /*
  * PFS - PAGE FORMAT SELECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3024,7 +3079,7 @@
 /*
  * PLD - PARTIAL LINE FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3048,7 +3103,7 @@
 /*
  * PLU - PARTIAL LINE BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3072,7 +3127,7 @@
 /*
  * PM - PRIVACY MESSAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3089,7 +3144,7 @@
 /*
  * PP - PRECEDING PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3099,12 +3154,13 @@
  * position is not defined by this Standard.
  *
  */
-#define PP(Pn) CSI Pn "V"
+#define PP(Pn) CSI "%d" "V", Pn
+/* #define PP(Pn) CSI Pn "V" */
 
 /*
  * PP - PRECEDING PAGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3119,7 +3175,7 @@
 /*
  * PPA - PAGE POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3128,12 +3184,13 @@
  * n-th page, where n equals the value of Pn.
  *
  */
-#define PPA(Pn) CSI Pn " " "P"
+#define PPA(Pn) CSI "%d" " " "P", Pn
+/* #define PPA(Pn) CSI Pn " " "P" */
 
 /*
  * PPA - PAGE POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3147,7 +3204,7 @@
 /*
  * PPB - PAGE POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3156,12 +3213,13 @@
  * n-th preceding page, where n equals the value of Pn.
  *
  */
-#define PPB(Pn) CSI Pn " " "R"
+#define PPB(Pn) CSI "%d" " " "R", Pn
+/* #define PPB(Pn) CSI Pn " " "R" */
 
 /*
  * PPB - PAGE POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3175,7 +3233,7 @@
 /*
  * PPR - PAGE POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3184,12 +3242,13 @@
  * n-th following page, where n equals the value of Pn.
  *
  */
-#define PPR(Pn) CSI Pn " " "Q"
+#define PPR(Pn) CSI "%d" " " "Q", Pn
+/* #define PPR(Pn) CSI Pn " " "Q" */
 
 /*
  * PPR - PAGE POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3203,7 +3262,7 @@
 /*
  * PTX - PARALLEL TEXTS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -3274,12 +3333,13 @@
  * characters will then be presented within enclosing pairs of parentheses.
  *
  */
-#define PTX(Ps) CSI Ps "\\"
+#define PTX(Ps) CSI "%d" "\\", Ps
+/* #define PTX(Ps) CSI Ps "\\" */
 
 /*
  * PTX - PARALLEL TEXTS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3355,7 +3415,7 @@
 /*
  * PU1 - PRIVATE USE ONE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3369,7 +3429,7 @@
 /*
  * PU2 - PRIVATE USE TWO
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3383,7 +3443,7 @@
 /*
  * QUAD - QUAD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -3415,12 +3475,13 @@
  * established by the parameter value of SET LINE LIMIT (SLL).
  *
  */
-#define QUAD(Ps) CSI Ps " " "H"
+#define QUAD(Ps) CSI "%s" " " "H", Ps
+/* #define QUAD(Ps) CSI Ps " " "H" */
 
 /*
  * QUAD - QUAD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3457,7 +3518,7 @@
 /*
  * REP - REPEAT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3469,12 +3530,13 @@
  * control function, the effect of REP is not defined by this Standard.
  *
  */
-#define REP(Pn) CSI Pn "b"
+#define REP(Pn) CSI "%d" "b", Pn
+/* #define REP(Pn) CSI Pn "b" */
 
 /*
  * REP - REPEAT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3491,7 +3553,7 @@
 /*
  * RI - REVERSE LINE FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3510,8 +3572,8 @@
 /*
  * RIS - RESET TO INITIAL STATE
 
- * @ Parameters Required: 
- * Fs
+ * @ Parameters Required:
+ * No Parameter Required
 
  * @ More Info:
  * RIS causes a device to be reset to its initial state, i.e. the
@@ -3525,12 +3587,12 @@
  * in the data component, set the modes into the reset state, etc.
  *
  */
-#define RIS(Fs) ESC "c"
+#define RIS ESC "c"
 
 /*
  * RM - RESET MODE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -3564,12 +3626,13 @@
  * using private parameters, see 5.4.1 and 7.4.
  *
  */
-#define RM(Ps) CSI Ps "l"
+#define RM(Ps) CSI "%s" "l", Ps
+/* #define RM(Ps) CSI Ps "l" */
 
 /*
  * SACS - SET ADDITIONAL CHARACTER SEPARATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3588,12 +3651,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SACS(Pn) CSI Pn " " "\\"
+#define SACS(Pn) CSI "%d" " " "\\", Pn
+/* #define SACS(Pn) CSI Pn " " "\\" */
 
 /*
  * SACS - SET ADDITIONAL CHARACTER SEPARATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3679,7 +3743,8 @@
  * the effect of parameter values 5, 6, 7, and 8 for the next single
  * graphic character only.
  */
-#define SAPV(Ps) CSI Ps " " "]"
+#define SAPV(Ps) CSI "%s" " " "]", Ps
+/* #define SAPV(Ps) CSI Ps " " "]" */
 
 /*
  * SAPV - SELECT ALTERNATIVE PRESENTATION VARIANTS
@@ -3750,7 +3815,7 @@
 /*
  * SCI - SINGLE CHARACTER INTRODUCER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3765,7 +3830,7 @@
 /*
  * SCO - SELECT CHARACTER ORIENTATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -3790,12 +3855,13 @@
  * graphic characters is not defined by this Standard.
  *
  */
-#define SCO(Ps) CSI Ps " " "e"
+#define SCO(Ps) CSI "%d" " " "e", Ps
+/* #define SCO(Ps) CSI Ps " " "e" */
 
 /*
  * SCO - SELECT CHARACTER ORIENTATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3825,7 +3891,7 @@
 /*
  * SCP - SELECT CHARACTER PATH
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1, Ps2
 
  * @ More Info:
@@ -3880,12 +3946,13 @@
  * component is updated accordingly.
  *
  */
-#define SCP(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "k"
+#define SCP(Ps1, Ps2) CSI "%d" ";" "%d" " " "k", Ps1, Ps2
+/* #define SCP(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "k" */
 
 /*
  * SCS - SET CHARACTER SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3903,12 +3970,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SCS(Pn) CSI Pn " " "g"
+#define SCS(Pn) CSI "%d" " " "g", Pn
+/* #define SCS(Pn) CSI Pn " " "g" */
 
 /*
  * SD - SCROLL DOWN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -3922,12 +3990,13 @@
  * function.
  *
  */
-#define SD(Pn) CSI Pn "T"
+#define SD(Pn) CSI "%d" "T", Pn
+/* #define SD(Pn) CSI Pn "T" */
 
 /*
  * SD - SCROLL DOWN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -3946,7 +4015,7 @@
 /*
  * SDS - START DIRECTED STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -3989,12 +4058,13 @@
  * definition (DAQ, EPA, ESA, SPA, SSA) should not be used within an SDS string.
  *
  */
-#define SDS(Ps) CSI Ps "]"
+#define SDS(Ps) CSI "%d" "]", Ps
+/* #define SDS(Ps) CSI Ps "]" */
 
 /*
  * SDS - START DIRECTED STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4042,7 +4112,7 @@
 /*
  * SEE - SELECT EDITING EXTENT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -4063,12 +4133,13 @@
  * presentation component.
  *
  */
-#define SEE(Ps) CSI Ps "Q"
+#define SEE(Ps) CSI "%d" "Q", Ps
+/* #define SEE(Ps) CSI Ps "Q" */
 
 /*
  * SEE - SELECT EDITING EXTENT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4094,7 +4165,7 @@
 /*
  * SEF - SHEET EJECT AND FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1, Ps2
 
  * @ More Info:
@@ -4121,12 +4192,13 @@
  * n -> eject sheet into stacker n
  *
  */
-#define SEF(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "Y"
+#define SEF(Ps1, Ps2) CSI "%d" ";" "%d" " " "Y", Ps1, Ps2
+/* #define SEF(Ps1, Ps2) CSI Ps1 ";" Ps2 " " "Y" */
 
 /*
  * SEF - SHEET EJECT AND FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1
 
  * @ More Info:
@@ -4153,7 +4225,8 @@
  * n -> eject sheet into stacker n
  *
  */
-#define _SEF(Ps1) CSI Ps1 ";" " " "Y"
+#define _SEF(Ps1) CSI "%d" ";" " " "Y", Ps1
+/* #define _SEF(Ps1) CSI Ps1 ";" " " "Y" */
 
 /*
  * SEF - SHEET EJECT AND FEED
@@ -4182,12 +4255,13 @@
  * n -> eject sheet into stacker n
  *
  */
-#define __SEF(Ps2) CSI ";" Ps2 " " "Y"
+#define __SEF(Ps2) CSI ";" "%d" " " "Y", Ps2
+/* #define __SEF(Ps2) CSI ";" Ps2 " " "Y" */
 
 /*
  * SEF - SHEET EJECT AND FEED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4219,7 +4293,7 @@
 /*
  * SGR - SELECT GRAPHIC RENDITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -4312,12 +4386,13 @@
  * by the implementation.
  *
  */
-#define SGR(Ps) CSI Ps "m"
+#define SGR(Ps) CSI "%s" "m", Ps
+/* #define SGR(Ps) CSI Ps "m" */
 
 /*
  * SGR - SELECT GRAPHIC RENDITION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4415,7 +4490,7 @@
 /*
  * SHS - SELECT CHARACTER SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -4434,12 +4509,13 @@
  * 6 -> 04 characters per 25,4 mm
  *
  */
-#define SHS(Ps) CSI Ps " " "K"
+#define SHS(Ps) CSI "%d" " " "K", Ps
+/* #define SHS(Ps) CSI Ps " " "K" */
 
 /*
  * SHS - SELECT CHARACTER SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4463,7 +4539,7 @@
 /*
  * SI - SHIFT-IN
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4483,7 +4559,7 @@
 /*
  * SIMD - SELECT IMPLICIT MOVEMENT DIRECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -4499,12 +4575,13 @@
  * character progression.
  *
  */
-#define SIMD(Ps) CSI Ps "^"
+#define SIMD(Ps) CSI "%d" "^", Ps
+/* #define SIMD(Ps) CSI Ps "^" */
 
 /*
  * SIMD - SELECT IMPLICIT MOVEMENT DIRECTION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4525,7 +4602,7 @@
 /*
  * SL - SCROLL LEFT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -4539,12 +4616,13 @@
  * function.
  *
  */
-#define SL(Pn) CSI Pn " " "@"
+#define SL(Pn) CSI "%d" " " "@", Pn
+/* #define SL(Pn) CSI Pn " " "@" */
 
 /*
  * SL - SCROLL LEFT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4563,7 +4641,7 @@
 /*
  * SLH - SET LINE HOME
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -4598,12 +4676,13 @@
  * the data stream.
  *
  */
-#define SLH(Pn) CSI Pn " " "U"
+#define SLH(Pn) CSI "%d" " " "U", Pn
+/* #define SLH(Pn) CSI Pn " " "U" */
 
 /*
  * SLL - SET LINE LIMIT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -4639,12 +4718,13 @@
  * data stream.
  *
  */
-#define SLL(Pn) CSI Pn " " "V"
+#define SLL(Pn) CSI "%d" " " "V", Pn
+/* #define SLL(Pn) CSI Pn " " "V" */
 
 /*
  * SLS - SET LINE SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -4661,12 +4741,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SLS(Pn) CSI Pn " " "h"
+#define SLS(Pn) CSI "%d" " " "h", Pn
+/* #define SLS(Pn) CSI Pn " " "h" */
 
 /*
  * SM - SET MODE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -4703,12 +4784,13 @@
  * private parameters, see 5.4.1 and 7.4.
  *
  */
-#define SM(Ps) CSI Ps "h"
+#define SM(Ps) CSI "%s" "h", Ps
+/* #define SM(Ps) CSI Ps "h" */
 
 /*
  * SO - SHIFT-OUT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4727,7 +4809,7 @@
 /*
  * SOH - START OF HEADING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4741,7 +4823,7 @@
 /*
  * SOS - START OF STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4758,7 +4840,7 @@
 /*
  * SPA - START OF GUARDED AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -4783,7 +4865,7 @@
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1, Ps2
 
  * @ More Info:
@@ -4853,12 +4935,13 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define SPD(Ps1, Ps2) CSI Ps1 ";" Ps2  " " "S"
+#define SPD(Ps1, Ps2) CSI "%d" ";" "%d"  " " "S", Ps1, Ps2
+/* #define SPD(Ps1, Ps2) CSI Ps1 ";" Ps2  " " "S" */
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps1
 
  * @ More Info:
@@ -4928,12 +5011,13 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define _SPD(Ps1) CSI Ps1 ";" " " "S"
+#define _SPD(Ps1) CSI "%d" ";" " " "S", Ps1
+/* #define _SPD(Ps1) CSI Ps1 ";" " " "S" */
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps2
 
  * @ More Info:
@@ -5003,12 +5087,13 @@
  * active data position in the data component is updated accordingly.
  *
  */
-#define __SPD(Ps2) CSI ";" Ps2 " " "S"
+#define __SPD(Ps2) CSI ";" "%d" " " "S", Ps2
+/* #define __SPD(Ps2) CSI ";" Ps2 " " "S" */
 
 /*
  * SPD - SELECT PRESENTATION DIRECTIONS
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5083,7 +5168,7 @@
 /*
  * SPH - SET PAGE HOME
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5114,12 +5199,13 @@
  * the data stream.
  *
  */
-#define SPH(Pn) CSI Pn " " "i"
+#define SPH(Pn) CSI "%d" " " "i", Pn
+/* #define SPH(Pn) CSI Pn " " "i" */
 
 /*
  * SPI - SPACING INCREMENT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -5141,12 +5227,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SPI(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "G"
+#define SPI(Pn1, Pn2) CSI "%d" ";" "%d" " " "G", Pn1, Pn2
+/* #define SPI(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "G" */
 
 /*
  * SPL - SET PAGE LIMIT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5172,12 +5259,13 @@
  * data stream.
  *
  */
-#define SPL(Pn) CSI Pn " " "j"
+#define SPL(Pn) CSI "%d" " " "j", Pn
+/* #define SPL(Pn) CSI Pn " " "j" */
 
 /*
  * SPQR - SELECT PRINT QUALITY AND RAPIDITY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5193,12 +5281,13 @@
  * 2 -> draft print quality, highest available print speed
  *
  */
-#define SPQR(Ps) CSI Ps " " "X"
+#define SPQR(Ps) CSI "%d" " " "X", Ps
+/* #define SPQR(Ps) CSI Ps " " "X" */
 
 /*
  * SPQR - SELECT PRINT QUALITY AND RAPIDITY
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5219,7 +5308,7 @@
 /*
  * SR - SCROLL RIGHT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5233,12 +5322,13 @@
  * function.
  *
  */
-#define SR(Pn) CSI Pn " " "A"
+#define SR(Pn) CSI "%d" " " "A", Pn
+/* #define SR(Pn) CSI Pn " " "A" */
 
 /*
  * SR - SCROLL RIGHT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5257,7 +5347,7 @@
 /*
  * SRCS - SET REDUCED CHARACTER SEPARATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5276,12 +5366,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define SRCS(Pn) CSI Pn " " "f"
+#define SRCS(Pn) CSI "%d" " " "f", Pn
+/* #define SRCS(Pn) CSI Pn " " "f" */
 
 /*
  * SRCS - SET REDUCED CHARACTER SEPARATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5305,7 +5396,7 @@
 /*
  * SRS - START REVERSED STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5350,12 +5441,13 @@
  * should not be used within an SRS string.
  *
  */
-#define SRS(Ps) CSI Ps "["
+#define SRS(Ps) CSI "%d" "[", Ps
+/* #define SRS(Ps) CSI Ps "[" */
 
 /*
  * SRS - START REVERSED STRING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5405,7 +5497,7 @@
 /*
  * SSA - START OF SELECTED AREA
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5433,7 +5525,7 @@
 /*
  * SSU - SELECT SIZE UNIT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5455,12 +5547,13 @@
  * 8 -> DECIPOINT - 0,035 14 mm (35/996 mm)
  *
  */
-#define SSU(Ps) CSI Ps " " "I"
+#define SSU(Ps) CSI "%d" " " "I", Ps
+/* #define SSU(Ps) CSI Ps " " "I" */
 
 /*
  * SSU - SELECT SIZE UNIT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5487,7 +5580,7 @@
 /*
  * SSW - SET SPACE WIDTH
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5516,12 +5609,13 @@
  * proportional spacing.
  *
  */
-#define SSW(Pn) CSI Pn " " "["
+#define SSW(Pn) CSI "%d" " " "[", Pn
+/* #define SSW(Pn) CSI Pn " " "[" */
 
 /*
  * SS2 - SINGLE-SHIFT TWO
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5537,7 +5631,7 @@
 /*
  * SS3 - SINGLE-SHIFT THREE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5553,7 +5647,7 @@
 /*
  * ST - STRING TERMINATOR
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5568,7 +5662,7 @@
 /*
  * STAB - SELECTIVE TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5585,12 +5679,13 @@
  * 8613-6.
  *
  */
-#define STAB(Ps) CSI Ps " " "^"
+#define STAB(Ps) CSI "%d" " " "^", Ps
+/* #define STAB(Ps) CSI Ps " " "^" */
 
 /*
  * STS - SET TRANSMIT STATE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5612,7 +5707,7 @@
 /*
  * STX - START OF TEXT
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5627,7 +5722,7 @@
 /*
  * SU - SCROLL UP
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5641,12 +5736,13 @@
  * control function.
  *
  */
-#define SU(Pn) CSI Pn "S"
+#define SU(Pn) CSI "%d" "S", Pn
+/* #define SU(Pn) CSI Pn "S" */
 
 /*
  * SU - SCROLL UP
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5665,7 +5761,7 @@
 /*
  * SUB - SUBSTITUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5679,7 +5775,7 @@
 /*
  * SVS - SELECT LINE SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5702,12 +5798,13 @@
  * 9 -> 02 lines per 25,4 mm
  *
  */
-#define SVS(Ps) CSI Ps " " "L"
+#define SVS(Ps) CSI "%d" " " "L", Ps
+/* #define SVS(Ps) CSI Ps " " "L" */
 
 /*
  * SVS - SELECT LINE SPACING
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5735,7 +5832,7 @@
 /*
  * SYN - SYNCHRONOUS IDLE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5752,7 +5849,7 @@
 /*
  * TAC - TABULATION ALIGNED CENTRED
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5773,12 +5870,13 @@
  * from the tabulation stop.
  *
  */
-#define TAC(Pn) CSI Pn " " "b"
+#define TAC(Pn) CSI "%d" " " "b", Pn
+/* #define TAC(Pn) CSI Pn " " "b" */
 
 /*
  * TALE - TABULATION ALIGNED LEADING EDGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5798,12 +5896,13 @@
  * graphic character of the string is placed at the tabulation stop.
  *
  */
-#define TALE(Pn) CSI Pn " " "a"
+#define TALE(Pn) CSI "%d" " " "a", Pn
+/* #define TALE(Pn) CSI Pn " " "a" */
 
 /*
  * TATE - TABULATION ALIGNED TRAILING EDGE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5823,12 +5922,13 @@
  * graphic character of the string is placed at the tabulation stop.
  *
  */
-#define TATE(Pn) CSI Pn " " "`"
+#define TATE(Pn) CSI "%d" " " "`", Pn
+/* #define TATE(Pn) CSI Pn " " "`" */
 
 /*
  * TBC - TABULATION CLEAR
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Ps
 
  * @ More Info:
@@ -5847,12 +5947,13 @@
  * affected depends on the setting of the TABULATION STOP MODE (TSM)
  *
  */
-#define TBC(Ps) CSI Ps "g"
+#define TBC(Ps) CSI "%d" "g", Ps
+/* #define TBC(Ps) CSI Ps "g" */
 
 /*
  * TBC - TABULATION CLEAR
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -5876,7 +5977,7 @@
 /*
  * TCC - TABULATION CENTRED ON CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1, Pn2
 
  * @ More Info:
@@ -5905,12 +6006,13 @@
  * values is 32 to 127 and 160 to 255.
  *
  */
-#define TCC(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "c"
+#define TCC(Pn1, Pn2) CSI "%d" ";" "%d" " " "c", Pn1, Pn2
+/* #define TCC(Pn1, Pn2) CSI Pn1 ";" Pn2 " " "c" */
 
 /*
  * TCC - TABULATION CENTRED ON CHARACTER
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn1
 
  * @ More Info:
@@ -5939,12 +6041,13 @@
  * values is 32 to 127 and 160 to 255.
  *
  */
-#define _TCC(Pn1) CSI Pn1 ";" " " "c"
+#define _TCC(Pn1) CSI "%d" ";" " " "c", Pn1
+/* #define _TCC(Pn1) CSI Pn1 ";" " " "c" */
 
 /*
  * TSR - TABULATION STOP REMOVE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5957,12 +6060,13 @@
  * other tabulation stops. n equals the value of Pn.
  *
  */
-#define TSR(Pn) CSI Pn " " "d"
+#define TSR(Pn) CSI "%d" " " "d", Pn
+/* #define TSR(Pn) CSI Pn " " "d" */
 
 /*
  * TSS - THIN SPACE SPECIFICATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5978,12 +6082,13 @@
  * established by the parameter value of SELECT SIZE UNIT (SSU).
  *
  */
-#define TSS(Pn) CSI Pn " " "E"
+#define TSS(Pn) CSI "%d" " " "E", Pn
+/* #define TSS(Pn) CSI Pn " " "E" */
 
 /*
  * VPA - LINE POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -5992,12 +6097,13 @@
  * line progression, where n equals the value of Pn.
  *
  */
-#define VPA(Pn) CSI Pn "d"
+#define VPA(Pn) CSI "%d" "d", Pn
+/* #define VPA(Pn) CSI Pn "d" */
 
 /*
  * VPA - LINE POSITION ABSOLUTE
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -6011,7 +6117,7 @@
 /*
  * VPB - LINE POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -6020,12 +6126,13 @@
  * that of the line progression, where n equals the value of Pn.
  *
  */
-#define VPB(Pn) CSI Pn "k"
+#define VPB(Pn) CSI "%d" "k", Pn
+/* #define VPB(Pn) CSI Pn "k" */
 
 /*
  * VPB - LINE POSITION BACKWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -6039,7 +6146,7 @@
 /*
  * VPR - LINE POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * Pn
 
  * @ More Info:
@@ -6048,12 +6155,13 @@
  * the line progression, where n equals the value of Pn.
  *
  */
-#define VPR(Pn) CSI Pn "e"
+#define VPR(Pn) CSI "%d" "e", Pn
+/* #define VPR(Pn) CSI Pn "e" */
 
 /*
  * VPR - LINE POSITION FORWARD
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -6067,7 +6175,7 @@
 /*
  * VT - LINE TABULATION
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -6082,7 +6190,7 @@
 /*
  * VTS - LINE TABULATION SET
 
- * @ Parameters Required: 
+ * @ Parameters Required:
  * No Parameter Required
 
  * @ More Info:
@@ -6092,3 +6200,4 @@
  */
 #define VTS ESC "J"
 
+#endif
