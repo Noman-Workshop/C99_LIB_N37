@@ -29,8 +29,12 @@ message("# ============================== LIB ============================== #")
 message("Building Project Standard Libraries")
 # Console Library
 message("Building Console Libraries")
-add_library(lconsole src/Console/ctrlfunc.c)
+add_library(lconsole src/Console/ctrlfunc.c include/Console/ctrlFuncCodedCharSet.h)
 message("Library Built: lconsole|Console")
+# Utility Libraries
+message("Building Utility Library")
+add_library(lutil src/Util/integer.c)
+message("Library Built: lutil|Utility")
 
 # ----------------- Exercises ----------------- #
 # Temperature
