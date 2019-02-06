@@ -9,4 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef WINDOWS
+
+#include <windows.h>
+
+#endif
+
 #endif

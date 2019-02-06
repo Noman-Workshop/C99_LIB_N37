@@ -24,6 +24,12 @@ message("lib dir:       ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} ")
 message("archive dir:   ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY} ")
 
 # ============================== Build the Libraries  ============================== #
+
+message("# ========================= Macros ========================= #")
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+    add_definitions(-DWINDOWS)
+endif ()
+
 message("# ============================== LIB ============================== #")
 # ----------------- Project Std ----------------- #
 message("Building Project Standard Libraries")

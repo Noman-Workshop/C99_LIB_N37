@@ -9,6 +9,14 @@
 #include <stdInclude.h>
 #include "ctrlFuncCodedCharSet.h"
 
+#ifdef WINDOWS
+
+
+int EnableVTMode();
+
+
+#endif
+
 
 /* ============================= Cursor Control Functions ============================= */
 
