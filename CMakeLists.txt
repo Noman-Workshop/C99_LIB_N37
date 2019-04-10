@@ -39,7 +39,7 @@ add_library(lconsole src/Console/ctrlfunc.c include/Console/ctrlFuncCodedCharSet
 message("Library Built: lconsole|Console")
 # Utility Libraries
 message("Building Utility Library")
-add_library(lutil src/Util/integer.c src/Util/string.c)
+add_library(lutil src/Util/integer.c src/Util/string.c src/Util/mathematics.c)
 message("Library Built: lutil|Utility")
 
 # ----------------- Exercises ----------------- #
@@ -73,6 +73,16 @@ message("EXEcutable Built: T_Console")
 target_link_libraries(T_Console lconsole)
 
 # String Testing
-add_executable(T_String Test/String/StrngTest.c)
+add_executable(T_String Test/String/StringTest.c)
 message("EXEcutable Built: T_String")
 target_link_libraries(T_String lutil)
+
+# Integer Testing
+add_executable(T_Integer Test/Integer/IntegerTest.c)
+message("EXEcutable Built: T_Integer")
+target_link_libraries(T_Integer lutil)
+
+# Math Testing
+add_executable(T_Math Test/Math/MathTest.c)
+message("EXEcutable Built: T_Math")
+target_link_libraries(T_Math lutil)

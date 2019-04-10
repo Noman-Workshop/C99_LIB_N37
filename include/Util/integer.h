@@ -8,8 +8,9 @@
 
 #include <stdInclude.h>
 
+#define INTEGER int
 
-char *intToStr(int num);
-
+char *intToStr(INTEGER num);
+INTEGER sumDigits(INTEGER num);
 
 #endif

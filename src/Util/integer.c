@@ -6,10 +6,17 @@
 
 #include <Util/integer.h>
 
-char *intToStr(int num) {
-	int len = (snprintf(NULL, 0, "%d", num) + 1);
+char *intToStr(INTEGER num) {
+	INTEGER len = (snprintf(NULL, 0, "%d", num) + 1);
 	char *strNum = (char *) malloc((size_t) len);
 	sprintf(strNum, "%d", num);
-
+	
 	return strNum;
 }
+
+INTEGER sumDigits(INTEGER num) {
+	INTEGER sum;
+	for (sum = 0; num > 0; sum += num % 10, num /= 10);
+	return sum;
+}
+
