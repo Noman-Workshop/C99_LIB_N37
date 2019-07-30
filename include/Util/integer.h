@@ -9,8 +9,16 @@
 #include <stdInclude.h>
 
 #define INTEGER int
+typedef enum {
+	false, true
+} Boolean;
 
 char *intToStr(INTEGER num);
+
 INTEGER sumDigits(INTEGER num);
+
+Boolean isPrime(unsigned INTEGER num);
+
+Boolean isPerfectSquare(unsigned INTEGER num);
 
 #endif

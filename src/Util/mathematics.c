@@ -25,6 +25,20 @@ INTEGER gcd(INTEGER a, INTEGER b) {
 	
 }
 
+INTEGER gcdRecursive(INTEGER a, INTEGER b) {
+	
+	if (!((a = abs(a)) && (b = abs(b)))) {
+		return abs(a - b);
+	}
+	
+	return gcd(b % a, a);
+}
+
 INTEGER lcm(INTEGER a, INTEGER b) {
 	return abs(a * b) / gcd(a, b);
 }
+
+INTEGER lcmRecursive(INTEGER a, INTEGER b) {
+	return abs(a * b) / gcdRecursive(a, b);
+}
+

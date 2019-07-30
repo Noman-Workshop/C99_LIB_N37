@@ -8,7 +8,6 @@
 
 #include <stdInclude.h>
 
-
 char *toggleCase(const char *str);
 
 #endif

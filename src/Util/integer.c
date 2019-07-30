@@ -20,3 +20,47 @@ INTEGER sumDigits(INTEGER num) {
 	return sum;
 }
 
+Boolean isPrime(unsigned INTEGER num) {
+	INTEGER i;
+	
+	if (num <= 3) {
+		return num > 1;
+	} else if (num % 2 == 0 || num % 3 == 0) {
+		return false;
+	}
+	
+	for (i = 5; i * i <= num; i += 6) {
+		if (num % i == 0 || num % (i + 2) == 0) {
+			return false;
+		}
+	}
+	
+	return true;
+	
+}
+
+Boolean isPerfectSquare(unsigned INTEGER num) {
+	int l, r, m;
+	
+	if (num <= 1) {
+		return true;
+	}
+	
+	for (r = 2; r * r < num; r *= 2);
+	if (r * r == num) {
+		return true;
+	}
+	
+	for (l = r / 2, m = (l + r) / 2; r - l != 1; m = (l + r) / 2) {
+		if (num == m * m) {
+			return true;
+		} else if (num > m * m) {
+			l = m;
+		} else {
+			r = m;
+		}
+		
+	}
+	
+	return false;
+}

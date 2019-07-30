@@ -7,13 +7,17 @@
 #define UTIL_MATHEMATICS_H
 
 #include <stdInclude.h>
-#include <Util/integer.h>
+#include "integer.h"
 
 INTEGER abs(INTEGER num);
 
 INTEGER gcd(INTEGER a, INTEGER b);
 
+INTEGER gcdRecursive(INTEGER a, INTEGER b);
+
 INTEGER lcm(INTEGER a, INTEGER b);
+
+INTEGER lcmRecursive(INTEGER a, INTEGER b);
 
 
 #endif
