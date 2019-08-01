@@ -10,27 +10,27 @@
 
 typedef struct ConsoleBuffer {
 	
-	/* Where Buffer should be rendered in the screen */
+	// Where Buffer should be rendered in the screen
 	unsigned short int *screenSize;
 	unsigned short int *position;
 	unsigned int cursorPos;
 	
-	/* The Buffer Array and the no. of rows and columns in the buffer array*/
+	// The Buffer Array and the no. of rows and columns in the buffer array
 	unsigned int *bufferSize;
-	char *buffer;
+	char **buffer;
 	unsigned char bufferOverflow;
 	
-	/* Whether Scroll is Enabled or not in the Buffer container*/
+	// Whether Scroll is Enabled or not in the Buffer container
 	unsigned char scrollEnabled;
 	
-	/* The buffer in which this buffer is contained */
+	// The buffer in which this buffer is contained
 	struct ConsoleBuffer *containerBuffer;
 	
-	/* The other buffers that this contains */
+	// The other buffers that this contains
 	unsigned short int noOfContainedBuffers;
 	struct ConsoleBuffer **containedBuffers;
 	
-	/* Whether this buffer is on the top of the hierarchy */
+	// Whether this buffer is on the top of the hierarchy
 	unsigned char isMain;
 	
 	
@@ -71,7 +71,7 @@ CBuffer *cbuffer_init(unsigned short int screenSizeX, unsigned short int screenS
 
 extern char *_tempCBufferPntr;
 
-/* fixme: find a better name for the following variable */
+// fixme: find a better name for the following variable
 extern unsigned int _tempStringLen;
 
 /**
@@ -88,9 +88,10 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
  *	@param cBuffer The buffer to write onto
  *	@param args The formatted arguments
  */
-#define cbuffer_sprintf(cBuffer, args) _cbuffer_manageHandle(cBuffer, snprintf args); snprintf args; _cbuffer_resetHandle(cBuffer)
+#define cbuffer_write(cBuffer, args) _cbuffer_manageHandle(cBuffer, snprintf args); snprintf args; _cbuffer_resetHandle(cBuffer)
 
 /* ============================== Printing/Rendering Buffer ========================= */
+
 
 /* ============================== Utility Functions ========================= */
 /**
