@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 project(Official C)
 
 # ============================== Build Options ============================== #
-set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall")
 
 # ===================== Directories to Include ===================== #
