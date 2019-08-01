@@ -37,6 +37,12 @@ message("Building Project Standard Libraries")
 message("Building Console Libraries")
 add_library(lconsole src/Console/ctrlfunc.c include/Console/ctrlFuncCodedCharSet.h)
 message("Library Built: lconsole|Console")
+
+# Console Buffer Library
+message("Building Console Buffer Library")
+add_library(lconsoleBuffer src/Console/Buffer.c include/Console/Buffer.h)
+message("Library Built: lconsoleBuffer|Console Buffer")
+
 # Utility Libraries
 message("Building Utility Library")
 add_library(lutil src/Util/integer.c src/Util/string.c src/Util/mathematics.c)
@@ -71,6 +77,11 @@ add_executable(T_Console
         Test/Console/CursorTest.c)
 message("EXEcutable Built: T_Console")
 target_link_libraries(T_Console lconsole)
+
+# Console Buffer Testing
+add_executable(T_ConsoleBuffer Test/Console/CBufferTest.c)
+message("EXEcutable Built: T_Consolebuffer")
+target_link_libraries(T_ConsoleBuffer lconsoleBuffer)
 
 # String Testing
 add_executable(T_String Test/String/StringTest.c)
