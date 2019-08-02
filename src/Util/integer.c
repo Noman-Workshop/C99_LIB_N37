@@ -20,7 +20,7 @@ INTEGER sumDigits(INTEGER num) {
 	return sum;
 }
 
-Boolean isPrime(unsigned INTEGER num) {
+bool isPrime(unsigned INTEGER num) {
 	INTEGER i;
 	
 	if (num <= 3) {
@@ -39,7 +39,7 @@ Boolean isPrime(unsigned INTEGER num) {
 	
 }
 
-Boolean isPerfectSquare(unsigned INTEGER num) {
+bool isPerfectSquare(unsigned INTEGER num) {
 	int l, r, m;
 	
 	if (num <= 1) {
