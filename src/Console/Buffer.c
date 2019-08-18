@@ -9,9 +9,8 @@
 
 CBuffer *cbuffer_init(unsigned short int screenSizeX,
                       unsigned short int screenSizeY, unsigned short int posX,
-                      unsigned short int posY, unsigned int bufferRows,
-                      unsigned int bufferCols, unsigned char scrollEnabled,
-                      unsigned char isMain, CBuffer *containerBuffer,
+                      unsigned short int posY, size_t bufferRows,
+                      size_t bufferCols, unsigned char scrollEnabled,
                       unsigned short int noOfContainedBuffers,
                       CBuffer **containedBuffers) {
 	
@@ -37,20 +36,13 @@ CBuffer *cbuffer_init(unsigned short int screenSizeX,
 		cBuffer->buffer[bufferRows] = cBuffer->buffer[0] + bufferRows * bufferCols;
 	}
 	
-	cBuffer->containerBuffer = containerBuffer;
 	cBuffer->noOfContainedBuffers = noOfContainedBuffers;
 	cBuffer->containedBuffers = containedBuffers;
 	
 	cBuffer->scrollEnabled = (scrollEnabled == 'N' || scrollEnabled == 0) ? 0 : 1;
-	cBuffer->isMain = (isMain == 'N' || isMain == 0) ? 0 : 1;
 	
-	if (cBuffer->isMain) {
-		cBuffer->position[0] = 0;
-		cBuffer->position[1] = 0;
-	} else {
-		cBuffer->position[0] = posX;
-		cBuffer->position[1] = posY;
-	}
+	cBuffer->position[0] = posX;
+	cBuffer->position[1] = posY;
 	
 	return cBuffer;
 }
@@ -59,7 +51,7 @@ CBuffer *cbuffer_init(unsigned short int screenSizeX,
  */
 
 char *_tempCBufferPntr = NULL;
-unsigned int _tempStringLen = 0;
+size_t _tempStringLen = 0;
 
 /**
  * Handles Buffer 	Overwriting and Detects Buffer Overflow
@@ -69,13 +61,13 @@ unsigned int _tempStringLen = 0;
  * @return			Total Number of Characters it will write into
  * cBuffer
  */
-unsigned int _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
-	/*	unsigned int i; */
+size_t _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
+	/*	size_t i; */
 	
-	unsigned int len = cbuffer_maxLen(cBuffer);
-	unsigned int cursorPos = cBuffer->cursorPos;
-	unsigned int spaceAvailable = len - cursorPos;
-	unsigned int shiftLeft = strLength - spaceAvailable;
+	size_t len = cbuffer_maxLen(cBuffer);
+	size_t cursorPos = cBuffer->cursorPos;
+	size_t spaceAvailable = len - cursorPos;
+	size_t shiftLeft = strLength - spaceAvailable;
 	_tempStringLen = len;
 	
 	if (spaceAvailable >= strLength) {
@@ -113,7 +105,7 @@ unsigned int _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
  */
 void _cbuffer_resetHandle(CBuffer *cBuffer) {
 	if (cBuffer->bufferOverflow) {
-		unsigned int len = cbuffer_maxLen(cBuffer);
+		size_t len = cbuffer_maxLen(cBuffer);
 		strcpy(cBuffer->buffer[0], _tempCBufferPntr + (_tempStringLen - len + 1));
 		cBuffer->cursorPos = len;
 		free(_tempCBufferPntr);
@@ -122,8 +114,41 @@ void _cbuffer_resetHandle(CBuffer *cBuffer) {
 	_tempStringLen = 0;
 }
 
+/* ============================== Rendering/Printing Buffer ========================= */
+
+void _cbuffer_render(CBuffer *cBuffer) {
+	if (cBuffer->noOfContainedBuffers) {
+		// todo: render the container buffers here
+	}
+}
+
+void cbuffer_show(CBuffer *cBuffer) {
+	_cbuffer_render(cBuffer);
+	size_t rows = (cBuffer->screenSize[0] < cBuffer->bufferSize[0]) ?
+	              cBuffer->screenSize[0] : cBuffer->bufferSize[0];
+	size_t cols = (cBuffer->screenSize[1] < cBuffer->bufferSize[1]) ?
+	              cBuffer->screenSize[1] : cBuffer->bufferSize[1];
+	for (size_t i = 0; i < rows; i++) {
+		for (size_t j = 0; j < cols; j++) {
+			printf("%c", cBuffer->buffer[i][j]);
+		}
+		printf("\n");
+	}
+	
+	_cbuffer_liveRender(cBuffer);
+}
+
+
+void _cbuffer_liveRender(CBuffer *cBuffer) {
+	char *liveRenderCommand = calloc(100, sizeof(char));
+	printf(">>> ");
+	scanf("%[^\n]%*c", liveRenderCommand);
+	
+	
+}
+
 /* ============================== Buffer: Utility ========================= */
 
-unsigned int cbuffer_maxLen(CBuffer *cBuffer) {
+size_t cbuffer_maxLen(CBuffer *cBuffer) {
 	return cBuffer->bufferSize[0] * cBuffer->bufferSize[1];
 }

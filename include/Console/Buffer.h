@@ -7,32 +7,26 @@
 #define CONSOLE_BUFFER_H
 
 #include <stdInclude.h>
+#include <Util/string.h>
 
 typedef struct ConsoleBuffer {
 	
 	// Where Buffer should be rendered in the screen
 	unsigned short int *screenSize;
 	unsigned short int *position;
-	unsigned int cursorPos;
+	size_t cursorPos;
 	
 	// The Buffer Array and the no. of rows and columns in the buffer array
-	unsigned int *bufferSize;
+	size_t *bufferSize;
 	char **buffer;
 	unsigned char bufferOverflow;
 	
 	// Whether Scroll is Enabled or not in the Buffer container
 	unsigned char scrollEnabled;
 	
-	// The buffer in which this buffer is contained
-	struct ConsoleBuffer *containerBuffer;
-	
 	// The other buffers that this contains
 	unsigned short int noOfContainedBuffers;
 	struct ConsoleBuffer **containedBuffers;
-	
-	// Whether this buffer is on the top of the hierarchy
-	unsigned char isMain;
-	
 	
 } CBuffer;
 
@@ -52,8 +46,6 @@ typedef struct ConsoleBuffer {
  * 								Number of Rows and Columns determines the size of the Buffer
  * @param scrollEnabled			If Enabled, the buffer can be viewed entirely with scroll,
  * 								ignoring its screen size with scroll command
- * @param isMain				Whether this buffer is the Main Buffer
- * @param containerBuffer		?
  * @param noOfContainedBuffers	Total number of buffers this contains,
  * 								The number changes automatically as you add more buffers
  * @param containedBuffers		?
@@ -61,9 +53,8 @@ typedef struct ConsoleBuffer {
  */
 CBuffer *cbuffer_init(unsigned short int screenSizeX, unsigned short int screenSizeY,
                       unsigned short int posX, unsigned short int posY,
-                      unsigned int bufferRows, unsigned int bufferCols,
-                      unsigned char scrollEnabled, unsigned char isMain,
-                      CBuffer *containerBuffer,
+                      size_t bufferRows, size_t bufferCols,
+                      unsigned char scrollEnabled,
                       unsigned short int noOfContainedBuffers, CBuffer **containedBuffers);
 
 
@@ -72,14 +63,14 @@ CBuffer *cbuffer_init(unsigned short int screenSizeX, unsigned short int screenS
 extern char *_tempCBufferPntr;
 
 // fixme: find a better name for the following variable
-extern unsigned int _tempStringLen;
+extern size_t _tempStringLen;
 
 /**
  *	Provides a Handle to Check Length, Manipulate Buffer and Write new data
  */
 #define cbuffer_handle _tempCBufferPntr, _tempStringLen
 
-unsigned int _cbuffer_manageHandle(CBuffer *cBuffer, int strLength);
+size_t _cbuffer_manageHandle(CBuffer *cBuffer, int strLength);
 
 void _cbuffer_resetHandle(CBuffer *cBuffer);
 
@@ -92,6 +83,9 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
 
 /* ============================== Printing/Rendering Buffer ========================= */
 
+void _cbuffer_render(CBuffer *cBuffer);
+void cbuffer_show(CBuffer *cBuffer);
+void _cbuffer_liveRender(CBuffer *cBuffer);
 
 /* ============================== Utility Functions ========================= */
 /**
@@ -99,6 +93,6 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
  * @param cBuffer 	The console buffer to operate on
  * @return			The max number of characters the console Buffer can hold with null '\0'
  */
-unsigned int cbuffer_maxLen(CBuffer *cBuffer);
+size_t cbuffer_maxLen(CBuffer *cBuffer);
 
 #endif
