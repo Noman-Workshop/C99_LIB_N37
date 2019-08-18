@@ -8,7 +8,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall")
 # ===================== Directories to Include ===================== #
 # ----------------- Library ----------------- #
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
-
 # ----------------- Exercise ----------------- #
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Exercise/include)
 
@@ -27,7 +26,7 @@ message("archive dir:   ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY} ")
 
 message("# ========================= Macros ========================= #")
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
-    add_definitions(-DWINDOWS)
+	add_definitions(-DWINDOWS)
 endif ()
 
 message("# ============================== LIB ============================== #")
@@ -45,14 +44,19 @@ message("Library Built: lconsoleBuffer|Console Buffer")
 
 # Utility Libraries
 message("Building Utility Library")
-add_library(lutil src/Util/integer.c src/Util/string.c src/Util/mathematics.c)
+add_library(lutil
+            src/Util/integer.c
+            src/Util/string.c
+            src/Util/mathematics.c
+            src/Util/linkedList.c
+            )
 message("Library Built: lutil|Utility")
 
 # ----------------- Exercises ----------------- #
 # Temperature
 message("Building Exercise Libraries")
-add_library(ltempr SHARED
-        Exercise/src/Temperature/celsiusNFahrenheit.c)
+add_library(ltempr
+            Exercise/src/Temperature/celsiusNFahrenheit.c)
 message("Library Built: ltempr|Temperature")
 
 # ============================== Building Executables ============================== #
@@ -68,13 +72,13 @@ target_link_libraries(Main)
 # Temperature Conversion
 message("Building Test Executables")
 add_executable(T_Tempr
-        Test/Temperature/TempConv.c)
+               Test/Temperature/TempConv.c)
 message("EXEcutable Built: T_Tempr")
 target_link_libraries(T_Tempr ltempr)
 
 # Console Testing
 add_executable(T_Console
-        Test/Console/CursorTest.c)
+               Test/Console/CursorTest.c)
 message("EXEcutable Built: T_Console")
 target_link_libraries(T_Console lconsole)
 
@@ -97,3 +101,8 @@ target_link_libraries(T_Integer lutil)
 add_executable(T_Math Test/Math/MathTest.c)
 message("EXEcutable Built: T_Math")
 target_link_libraries(T_Math lutil)
+
+# Linked List Testing
+add_executable(T_LinkedList Test/LinkedList/LList.c)
+message("EXEcutable Built: T_LinkedList")
+target_link_libraries(T_LinkedList lutil)
