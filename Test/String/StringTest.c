@@ -16,7 +16,7 @@ int main() {
 		printf("%s\n", tokens[i]);
 	}
 
-//	char *s = trim("aaaa   5555 55 55  aaaa", "aa");
+//	char *s = str_trim("aaaa   5555 55 55  aaaa", "aa");
 //	printf("\"%s\", %llu", s, strlen(s));
 
 //	free((void *) hello);
