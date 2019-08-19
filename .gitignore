@@ -10,6 +10,7 @@ Release/
 
 include/Console/ExtractCtrlFunc/pythonVenv/
 
-/QuickExp
+/.vscode/
 
-.vscode/
+officialC.code-workspace
+
