@@ -105,7 +105,7 @@ void cbuffer_renderCommand(CBuffer *cBuffer, const char *command);
  * 						ScrollArgs: 					<br>
  * 						&#9;["2", "scroll", "up", "5"] 	<br>
  */
-void _cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs);
+void _cbuffer_scroll(CBuffer *cBuffer, const char **scrollArgs);
 
 
 /* ============================== Utility Functions ========================= */

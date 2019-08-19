@@ -147,6 +147,9 @@ void cbuffer_show(CBuffer *cBuffer) {
 	printf(">>> ");
 	scanf("%[^\n]%*c", liveRenderCommand);
 	cbuffer_renderCommand(cBuffer, liveRenderCommand);
+	if (strncmp(liveRenderCommand, "quit", 4) != 0) {
+		cbuffer_show(cBuffer);
+	}
 }
 
 
@@ -154,11 +157,13 @@ void cbuffer_renderCommand(CBuffer *cBuffer, const char *command) {
 	/* toKnow: All the live render operations are done in the active buffer
 	 * toKnow: Active Buffer can be changed by focus command */
 	CBuffer *activeCBuffer = cBuffer;
+	const char **commandTokens = str_split(command, " ");
 	
+	// todo: implement string to function pointer dictionary to render commands
 }
 
 /* ============================== Live Render Commands ========================= */
-void _cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs) {
+void _cbuffer_scroll(CBuffer *cBuffer, const char **scrollArgs) {
 	short int noOfArgs;
 	char scrollDir;
 	long int scrollCount = 1;
