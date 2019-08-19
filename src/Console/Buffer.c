@@ -143,26 +143,22 @@ void cbuffer_show(CBuffer *cBuffer) {
 		printf("\n");
 	}
 	
-	_cbuffer_liveRender(cBuffer);
-}
-
-
-void _cbuffer_liveRender(CBuffer *cBuffer) {
 	char *liveRenderCommand = calloc(100, sizeof(char));
 	printf(">>> ");
 	scanf("%[^\n]%*c", liveRenderCommand);
+	cbuffer_renderCommand(cBuffer, liveRenderCommand);
+}
+
+
+void cbuffer_renderCommand(CBuffer *cBuffer, const char *command) {
 	/* toKnow: All the live render operations are done in the active buffer
 	 * toKnow: Active Buffer can be changed by focus command */
 	CBuffer *activeCBuffer = cBuffer;
 	
-	// todo: enable command calling
-	
-	char **commandTokens = str_split(liveRenderCommand, " ");
-	
 }
 
 /* ============================== Live Render Commands ========================= */
-void cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs, ...) {
+void _cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs) {
 	short int noOfArgs;
 	char scrollDir;
 	long int scrollCount = 1;
@@ -172,53 +168,44 @@ void cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs, ...) {
 		// p for pageup and q for pagedown
 		if (scrollDir == 'p' && scrollArgs[2][2] == 'd') scrollDir = 'q';
 		if (noOfArgs > 2) scrollCount = strtol(scrollArgs[3], NULL, 10);
-	} else {
-		va_list args;
-		va_start(args, scrollArgs);
-		noOfArgs = (short int) va_arg(args, int);
-		char *scrollDirStr = va_arg(args, char*);
-		scrollDir = scrollDirStr[0];
-		// p for pageup and q for pagedown
-		if (scrollDir == 'p' && scrollDirStr[2] == 'd') scrollDir = 'q';
-		if (noOfArgs > 1) scrollCount = va_arg(args, size_t);
-	}
-	
-	switch (scrollDir) {
-		case 'u':
-			cBuffer->scroll[0] += -1 * scrollCount;
-			break;
 		
-		case 'd':
-			cBuffer->scroll[0] += 1 * scrollCount;
-			break;
-		
-		case 'l':
-			cBuffer->scroll[1] += -1 * scrollCount;
-			break;
-		
-		case 'r':
-			cBuffer->scroll[1] += 1 * scrollCount;
-			break;
-		
-		case 'h':
-			cBuffer->scroll[0] = cBuffer->scroll[1] = 0;
-			break;
-		
-		case 'e':
-			cBuffer->scroll[0] = cBuffer->bufferSize[0];
-			cBuffer->scroll[1] = cBuffer->bufferSize[1];
-			break;
-		
-		case 'p':
-		    cBuffer->scroll[0] += cBuffer->screenSize[0];
-		    break;
-		
-		case 'q':
-			cBuffer->scroll[0] -= cBuffer->screenSize[0];
-			break;
-		
-		default:
-			break;
+		switch (scrollDir) {
+			case 'u':
+				cBuffer->scroll[0] += -1 * scrollCount;
+				break;
+			
+			case 'd':
+				cBuffer->scroll[0] += 1 * scrollCount;
+				break;
+			
+			case 'l':
+				cBuffer->scroll[1] += -1 * scrollCount;
+				break;
+			
+			case 'r':
+				cBuffer->scroll[1] += 1 * scrollCount;
+				break;
+			
+			case 'h':
+				cBuffer->scroll[0] = cBuffer->scroll[1] = 0;
+				break;
+			
+			case 'e':
+				cBuffer->scroll[0] = cBuffer->bufferSize[0];
+				cBuffer->scroll[1] = cBuffer->bufferSize[1];
+				break;
+			
+			case 'p':
+				cBuffer->scroll[0] += cBuffer->screenSize[0];
+				break;
+			
+			case 'q':
+				cBuffer->scroll[0] -= cBuffer->screenSize[0];
+				break;
+			
+			default:
+				break;
+		}
 	}
 	// scroll can't be less than [0,0]
 	if (cBuffer->scroll[0] < 0) cBuffer->scroll[0] = 0;

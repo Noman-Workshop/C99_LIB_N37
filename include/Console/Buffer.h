@@ -93,7 +93,7 @@ void _cbuffer_render(CBuffer *cBuffer);
 
 void cbuffer_show(CBuffer *cBuffer);
 
-void _cbuffer_liveRender(CBuffer *cBuffer);
+void cbuffer_renderCommand(CBuffer *cBuffer, const char *command);
 
 /* ============================== Live Render Commands ========================= */
 /**
@@ -101,16 +101,12 @@ void _cbuffer_liveRender(CBuffer *cBuffer);
  * @param cBuffer 		The Console Buffer to be scrolled
  * @param scrollArgs 	Automated Scroll Arguments passed from Live Command Renderer	<br>
  * 						[no_of_args, scroll_command, scroll_direction, scroll_count]
- * @param ...			API user friendly scroll args									<br>
- * 						!!! The scrollArgs variable must be set to NULL !!!				<br>
- * 						[no_of_args, scroll_dir, scroll_count]
  * @example
  * 						ScrollArgs: 					<br>
  * 						&#9;["2", "scroll", "up", "5"] 	<br>
- * 						Varargs API: 					<br>
- * 						&#9;cBuffer_scroll(cBuffer, NULL, 2, "up", 5)
  */
-void cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs, ...);
+void _cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs);
+
 
 /* ============================== Utility Functions ========================= */
 /**
