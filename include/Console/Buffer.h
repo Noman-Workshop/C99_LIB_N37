@@ -11,6 +11,9 @@
 
 typedef struct ConsoleBuffer {
 	
+	// Name of the Buffer
+	char *name;
+	
 	// Where Buffer should be rendered in the screen
 	unsigned short int *screenSize;
 	unsigned short int *position;
@@ -23,6 +26,7 @@ typedef struct ConsoleBuffer {
 	
 	// Whether Scroll is Enabled or not in the Buffer container
 	unsigned char scrollEnabled;
+	size_t *scroll;
 	
 	// The other buffers that this contains
 	unsigned short int noOfContainedBuffers;
@@ -34,6 +38,7 @@ typedef struct ConsoleBuffer {
 
 /**
  * Constructs a Console Buffer with supplied parameters
+ * @param name					Name of the Buffer
  * @param screenSizeX 			Length of the display size of the buffer
  * @param screenSizeY 			Breadth of the display size of the buffer
  * @param posX					The X position of buffer relative to container
@@ -51,7 +56,8 @@ typedef struct ConsoleBuffer {
  * @param containedBuffers		?
  * @return 						a Console Buffer Instance
  */
-CBuffer *cbuffer_init(unsigned short int screenSizeX, unsigned short int screenSizeY,
+CBuffer *cbuffer_init(const char *name,
+                      unsigned short int screenSizeX, unsigned short int screenSizeY,
                       unsigned short int posX, unsigned short int posY,
                       size_t bufferRows, size_t bufferCols,
                       unsigned char scrollEnabled,
@@ -84,8 +90,27 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
 /* ============================== Printing/Rendering Buffer ========================= */
 
 void _cbuffer_render(CBuffer *cBuffer);
+
 void cbuffer_show(CBuffer *cBuffer);
+
 void _cbuffer_liveRender(CBuffer *cBuffer);
+
+/* ============================== Live Render Commands ========================= */
+/**
+ * Scrolls UP, DOWN, LEFT, RIGHT, HOME, END along with PAGEUP and PAGEDOWN
+ * @param cBuffer 		The Console Buffer to be scrolled
+ * @param scrollArgs 	Automated Scroll Arguments passed from Live Command Renderer	<br>
+ * 						[no_of_args, scroll_command, scroll_direction, scroll_count]
+ * @param ...			API user friendly scroll args									<br>
+ * 						!!! The scrollArgs variable must be set to NULL !!!				<br>
+ * 						[no_of_args, scroll_dir, scroll_count]
+ * @example
+ * 						ScrollArgs: 					<br>
+ * 						&#9;["2", "scroll", "up", "5"] 	<br>
+ * 						Varargs API: 					<br>
+ * 						&#9;cBuffer_scroll(cBuffer, NULL, 2, "up", 5)
+ */
+void cBuffer_scroll(CBuffer *cBuffer, char **scrollArgs, ...);
 
 /* ============================== Utility Functions ========================= */
 /**
