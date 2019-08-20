@@ -26,7 +26,7 @@ char *str_toggleCase(const char *str) {
 }
 
 char *str_trim(const char *str, const char *delimiter) {
-	size_t len = strlen(string);
+	size_t len = strlen(str);
 	int delimiterLen = (int) strlen(delimiter);
 	
 	// Searching at the beginning of the word
@@ -35,7 +35,7 @@ char *str_trim(const char *str, const char *delimiter) {
 	int j;
 	for (si = 0; si < len; si++) {
 		for (j = 0; j < delimiterLen; j++, si++) {
-			if (string[si] != delimiter[j]) {
+			if (str[si] != delimiter[j]) {
 				goto endOfWord;
 			}
 		}
@@ -50,7 +50,7 @@ char *str_trim(const char *str, const char *delimiter) {
 	size_t ei;
 	for (ei = len - 1; ei > si; ei--) {
 		for (j = delimiterLen - 1; j >= 0; j--, ei--) {
-			if (string[ei] != delimiter[j]) {
+			if (str[ei] != delimiter[j]) {
 				goto endSearch;
 			}
 		}
@@ -62,7 +62,7 @@ char *str_trim(const char *str, const char *delimiter) {
 	endSearch:;
 	
 	char *trimmedStr = calloc(len - start + 1, sizeof(char));
-	snprintf(trimmedStr, len - start, "%s", string + start);
+	snprintf(trimmedStr, len - start, "%s", str + start);
 	return trimmedStr;
 }
 
@@ -118,7 +118,7 @@ char **str_split(const char *str, const char *delimiter, ...) {
 				delimiterLen = 0;
 			}
 			
-			if (splitStrLen - delimiterLen != 0){	
+			if (splitStrLen - delimiterLen != 0) {
 				splitStrArr[count] = calloc(splitStrLen - delimiterLen + 1, sizeof(char));
 				snprintf(splitStrArr[count], splitStrLen - delimiterLen, "%s", str + i - splitStrLen);
 				count++;

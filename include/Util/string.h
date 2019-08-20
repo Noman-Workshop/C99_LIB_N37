@@ -21,7 +21,7 @@ char *str_toggleCase(const char *str);
  * @param delimiter		substring to cut from the ends of string
  * @return				trimmed string
  */
-char *str_trim(const char *string, const char *delimiter);
+char *str_trim(const char *str, const char *delimiter);
 
 /**
  * Splits a String into desired no of tokens using Delimiter
