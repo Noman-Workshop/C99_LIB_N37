@@ -37,11 +37,6 @@ message("Building Console Libraries")
 add_library(lconsole src/Console/ctrlfunc.c include/Console/ctrlFuncCodedCharSet.h)
 message("Library Built: lconsole|Console")
 
-# Console Buffer Library
-message("Building Console Buffer Library")
-add_library(lconsoleBuffer src/Console/Buffer.c include/Console/Buffer.h)
-message("Library Built: lconsoleBuffer|Console Buffer")
-
 # Utility Libraries
 message("Building Utility Library")
 add_library(lutil
@@ -51,6 +46,12 @@ add_library(lutil
             src/Util/linkedList.c
             )
 message("Library Built: lutil|Utility")
+
+# Console Buffer Library
+message("Building Console Buffer Library")
+add_library(lconsoleBuffer src/Console/Buffer.c include/Console/Buffer.h)
+target_link_libraries(lconsoleBuffer lutil)
+message("Library Built: lconsoleBuffer|Console Buffer")
 
 # ----------------- Exercises ----------------- #
 # Temperature
