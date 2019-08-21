@@ -94,12 +94,13 @@ char **str_split(const char *str, const char *delimiter, ...) {
 		}
 	}
 	
-	// implementing max split count
+	// todo: implementing max split count
+	/*
 	va_list args;
 	va_start(args, delimiter);
 	size_t maxSplitCount = strtoul(va_arg(args, char *), NULL, 10);
 	if (maxSplitCount != 0 && maxSplitCount < splitCount) splitCount = maxSplitCount;
-	
+//	*/
 	char **splitStrArr = calloc(splitCount + 1, sizeof(char *));
 	splitStrArr[0] = intToStr(splitCount);
 	
