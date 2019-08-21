@@ -10,8 +10,10 @@ int main() {
 //	const char *hello = str_toggleCase("Hello, Hi I am No One, This is Me");
 //	printf("Toggled: %s\n", hello);
 //	char **tokens = str_split(hello, " ");
-
-	char **tokens = str_split("bbba55bbbbbbbbbbbaa55bbbbbbbb", "bbb");
+	
+	const char *word = "bbba55bbbbbbbbbbbaa55bbbbbbbb";
+	char **tokens = str_split(word, "bbb");
+	printf("word: %s", word);
 	for (int i = 0; i <= **tokens - '0'; i++) {
 		printf("%s\n", tokens[i]);
 	}
