@@ -56,10 +56,10 @@
 
  * @ More Info:
  * APC is used as the opening delimiter of a control string for application
- * program use. The command string following may consist of bit combinations
+ * program use. The action string following may consist of bit combinations
  * in the range 00/08 to 00/13 and 02/00 to 07/14. The control string is
  * closed by the terminating delimiter STRING TERMINATOR (ST). The interpretation
- * of the command string depends on the relevant application program.
+ * of the action string depends on the relevant application program.
  *
  */
 #define APC ESC "_"
@@ -946,10 +946,10 @@
  * to 07/14. The control string is closed by the terminating
  * delimiter STRING TERMINATOR (ST).
 
- * The command string represents either one or more commands for
+ * The action string represents either one or more commands for
  * the receiving device, or one or more status reports from
  * the sending device. The purpose and the format of the
- * command string are specified by the most recent occurrence
+ * action string are specified by the most recent occurrence
  * of IDENTIFY DEVICE CONTROL STRING (IDCS), if any, or
  * depend on the sending and/or the receiving device.
  *
@@ -2337,7 +2337,7 @@
  * @ More Info:
  * No parameter default value.
 
- * IDCS is used to specify the purpose and format of the command
+ * IDCS is used to specify the purpose and format of the action
  * string of subsequent DEVICE CONTROL STRINGs (DCS). The
  * specified purpose and format remain in effect until the
  * next occurrence of IDCS in the data stream.
@@ -2349,9 +2349,9 @@
  * 2 -> reserved for Dynamically Redefinable Character Sets (DRCS)
  * according to Standard ECMA-35.
 
- * The format and interpretation of the command string corresponding
+ * The format and interpretation of the action string corresponding
  * to these parameter values are to be defined in appropriate standards.
- * If this control function is used to identify a private command
+ * If this control function is used to identify a private action
  * string, a private parameter value shall be used.
  *
  */
@@ -2935,11 +2935,11 @@
 
  * @ More Info:
  * OSC is used as the opening delimiter of a control string for
- * operating system use. The command string following may consist
+ * operating system use. The action string following may consist
  * of a sequence of bit combinations in the range 00/08 to 00/13
  * and 02/00 to to 07/14. The control string is closed by the terminating
  * delimiter STRING TERMINATOR (ST). The interpretation of
- * the command string depends on the relevant operating system.
+ * the action string depends on the relevant operating system.
  *
  */
 #define OSC ESC "]"
@@ -3132,11 +3132,11 @@
 
  * @ More Info:
  * PM is used as the opening delimiter of a control string for
- * privacy message use. The command string following may consist
+ * privacy message use. The action string following may consist
  * of a sequence of bit combinations in the range 00/08 to 00/13
  * and 02/00 to 07/14. The control string is closed by the terminating
  * delimiter STRING TERMINATOR (ST). The interpretation of
- * the command string depends on the relevant privacy discipline.
+ * the action string depends on the relevant privacy discipline.
  *
  */
 #define PM ESC "^"
