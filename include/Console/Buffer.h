@@ -26,7 +26,7 @@ typedef struct ConsoleBuffer {
 	
 	// Whether Scroll is Enabled or not in the Buffer container
 	unsigned char scrollEnabled;
-	size_t *scroll;
+	long int *scroll;
 	
 	// The other buffers that this contains
 	unsigned short int noOfContainedBuffers;
@@ -95,18 +95,31 @@ void cbuffer_show(CBuffer *cBuffer);
 
 void cbuffer_renderCommand(CBuffer *cBuffer, const char *command);
 
-/* ============================== Live Render Commands ========================= */
+/* ============================== Live Render Commands/Actions ========================= */
+
+void _cbuffer_focus(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
 /**
  * Scrolls UP, DOWN, LEFT, RIGHT, HOME, END along with PAGEUP and PAGEDOWN
- * @param cBuffer 		The Console Buffer to be scrolled
- * @param scrollArgs 	Automated Scroll Arguments passed from Live Command Renderer	<br>
+ * @param cBuffer 		The Main Console Buffer
+ * @param activeCBuffer	The active Console Buffer to be scrolled
+ * @param args			Automated Scroll Arguments passed from Live Command Renderer	<br>
  * 						[no_of_args, scroll_command, scroll_direction, scroll_count]
  * @example
  * 						ScrollArgs: 					<br>
  * 						&#9;["2", "scroll", "up", "5"] 	<br>
  */
-void _cbuffer_scroll(CBuffer *cBuffer, const char **scrollArgs);
+void _cbuffer_scroll(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
+void _cbuffer_resize(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
+void _cbuffer_move(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
+void _cbuffer_remove(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
+void _cbuffer_show(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
+void _cbuffer_hide(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
 /* ============================== Utility Functions ========================= */
 /**
