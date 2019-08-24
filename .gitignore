@@ -11,7 +11,8 @@ Release/
 
 include/Console/ExtractCtrlFunc/pythonVenv/
 
-/.vscode/
+.vscode/
+
 
 officialC.code-workspace
 
