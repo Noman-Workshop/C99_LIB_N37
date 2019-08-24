@@ -32,6 +32,7 @@ endif ()
 message("# ============================== LIB ============================== #")
 # ----------------- Project Std ----------------- #
 message("Building Project Standard Libraries")
+
 # Console Library
 message("Building Console Libraries")
 add_library(lconsole src/Console/ctrlfunc.c include/Console/ctrlFuncCodedCharSet.h)
@@ -41,9 +42,11 @@ message("Library Built: lconsole|Console")
 message("Building Utility Library")
 add_library(lutil
             src/Util/integer.c
-            src/Util/string.c
             src/Util/mathematics.c
             src/Util/linkedList.c
+
+            src/Util/String/string.c
+            src/Util/String/snprintf.c
             )
 message("Library Built: lutil|Utility")
 

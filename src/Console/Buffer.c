@@ -62,15 +62,14 @@ size_t _tempStringLen = 0;
  * @param cBuffer 	The Console Buffer Instance in which Data will be
  * written
  * @param strLength	Length of the new formatted data
- * @return			Total Number of Characters it will write into
- * cBuffer
+ * @return			Total Number of Characters it will write into cBuffer
  */
 size_t _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
-	size_t len = cbuffer_maxLen(cBuffer);
+	size_t len = cbuffer_maxLen(cBuffer) - 1;
 	size_t cursorPos = cBuffer->cursorPos;
-	size_t spaceAvailable = len - cursorPos;
-	size_t shiftLeft = strLength - spaceAvailable;
-	_tempStringLen = len;
+	size_t spaceAvailable = (long) (len - cursorPos) < 0 ? 0 : len - cursorPos;
+	size_t shiftLeft = 0;
+	_tempStringLen = len + 1;
 	
 	if (spaceAvailable >= strLength) {
 		// Appending Buffer
@@ -78,24 +77,24 @@ size_t _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
 		cBuffer->cursorPos += strLength;
 	} else if (strLength <= len) {
 		// Overwriting Buffer
-		
+		shiftLeft = strLength - spaceAvailable;
 		/* Alternative Buffer Overwriting to String Copy */
 //		/*
-		for (size_t i = 0; i < shiftLeft; i++) {
+		for (size_t i = 0; i + shiftLeft < cursorPos; i++) {
 			cBuffer->buffer[0][i] = cBuffer->buffer[0][i + shiftLeft];
 		}
 //		*/
 		
 		// toKnow: strcpy produces restrict warnings
 //		strcpy(cBuffer->buffer[0], cBuffer->buffer[0] + shiftLeft + 1);
-		_tempCBufferPntr = cBuffer->buffer[0] + (len - strLength - 1);
+		_tempCBufferPntr = cBuffer->buffer[0] + (len - strLength);
 		
 		// At the end of overwriting and new data entry the cursor will be at the end too
-		cBuffer->cursorPos = len;
+		cBuffer->cursorPos = len + 1;
 	} else {
 		cBuffer->bufferOverflow = 1;
 		_tempCBufferPntr = (char *) calloc(strLength, sizeof(char));
-		_tempStringLen = strLength;
+		_tempStringLen = strLength + 1;
 	}
 	
 	return strLength <= len ? strLength : len;
@@ -107,8 +106,9 @@ size_t _cbuffer_manageHandle(CBuffer *cBuffer, int strLength) {
  */
 void _cbuffer_resetHandle(CBuffer *cBuffer) {
 	if (cBuffer->bufferOverflow) {
-		size_t len = cbuffer_maxLen(cBuffer);
-		strcpy(cBuffer->buffer[0], _tempCBufferPntr + (_tempStringLen - len + 1));
+		size_t len = cbuffer_maxLen(cBuffer) - 1;
+//		strcpy(cBuffer->buffer[0], _tempCBufferPntr + (_tempStringLen - len + 1));
+		snprintf(cBuffer->buffer[0], len + 1, "%s", _tempCBufferPntr + (_tempStringLen - len - 1));
 		cBuffer->cursorPos = len;
 		free(_tempCBufferPntr);
 	}
@@ -131,7 +131,7 @@ void _cbuffer_render(CBuffer *cBuffer) {
 		for (size_t bj = cBuffer->scroll[1], sj = 0; sj < cBuffer->screenSize[1]; bj++, sj++) {
 			if ((bj < cBuffer->bufferSize[1])) {
 				printf("%c", cBuffer->buffer[bi][bj]);
-			} else{
+			} else {
 				printf(" ");
 			}
 		}
@@ -171,6 +171,7 @@ void cbuffer_renderCommand(CBuffer *cBuffer, const char *command) {
 	for (int i = 0; i < 7; i++) {
 		if (!strncmp(commandTokens[1], commandStr[i], strlen(commandTokens[1]))) {
 			action[i](cBuffer, activeCBuffer, commandTokens);
+			break;
 		}
 		
 	}
@@ -245,9 +246,9 @@ void _cbuffer_scroll(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args
 	}
 	
 	// scroll can't be greater than [rows, cols] and also can't roll down to bottom past the screen
-	if (activeCBuffer->scroll[0] + activeCBuffer->screenSize[0] > activeCBuffer->bufferSize[0] - 1)
+	if (activeCBuffer->scroll[0] + activeCBuffer->screenSize[0] > (long) activeCBuffer->bufferSize[0] - 1)
 		activeCBuffer->scroll[0] = (long) activeCBuffer->bufferSize[0] - activeCBuffer->screenSize[0];
-	if (activeCBuffer->scroll[1] + activeCBuffer->screenSize[1] > activeCBuffer->bufferSize[1] - 1)
+	if (activeCBuffer->scroll[1] + activeCBuffer->screenSize[1] > (long) activeCBuffer->bufferSize[1] - 1)
 		activeCBuffer->scroll[1] = (long) activeCBuffer->bufferSize[1] - activeCBuffer->screenSize[1];
 	
 	// scroll can't be less than [0,0]
@@ -269,3 +270,6 @@ void _cbuffer_hide(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args) 
 /* ============================== Buffer: Utility ========================= */
 
 size_t cbuffer_maxLen(CBuffer *cBuffer) { return cBuffer->bufferSize[0] * cBuffer->bufferSize[1]; }
+
+/* ============================== Experimental  API ========================= */
+

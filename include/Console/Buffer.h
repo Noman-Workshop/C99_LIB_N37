@@ -7,7 +7,8 @@
 #define CONSOLE_BUFFER_H
 
 #include <stdInclude.h>
-#include <Util/string.h>
+#include <Util/String/string.h>
+#include <Util/String/snprintf.h>
 
 typedef struct ConsoleBuffer {
 	
@@ -85,6 +86,7 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
  *	@param cBuffer The buffer to write onto
  *	@param args The formatted arguments
  */
+ // fixme: fix the new snprintf and tempStrLen issues
 #define cbuffer_write(cBuffer, args) _cbuffer_manageHandle(cBuffer, snprintf args); snprintf args; _cbuffer_resetHandle(cBuffer)
 
 /* ============================== Printing/Rendering Buffer ========================= */
@@ -130,3 +132,5 @@ void _cbuffer_hide(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 size_t cbuffer_maxLen(CBuffer *cBuffer);
 
 #endif
+/* ============================== Experimental  API ========================= */
+

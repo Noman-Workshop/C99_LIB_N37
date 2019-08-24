@@ -11,11 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-#ifdef WINDOWS
-
-#include <windows.h>
-
-#endif
+#include <stdarg.h>
+#include <string.h>
+#include <ctype.h>
 
 #endif
