@@ -12,6 +12,7 @@ Release/
 include/Console/ExtractCtrlFunc/pythonVenv/
 
 .vscode/*.json
+.vscode/tasks.json
 
 
 officialC.code-workspace
