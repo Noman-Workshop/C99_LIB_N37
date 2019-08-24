@@ -31,9 +31,9 @@ void printScale(int length, int scale) {
 int main(int argc, char *argv[]) {
 	int i;
 
-#ifdef WINDOWS
-	EnableVTMode();
-#endif
+//#ifdef WINDOWS
+//	EnableVTMode();
+//#endif
 
 	/* Test: BS */
 /*

@@ -7,30 +7,30 @@
 
 /* ============================= Enable VT Mode in Windows ============================= */
 
-#ifdef WINDOWS
-
-#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
-
-int EnableVTMode() {
-	/* Set output mode to handle virtual terminal sequences */
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	DWORD dwMode = 0;
-	if (hOut == INVALID_HANDLE_VALUE) {
-		return 0;
-	}
-
-	if (!GetConsoleMode(hOut, &dwMode)) {
-		return 0;
-	}
-
-	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-	if (!SetConsoleMode(hOut, dwMode)) {
-		return 0;
-	}
-	return 1;
-}
-
-#endif
+//#ifdef WINDOWS
+//
+//#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
+//
+//int EnableVTMode() {
+//	/* Set output mode to handle virtual terminal sequences */
+//	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+//	DWORD dwMode = 0;
+//	if (hOut == INVALID_HANDLE_VALUE) {
+//		return 0;
+//	}
+//
+//	if (!GetConsoleMode(hOut, &dwMode)) {
+//		return 0;
+//	}
+//
+//	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+//	if (!SetConsoleMode(hOut, dwMode)) {
+//		return 0;
+//	}
+//	return 1;
+//}
+//
+//#endif
 
 /* ============================= Cursor Control Functions ============================= */
 
