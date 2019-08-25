@@ -11,9 +11,10 @@
 #include <Util/integer.h>
 
 /**
+ * @param str a string to be case toggled
+ * @return a string with toggled case
  *
- * @param str
- * @return
+ * > Hello, World -> hELLO, wORLD
  */
 char *str_toggleCase(const char *str);
 

@@ -68,8 +68,6 @@ CBuffer *cbuffer_init(const char *name,
 /* ============================== Writing to Buffer ========================= */
 
 extern char *_tempCBufferPntr;
-
-// fixme: find a better name for the following variable
 extern size_t _tempStringLen;
 
 /**
@@ -86,13 +84,16 @@ void _cbuffer_resetHandle(CBuffer *cBuffer);
  *	@param cBuffer The buffer to write onto
  *	@param args The formatted arguments
  */
- // fixme: fix the new snprintf and tempStrLen issues
 #define cbuffer_write(cBuffer, args) _cbuffer_manageHandle(cBuffer, snprintf args); snprintf args; _cbuffer_resetHandle(cBuffer)
 
 /* ============================== Printing/Rendering Buffer ========================= */
 
 void _cbuffer_render(CBuffer *cBuffer);
 
+/**
+ *
+ * @param cBuffer
+ */
 void cbuffer_show(CBuffer *cBuffer);
 
 void cbuffer_renderCommand(CBuffer *cBuffer, const char *command);
@@ -122,6 +123,9 @@ void _cbuffer_remove(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args
 void _cbuffer_show(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
 void _cbuffer_hide(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
+void __cbuffer_liveWrite(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+
 
 /* ============================== Utility Functions ========================= */
 /**
