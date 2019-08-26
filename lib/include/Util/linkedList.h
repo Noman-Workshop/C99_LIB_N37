@@ -6,85 +6,83 @@
 #include <stdInclude.h>
 
 #define TYPE void *
-/*========================================Linked List Struct===================================*/
+/*======================================== Linked List Struct ===================================*/
 
 /**
- * Generic Linked List Node
- * @param data 	the element in the head
- * @param next 	the tail of the linked list
- * @attention LList and Node
+ * Generic Linked List Data Structure
+ * @param data 	Generic Pointer to Data present in current Node
+ * @param next 	Generic Pointer to Data present in the adjacent Node
+ * @attention 	LList and Node are used synonymously according to the context
  */
 typedef struct Node {
 	TYPE data;
 	struct Node *next;
 } LList, Node;
 
-/*========================================Linked List Function===================================*/
+/*======================================== Linked List Function ===================================*/
 
 /**
- * @brief Initialize an Linked List
- * @return a linked list struct
+ * @brief 				Initialize an Linked List
+ * @param noOfElements 	No of Elements to be initialized with
+ * @param ...			Generic Pointer to the new Datas of the linked list
+ * @return 				A pointer to the first Node of the Linked List
  */
-LList *ll_init(size_t noOfElem, ...);
+LList *ll_init(size_t noOfElements, ...);
 
 /**
- * @brief returns the depth of a linked list
- * @param ll the linked list struct to get the length of
- * @return the length of linked list
+ * @param node 	A linked List
+ * @return 		the length of linked list
  */
-size_t ll_length(LList *ll);
+size_t ll_length(LList *node);
 
 /**
- * @brief
- * @param ll the linked list
- * @param pos the position to get or the <b> depth to reach</b>
- * @return the linked list from head
+ * @param ll 	A linked list
+ * @param pos 	the position to get or the <b> depth to reach</b>
+ * @return 		A node at position i of linked list ll
  */
-Node *ll_ithNode(LList *ll, int pos);
+Node *ll_getNode(LList *ll, size_t pos);
+
+/**
+ * @param ll 	A linked list
+ * @param pos 	the position to get or the <b> depth to reach</b>
+ * @return 		Data at position i of linked list ll
+ */
+TYPE ll_getData(LList *ll, size_t pos);
 
 /**
  * @brief copies the linked list into a new memory
  * @param ll the linked list to copy
  * @return the copied linked list with a new location in memory
  */
-LList *ll_copy(Node *ll);
+LList *ll_copy(LList *ll);
 
 /**
- * @brief
- * @param ll the source list
- * @param pos the depth at to be inserted
- * @param node the value of the elem for the head
- * @return a new copy of the inserted list
- * @warning this doesn't change the <b>orginal list</b>
+ * @param ll 	Pointer to the Head of Nodes
+ * @param pos 	the depth at which new Node is to be inserted
+ * @param data 	Generic Pointer to the data of new Node
  */
-void *ll_insert(Node *ll, int pos, TYPE node);
+void _ll_insert(Node *ll, size_t pos, TYPE data);
 
 /**
- * @brief
- * @param ll the original list
- * @param elem the value of the element that is appended
- * @return a new copy appended list
+ * @brief Easies the use of inserting by automating casting
+ * @param ll 	Pointer to the Head of Nodes
+ * @param pos 	the depth at which new Node is to be inserted
+ * @param data 	Data of new Node
  */
-void *ll_append(Node *ll, Node elem);
+#define ll_insert(ll, pos, data) _ll_insert(ll, pos, (TYPE) data)
 
 /**
- * @brief prints all the elements of a list
- * @param ll the list to be read
+ * @param ll 	Pointer to the linked list head
+ * @param data 	Generic Pointer to the data of new Node
  */
-void ll_print(Node *ll);
+void _ll_append(LList *ll, TYPE data);
 
 /**
- * @brief transforms a full array to linked List
- * @param arr to be read
- * @param lenArr the length of the array
- * @return a new copy of list with all values of array in order
+ * @brief Easies the use of appending by automating casting
+ * @param ll 	Pointer to the Head of Nodes
+ * @param data 	Data of new Node
  */
-Node *ll_fromArray(TYPE*arr, int lenArr);
+#define ll_append(ll, data) _ll_append(ll, (TYPE) data)
 
-/**
- * @brief transforms a full linked list into array
- * @param ll the linked list to be read
- * @return a new array identical to the values of the linked list
- */
-TYPE*ll_toArray(Node *ll);
-
+// todo: free linked list
+void ll_free(LList *ll);
