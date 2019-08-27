@@ -5,15 +5,49 @@
 
 #include <Util/linkedList.h>
 
+#define PAUSE printf("\nPress any key to continue...\n"); getchar()
+
 int main() {
-	LList *ll = ll_init(6, 1, 2, "hello", 4, 5, 6);
 	
-	ll_append(ll, 8);
-	ll_insert(ll, 3, "Noman");
+	LList *list = ll_init(3, 1, 2, 3);
+//      [1, 2, 3]
+	ll_append(list,4);
+//	    [1, 2, 3, 4]
+	ll_push(list, 0);
+//	    [0, 1, 2, 3, 4]
+	ll_push(list, -1);
+//	    [-1, 0, 1, 2, 3, 4]
+	ll_insert(list, 3, 100);
+//	    [-1, 0, 1, 100, 2, 3, 4]
+	printf("Length: %d", (int) ll_length(list));
+	PAUSE;
 	
-	Node *strNode = ll_getNode(ll, 2);
-	printf("%s %s\n", (char *) strNode->data, (char *) ll_getData(ll, 3));
-	printf("Length: %zu\n", ll_length(ll));
+	free(ll_pop(list));
+//	    [0, 1, 100, 2, 3, 4]
+	free(ll_pop(list));
+//	    [1, 100, 2, 3, 4]
+	printf("Length: %d", (int) ll_length(list));
+	PAUSE;
+	
+	printf("%d\n", (int) ll_getData(list, 3));
+	free(ll_remove(&list, 1));
+//	    [1, 2, 3, 4]
+	ll_freeNode(&list, 0);
+//	    [2, 3, 4]
+	
+	LList *list1 = ll_copy(list);
+	ll_free(list);
+	PAUSE;
+	
+	size_t len = ll_length(list1);
+	Node *temp = list1;
+	for (size_t i = 0; i < len; i++) {
+		printf("%d: %d\n", (int) i, (int) temp->data);
+		temp = temp->next;
+	}
+	PAUSE;
+	
+	ll_free(list1);
 	return 0;
 }
 
