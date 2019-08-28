@@ -19,6 +19,7 @@ int main() {
 //	    [-1, 0, 1, 2, 3, 4]
 	ll_insert(list, 3, 100);
 //	    [-1, 0, 1, 100, 2, 3, 4]
+	ll_print(list, "%d", ", ", "\n", int);
 	printf("Length: %d", (int) ll_length(list));
 	PAUSE;
 	

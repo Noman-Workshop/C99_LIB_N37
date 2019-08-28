@@ -110,7 +110,23 @@ void _ll_append(Node *head, TYPE data);
  * @return 			Index of the Node in which Data is found <br>
  * 					Or -1 if data is not
  */
-long ll_getIndex(Node *head, TYPE data, bool (*isEqual)(TYPE, TYPE));
+long ll_getIndex(Node *head, TYPE data, int (*isEqual)(TYPE, TYPE));
+
+/**
+ * @param head	Pointer to the HEAD of the linked list
+ * @param fmt	?
+ * @param sep	Separator between two data
+ * @param end	?
+ * @param cast	?
+ * fixme: Find a better alternative of this macro
+ */
+#define ll_print(head, fmt, sep, end, cast)                 \
+    do {                                                    \
+        for(Node *temp = head; temp; temp = temp->next){    \
+            printf(fmt sep, (cast) temp->data);             \
+        }                                                   \
+        printf(end);                                        \
+    } while (0)                                             \
 
 /**
  * @brief 			copies the supplied linked list into a new memory
@@ -119,12 +135,12 @@ long ll_getIndex(Node *head, TYPE data, bool (*isEqual)(TYPE, TYPE));
  */
 Node *ll_copy(Node *srcHead);
 
+
 /**
  * @brief 		Free's the whole linked list starting from HEAD
  * @param head 	Pointer to the HEAD of linked list
  */
 void ll_free(Node *head);
-
 /**
  * @brief 			Free's a specific node at given index
  * @param head 		Address of the HEAD of linked list

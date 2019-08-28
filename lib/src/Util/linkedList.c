@@ -39,7 +39,6 @@ size_t ll_length(Node *head) {
 
 Node *ll_getNode(Node *head, long index) {
 	if (index < 0) return NULL;
-	
 	for (long i = 0; i < index && head; i++) {
 		head = head->next;
 	}
@@ -90,9 +89,9 @@ void _ll_append(Node *head, TYPE data) {
 	head->next->next = NULL;
 }
 
-long ll_getIndex(Node *head, TYPE data, bool (*isEqual)(TYPE, TYPE)) {
+long ll_getIndex(Node *head, TYPE data, int (*isEqual)(TYPE, TYPE)) {
 	long i = 0;
-	while (head && !isEqual(head->data, data)) {
+	while (head && isEqual(head->data, data) != 1) {
 		head = head->next;
 		i++;
 	}
