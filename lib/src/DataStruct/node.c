@@ -30,7 +30,7 @@ Node *node_addChild(Node *node, void *data) {
 	return node->children[node->degree - 1];
 }
 
-Node **node_addChildren(Node *node, size_t noOfChild, ...) {
+Node *node_addChildren(Node *node, size_t noOfChild, ...) {
 	node->degree += noOfChild;
 	
 	/* we could have used node_addChild but the reason we are not using it is
@@ -50,7 +50,7 @@ Node **node_addChildren(Node *node, size_t noOfChild, ...) {
 		children[i] = node_init(va_arg(_children_data, void*), node);
 	}
 	
-	return children;
+	return children[node->degree - noOfChild];
 }
 
 void node_free(Node *node) {
