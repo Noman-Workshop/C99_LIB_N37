@@ -22,11 +22,12 @@ int main() {
 	bst_insert(root, (void *) 5);
 	bst_insert(root, (void *) 18);
 	bst_insert(root, (void *) 2);
-	bst_insert(root, (void *) 0);
 	bst_insert(root, (void *) 9);
 	bst_insert(root, (void *) 15);
 	bst_insert(root, (void *) 19);
 	bst_insert(root, (void *) 13);
-	bst_insert(root, (void *) 7);
+	bst_insert(root, (void *) 17);
 	bst_recursiveInOrderWalk(root);
+	node_free(root);
+	
 }
