@@ -37,7 +37,7 @@ message("Building Utility Library")
 add_library(lutil SHARED
             lib/src/Util/integer.c
             lib/src/Util/mathematics.c
-            lib/src/Util/linkedList.c
+            #            lib/src/Algos/linkedList.c
 
             lib/src/Util/String/string.c
             lib/src/Util/String/snprintf.c
@@ -49,6 +49,19 @@ message("Building Console Buffer Library")
 add_library(lconsoleBuffer SHARED lib/src/Console/Buffer.c lib/include/Console/Buffer.h)
 target_link_libraries(lconsoleBuffer lutil)
 message("Library Built: lconsoleBuffer|Console Buffer")
+
+# Data Structures
+message("Building Data Structure Library")
+add_library(ldtstrct SHARED lib/src/DataStruct/node.c)
+target_link_libraries(ldtstrct lutil)
+message("Library Built: ldtstrct|Data Structure")
+
+# Algorithms
+message("Building Algorithms Library")
+add_library(lalgo SHARED lib/src/Algos/BinarySearchTree.c)
+target_link_libraries(lalgo ldtstrct)
+message("Library Built: lalgo|Algorithms")
+
 
 # ----------------- Exercises ----------------- #
 # Temperature
@@ -65,12 +78,7 @@ add_executable(Main main.c)
 message("EXEcutable Built: Main")
 target_link_libraries(Main)
 
-# ----------------- Tests ----------------- #
-# Temperature Conversion
-message("Building Test Executables")
-add_executable(T_Tempr Test/Temperature/TempConv.c)
-message("EXEcutable Built: T_Tempr")
-target_link_libraries(T_Tempr ltempr)
+# ----------------- Utility Tests ----------------- #
 
 # Console Buffer Testing
 add_executable(T_ConsoleBuffer Test/Console/CBufferTest.c)
@@ -92,7 +100,28 @@ add_executable(T_Math Test/Math/MathTest.c)
 message("EXEcutable Built: T_Math")
 target_link_libraries(T_Math lutil)
 
+# ----------------- Other Library Tests ----------------- #
+
+# Temperature Conversion
+message("Building Test Executables")
+add_executable(T_Tempr Test/Temperature/TempConv.c)
+message("EXEcutable Built: T_Tempr")
+target_link_libraries(T_Tempr ltempr)
+
+# ----------------- Data Structure Tests ----------------- #
 # Linked List Testing
-add_executable(T_LinkedList Test/LinkedList/LList.c)
-message("EXEcutable Built: T_LinkedList")
-target_link_libraries(T_LinkedList lutil)
+#add_executable(T_LinkedList Test/LinkedList/LList.c)
+#message("EXEcutable Built: T_LinkedList")
+#target_link_libraries(T_LinkedList lutil)
+
+# Node Testing
+add_executable(T_Node Test/DataStrctAlgos/NodeTest.c)
+message("EXEcutable Built: T_Node")
+target_link_libraries(T_Node ldtstrct)
+
+# ----------------- Algorithms Tests ----------------- #
+
+# Binary Search Tree Testing
+add_executable(T_BST Test/DataStrctAlgos/BSTTest.c)
+message("EXEcutable Built: T_BST")
+target_link_libraries(T_BST lalgo)
