@@ -58,6 +58,9 @@ void node_free(Node *node) {
 		for (size_t i = 0; i < node->degree; i++) {
 			node_free(node->children[i]);
 		}
+		if(node->degree > 0){
+			free(node->children);
+		}
 		free(node);
 	}
 }
