@@ -84,6 +84,8 @@ Node bst_successor(Node *root, ...);
 Node bst_predecessor(Node *root, ...);
 
 
+void bst_breadthFirstWalk(Node *node);
+
 void bst_preOrderWalk(Node *root);
 
 void bst_inOrderWalk(Node *node);

@@ -27,10 +27,6 @@
  * 			Children is pointer array of Nodes.								<br>
  * @degree
  * 			The degree of a Node is the number of Children of the Node.
- * @depth
- *			The depth of Node A is the length of the path from A to the root Node.
- *			The root Node is said to have depth 0.
- *			The depth of a Node is implementation defined.
  * @compare
  *			Compare function compares between the data of two Nodes.
  *			Compare function can have 3 basic return values which are -1, 0, 1.
@@ -66,12 +62,6 @@ typedef struct Node {
 	 * Children is pointer array of Nodes.
 	 */
 	struct Node **children;
-	/**
-	 * The depth of Node A is the length of the path from A to the root Node.
-	 * The root Node is said to have depth 0.
-	 * The depth of a Node is implementation defined.
-	 */
-	int depth;
 	
 	/**
 	 * Compare function compares between the data of two Nodes.

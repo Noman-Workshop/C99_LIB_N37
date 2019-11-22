@@ -122,16 +122,25 @@ void _cbuffer_render(CBuffer *cBuffer) {
 	if (cBuffer->noOfContainedBuffers) {
 		// todo: render the container buffers here
 	}
-	// fixme: Will newlines \n create an awkward situation here?
 	//fixme: Better and Cross-platform solution to clear the screen
 	system("@cls||clear");
 	
 	printf("\n");
 	for (size_t bi = cBuffer->scroll[0], si = 0; si < cBuffer->screenSize[0]; bi++, si++) {
 		for (size_t bj = cBuffer->scroll[1], sj = 0; sj < cBuffer->screenSize[1]; bj++, sj++) {
+			// new lines and buffers messes up with your head
 			if ((bj < cBuffer->bufferSize[1])) {
 				printf("%c", cBuffer->buffer[bi][bj]);
+				// fixme: find a simple solution to fix this newline issue
+				if (cBuffer->buffer[bi][bj] == '\n') {
+					// when you hit a new line ...
+//					si++;
+					// ... you forget where you was in the previous line
+//					sj = -1;
+				}
+				
 			} else {
+				// sometimes the buffer size can be less than screen size
 				printf(" ");
 			}
 		}

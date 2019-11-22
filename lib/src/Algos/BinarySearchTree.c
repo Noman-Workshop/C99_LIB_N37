@@ -34,7 +34,6 @@ void bst_setChild(Node *node, void *data, const char *child) {
 			node->children[_bst_interpretChildStr(child)]->data = data;
 		}
 		node->degree += 1;
-		// fixme: handle depth manually
 	} else {
 		// fixme: Raise an exception when node is NULL i.e. not defined
 	}
