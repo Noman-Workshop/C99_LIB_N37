@@ -71,13 +71,13 @@ void bst_insert(Node *root, void *data);
 void bst_delete(Node *root, Node *node);
 
 
-Node *bst_search(void *data);
+Node *bst_search(Node *node, void *data);
 
-Node *bst_recursiveSearch(void *data);
+Node *bst_recursiveSearch(Node *node, void *data);
 
-Node *bst_minimum(Node *root);
+Node *bst_minimum(Node *node);
 
-Node *bst_maximum(Node *root);
+Node *bst_maximum(Node *node);
 
 Node bst_successor(Node *root, ...);
 

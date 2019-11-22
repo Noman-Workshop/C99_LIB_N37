@@ -12,11 +12,14 @@ Node *bst_init(int (*compare)(void *thisData, void *data), int (*print)(void *da
 	return root;
 }
 
-Node *bst_getChild(Node *node, const char *child) {
-	if (node != NULL && node->children != NULL) {
-		return node->children[_bst_interpretChildStr(child)];
+Node *bst_getRoot(Node *node) {
+	if (node != NULL) {
+		while (node->parent != NULL) {
+			node = node->parent;
+		}
+		return node;
 	}
-	// fixme: Raise an exception when node and its children is not defined
+	// fixme: Raise an exception when node is not defined
 	return NULL;
 }
 
@@ -38,14 +41,11 @@ void bst_setChild(Node *node, void *data, const char *child) {
 	
 }
 
-Node *bst_getRoot(Node *node) {
-	if (node != NULL) {
-		while (node->parent != NULL) {
-			node = node->parent;
-		}
-		return node;
+Node *bst_getChild(Node *node, const char *child) {
+	if (node != NULL && node->children != NULL) {
+		return node->children[_bst_interpretChildStr(child)];
 	}
-	// fixme: Raise an exception when node is not defined
+	// fixme: Raise an exception when node and its children is not defined
 	return NULL;
 }
 
@@ -77,6 +77,58 @@ void bst_insert(Node *root, void *data) {
 	// fixme: Raise an exception when root is not defined or its not root
 }
 
+Node *bst_search(Node *node, void *data) {
+	while (node != NULL) {
+		int nodeVsData = node->compare(node->data, data);
+		switch (nodeVsData) {
+			case 1:
+				node = bst_getChild(node, LEFT);
+				break;
+			case 0:
+				return node;
+			case -1:
+				node = bst_getChild(node, RIGHT);
+				break;
+			default:
+				// fixme: raise an exception for unknown comparison value
+				break;
+		}
+	}
+	return NULL;
+}
+
+Node *bst_recursiveSearch(Node *node, void *data) {
+	if (node == NULL || node->compare(node->data, data) == 0) {
+		return node;
+	} else if (node->compare(node->data, data) == -1) {
+		return bst_recursiveSearch(bst_getChild(node, LEFT), data);
+	} else {
+		return bst_recursiveSearch(bst_getChild(node, RIGHT), data);
+	}
+}
+
+Node *bst_minimum(Node *node) {
+	if (node != NULL) {
+		while (node->children != NULL && bst_getChild(node, LEFT) != NULL) {
+			node = bst_getChild(node, LEFT);
+		}
+		return node;
+	}
+	// fixme: throw an exception when node is not defined i.e NULL
+	return NULL;
+}
+
+Node *bst_maximum(Node *node) {
+	if (node != NULL) {
+		while (node->children != NULL && bst_getChild(node, RIGHT) != NULL) {
+			node = bst_getChild(node, RIGHT);
+		}
+		return node;
+	}
+	// fixme: throw an exception when node is not defined i.e NULL
+	return NULL;
+}
+
 void bst_recursiveInOrderWalk(Node *node) {
 	if (node != NULL) {
 		bst_recursiveInOrderWalk(bst_getChild(node, LEFT));
@@ -84,7 +136,6 @@ void bst_recursiveInOrderWalk(Node *node) {
 		printf(", ");
 		bst_recursiveInOrderWalk(bst_getChild(node, RIGHT));
 	}
-	
 }
 
 unsigned short _bst_interpretChildStr(const char *child) {
