@@ -100,7 +100,7 @@ Node *bst_search(Node *node, void *data) {
 Node *bst_recursiveSearch(Node *node, void *data) {
 	if (node == NULL || node->compare(node->data, data) == 0) {
 		return node;
-	} else if (node->compare(node->data, data) == -1) {
+	} else if (node->compare(node->data, data) == 1) {
 		return bst_recursiveSearch(bst_getChild(node, LEFT), data);
 	} else {
 		return bst_recursiveSearch(bst_getChild(node, RIGHT), data);
