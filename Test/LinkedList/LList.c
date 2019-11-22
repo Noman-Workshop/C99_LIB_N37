@@ -3,7 +3,7 @@
 # Created On: 8/5/2019; 3:20 AM
 */
 
-#include <Util/linkedList.h>
+#include <Algos/linkedList.h>
 
 #define PAUSE printf("\nPress any key to continue...\n"); getchar()
 
