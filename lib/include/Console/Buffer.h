@@ -124,7 +124,7 @@ void _cbuffer_show(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
 void _cbuffer_hide(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
-void __cbuffer_liveWrite(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
+void __cbuffer__liveWrite(CBuffer *cBuffer, CBuffer *activeCBuffer, const char **args);
 
 
 /* ============================== Utility Functions ========================= */
