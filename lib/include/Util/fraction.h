@@ -15,7 +15,7 @@
 #ifndef UTIL_STR
 #define UTIL_STR "strUtl.h"
 
-#include UTIL_STR"strUtl.h""strUtl.h"
+#include UTIL_STR"strUtl.h""strUtl.h""../../src/Util/strUtl.h"
 
 #endif
 

@@ -3,7 +3,7 @@
 # Created On: 8/10/2018; 9:06 AM
 */
 
-#include <Util/linkedList.h>
+#include <Algos/linkedList.h>
 
 /*======================================== Linked List Function ===================================*/
 
